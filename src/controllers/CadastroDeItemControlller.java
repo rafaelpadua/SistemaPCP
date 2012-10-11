@@ -37,7 +37,7 @@ public class CadastroDeItemControlller {
     public void salvarItem(){
 
         view.sincronizarModelComView(item);
-        if (item.getCodigo() != null){
+        if (item.getCodigo() == null){
             new ItemDao().salvar(item);
         }else{ 
             new ItemDao().atualizar(item);
@@ -59,7 +59,7 @@ public class CadastroDeItemControlller {
     public void excluirItem(){
 
         view.sincronizarModelComView(item);
-        if(item.getCodigo() != null){
+        if(item.getCodigo() == null){
             new ItemDao().excluir(item);
         }
     }

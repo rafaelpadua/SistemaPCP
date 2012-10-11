@@ -367,15 +367,15 @@ public void sincronizarModelComView(Item model) {
      */
     public void sincronizarViewComModel(Item item) {
 
-        if (item.getCodigo() != null) {
+        if (item.getCodigo() == null) {
             txtCodigo.setText(Integer.toString(item.getCodigo()));
         }
 
-        if (item.getDescricao() != null) {
+        if (item.getDescricao() == null) {
             txtDescricao.setText(item.getDescricao());
         }
 
-        if (item.getUnidade() != null) {
+        if (item.getUnidade() == null) {
             txtUnidade.setText(item.getUnidade());
         }
     }
