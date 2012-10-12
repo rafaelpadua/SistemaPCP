@@ -33,7 +33,7 @@
                           <Component id="btNovoCadastro" alignment="1" max="32767" attributes="0"/>
                           <Component id="btSalvar" alignment="1" max="32767" attributes="0"/>
                           <Component id="btEditar" alignment="1" max="32767" attributes="0"/>
-                          <Component id="jButton4" alignment="1" max="32767" attributes="0"/>
+                          <Component id="btExcluir" alignment="1" max="32767" attributes="0"/>
                           <Component id="btSair" alignment="1" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -75,7 +75,7 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="btEditar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jButton4" min="-2" max="-2" attributes="0"/>
+                      <Component id="btExcluir" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="btSair" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
@@ -350,10 +350,13 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btEditarActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton4">
+    <Component class="javax.swing.JButton" name="btExcluir">
       <Properties>
         <Property name="text" type="java.lang.String" value="Excluir"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btExcluirActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btSair">
       <Properties>

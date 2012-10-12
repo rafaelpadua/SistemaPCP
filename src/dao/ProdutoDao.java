@@ -87,14 +87,14 @@ public class ProdutoDao {
             Connection conn = null;
             PreparedStatement ps = null;
 
-            String sql = "update produto set descricao = ?,taxaproducao = ?, unidade = ?, setup = ?  where codigo = ?";
+            String sql = "update produto set descricao = ?, taxaproducao = ?, unidade = ?, setup = ?  where codigo = ?";
             conn = this.con;
             ps = conn.prepareStatement(sql);
-            ps.setString(1, Integer.toString(produto.getCodigo()));
-            ps.setString(2, produto.getDescricao());
-            ps.setString(3, Float.toString(produto.getTaxaDeProducao()));
-            ps.setString(4, produto.getUnidade());
-            ps.setString(5, Integer.toString(produto.getSetup()));
+            ps.setString(1, produto.getDescricao());
+            ps.setString(2, Float.toString(produto.getTaxaDeProducao()));
+            ps.setString(3, produto.getUnidade());
+            ps.setString(4, Integer.toString(produto.getSetup()));
+             ps.setString(5, Integer.toString(produto.getCodigo()));
             ps.executeUpdate();
             GerandoConexão.fecharConexao(conn, ps);
             JOptionPane.showMessageDialog(null, "Produto - " + produto.getDescricao() + " - foi atualizado com sucesso  " + produto.getCodigo());
@@ -109,7 +109,7 @@ public class ProdutoDao {
             Connection conn;
             PreparedStatement ps;
 
-            String sql = "delete from produto where id = ?";
+            String sql = "delete from produto where codigo = ?";
             conn = this.con;
             ps = conn.prepareStatement(sql);
             ps.setInt(1, produto.getCodigo());
@@ -118,6 +118,7 @@ public class ProdutoDao {
             JOptionPane.showMessageDialog(null, "Produto - " + produto.getDescricao() + ""
                     + " - foi excluido com sucesso.");
         } catch (SQLException ex) {
+
             Logger.getLogger(ProdutoDao.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

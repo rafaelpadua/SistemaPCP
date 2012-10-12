@@ -5,11 +5,11 @@ package views;
  * the editor.
  */
 import controllers.CadastroDeProdutoController;
-import entidades.Produto;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import entidades.Produto;
 
 /**
  *
@@ -18,6 +18,7 @@ import javax.swing.table.DefaultTableModel;
 public class CadastroProduto extends javax.swing.JFrame {
 
     private CadastroDeProdutoController controller;
+    private Produto produto;
 
     /**
      * Creates new form FormCadastroProduto
@@ -56,7 +57,7 @@ public class CadastroProduto extends javax.swing.JFrame {
         btNovoCadastro = new javax.swing.JButton();
         btSalvar = new javax.swing.JButton();
         btEditar = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btExcluir = new javax.swing.JButton();
         btSair = new javax.swing.JButton();
         btVisualizar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
@@ -230,7 +231,12 @@ public class CadastroProduto extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setText("Excluir");
+        btExcluir.setText("Excluir");
+        btExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btExcluirActionPerformed(evt);
+            }
+        });
 
         btSair.setText("Sair");
         btSair.addActionListener(new java.awt.event.ActionListener() {
@@ -288,7 +294,7 @@ public class CadastroProduto extends javax.swing.JFrame {
                             .addComponent(btNovoCadastro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btSalvar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btEditar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btExcluir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btSair, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
@@ -321,7 +327,7 @@ public class CadastroProduto extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(btEditar)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton4)
+                        .addComponent(btExcluir)
                         .addGap(18, 18, 18)
                         .addComponent(btSair)
                         .addGap(30, 30, 30))))
@@ -365,58 +371,31 @@ public class CadastroProduto extends javax.swing.JFrame {
 
     private void tabelaCPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaCPMouseClicked
 
+        txtCodigo.setText(tabelaCP.getValueAt(tabelaCP.getSelectedRow(), 0).toString());
+        txtDescricao.setText(tabelaCP.getValueAt(tabelaCP.getSelectedRow(), 1).toString());
+        txtTaxaProducao.setText(tabelaCP.getValueAt(tabelaCP.getSelectedRow(), 2).toString());
+        txtUnidade.setText(tabelaCP.getValueAt(tabelaCP.getSelectedRow(), 3).toString());
+        txtSetup.setText(tabelaCP.getValueAt(tabelaCP.getSelectedRow(), 4).toString());
+        bloquearCampos();
     }//GEN-LAST:event_tabelaCPMouseClicked
 
+    private void btExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirActionPerformed
+        controller.excluirProduto();
+        preencheJtable();
+        limparCampos();
+    }//GEN-LAST:event_btExcluirActionPerformed
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /*
-         * Set the Nimbus look and feel
-         */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /*
-         * If Nimbus (introduced in Java SE 6) is not available, stay with the
-         * default look and feel. For details see
-         * http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CadastroProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CadastroProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CadastroProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CadastroProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /*
-         * Create and display the form
-         */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-
-            @Override
-            public void run() {
-            }
-        });
-    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btCadastroItem;
     private javax.swing.JButton btEditar;
+    private javax.swing.JButton btExcluir;
     private javax.swing.JButton btNovoCadastro;
     private javax.swing.JButton btQtdItem;
     private javax.swing.JButton btSair;
     private javax.swing.JButton btSalvar;
     private javax.swing.JButton btVisualizar;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -434,34 +413,34 @@ public class CadastroProduto extends javax.swing.JFrame {
     private javax.swing.JTextField txtUnidade;
     // End of variables declaration//GEN-END:variables
 
-    public void sincronizarModelComView(Produto model) {
+    public void sincronizarModelComView(Produto produto) {
 
         if (!txtCodigo.getText().equals("")) {
-            model.setCodigo(Integer.parseInt(txtCodigo.getText()));
+            produto.setCodigo(Integer.parseInt(txtCodigo.getText()));
         } else {
-            model.setCodigo(null);
+            produto.setCodigo(null);
         }
 
         if (!txtDescricao.getText().equals("")) {
-            model.setDescricao(txtDescricao.getText());
+            produto.setDescricao(txtDescricao.getText());
         } else {
             JOptionPane.showMessageDialog(null, "A descrição do produto é obrigatório");
         }
 
         if (!txtTaxaProducao.getText().equals("")) {
-            model.setTaxaDeProducao(Float.parseFloat(txtTaxaProducao.getText()));
+            produto.setTaxaDeProducao(Float.parseFloat(txtTaxaProducao.getText()));
         } else {
             JOptionPane.showMessageDialog(null, "A taxa de produção é obrigatória");
         }
 
         if (!txtUnidade.getText().equals("")) {
-            model.setUnidade(txtUnidade.getText());
+            produto.setUnidade(txtUnidade.getText());
         } else {
             JOptionPane.showMessageDialog(null, "A unidade é obrigatório");
         }
 
         if (!txtSetup.getText().equals("")) {
-            model.setSetup(Integer.parseInt(txtSetup.getText()));
+            produto.setSetup(Integer.parseInt(txtSetup.getText()));
         } else {
             JOptionPane.showMessageDialog(null, "O Setuo é obrigatório");
         }
@@ -513,32 +492,6 @@ public class CadastroProduto extends javax.swing.JFrame {
 
         for (Produto objeto : lista) {
             modelo.addRow(new Object[]{objeto.getCodigo(), objeto.getDescricao(), objeto.getTaxaDeProducao(), objeto.getUnidade(), objeto.getSetup()});
-        }
-    }
-
-    /**
-     * Sincroniza a camada de visão com o modelo
-     */
-    public void sincronizarViewComModel(Produto produto) {
-
-        if (produto.getCodigo() == null) {
-            txtCodigo.setText(Integer.toString(produto.getCodigo()));
-        }
-
-        if (produto.getDescricao() == null) {
-            txtDescricao.setText(produto.getDescricao());
-        }
-
-        if (produto.getTaxaDeProducao() == null) {
-            txtTaxaProducao.setText(Float.toString(produto.getTaxaDeProducao()));
-        }
-
-        if (produto.getUnidade() == null) {
-            txtUnidade.setText(produto.getUnidade());
-        }
-
-        if (produto.getSetup() == null) {
-            txtSetup.setText(Integer.toString(produto.getSetup()));
         }
     }
 

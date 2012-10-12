@@ -61,9 +61,9 @@ public class CadastroDeProdutoController {
      * Exclui o cliente no banco de dados
      */
     public void excluirProduto(){
-
+        
         view.sincronizarModelComView(produto);
-        if(produto.getDescricao() == null){
+        if(produto.getDescricao() != null){
             new ProdutoDao().excluir(produto);
         }
     }
