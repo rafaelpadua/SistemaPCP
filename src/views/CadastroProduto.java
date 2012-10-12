@@ -8,6 +8,7 @@ import controllers.CadastroDeProdutoController;
 import entidades.Produto;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -25,7 +26,7 @@ public class CadastroProduto extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         this.controller = controller;
-       
+
     }
 
     /**
@@ -103,6 +104,11 @@ public class CadastroProduto extends javax.swing.JFrame {
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        tabelaCP.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelaCPMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(tabelaCP);
@@ -357,6 +363,10 @@ public class CadastroProduto extends javax.swing.JFrame {
         controller.exibirCadastrodeItemView();
     }//GEN-LAST:event_btCadastroItemActionPerformed
 
+    private void tabelaCPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaCPMouseClicked
+
+    }//GEN-LAST:event_tabelaCPMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -485,16 +495,24 @@ public class CadastroProduto extends javax.swing.JFrame {
      * Preenche as o jtable com os clientes cadastrados
      */
     public void preencheJtable() {
-        
-        List<Produto> lista = controller.listarProdutos();    
+
+        tabelaCP.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        tabelaCP.getColumn("Codigo").setPreferredWidth(50);
+        tabelaCP.getColumn("Descrição").setPreferredWidth(250);
+        tabelaCP.getColumn("Taxa de Produção").setPreferredWidth(120);
+        tabelaCP.getColumn("Unidade").setPreferredWidth(80);
+        tabelaCP.getColumn("Setup").setPreferredWidth(50);
+
+
+        List<Produto> lista = controller.listarProdutos();
         DefaultTableModel modelo = (DefaultTableModel) tabelaCP.getModel();
 
         for (int i = (modelo.getRowCount() - 1); i >= 0; --i) {
             modelo.removeRow(i);
         }
-        
+
         for (Produto objeto : lista) {
-            modelo.addRow(new Object[]{objeto.getCodigo(),  objeto.getDescricao(), objeto.getTaxaDeProducao(), objeto.getUnidade(), objeto.getSetup()});
+            modelo.addRow(new Object[]{objeto.getCodigo(), objeto.getDescricao(), objeto.getTaxaDeProducao(), objeto.getUnidade(), objeto.getSetup()});
         }
     }
 
