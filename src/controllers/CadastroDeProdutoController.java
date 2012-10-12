@@ -9,10 +9,7 @@ import entidades.Produto;
 import views.CadastroProduto;
 import java.util.List;
 
-/**
- *
- * @author Rafael
- */
+
 public class CadastroDeProdutoController {
     
     private static CadastroDeProdutoController instancia = new CadastroDeProdutoController();
@@ -53,7 +50,11 @@ public class CadastroDeProdutoController {
      */
     public void salvarProduto(){
         view.sincronizarModelComView(produto);
+        if(produto.getCodigo() == null){
         new ProdutoDao().salvar(produto);
+    }else{
+        new ProdutoDao().atualizar(produto);
+        }
     }
 
     /**
@@ -67,14 +68,7 @@ public class CadastroDeProdutoController {
         }
     }
     
-    public void alterarProduto(){
-        view.sincronizarModelComView(produto);
-        if (produto.getCodigo() == null){
-        new ProdutoDao().atualizar(produto);
-        }
-    }
-    
-    
+   
     public void exibirCadastrodeItemView(){
         CadastroDeItemControlller.getInstancia().exibirInterfaceGrafica();
     }

@@ -230,6 +230,8 @@ public class CadastroItem extends javax.swing.JFrame {
     private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
         controller.salvarItem();
         preencheJtable();
+        bloquearCampos();
+        limparCampos();
     }//GEN-LAST:event_btSalvarActionPerformed
 
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
@@ -308,8 +310,8 @@ public void sincronizarModelComView(Item model) {
 
         if (!txtCodigo.getText().equals("")) {
             model.setCodigo(Integer.parseInt(txtCodigo.getText()));
-        } else {
-            model.setCodigo(0);
+        }else {
+            model.setCodigo(null);
         }
 
         if (!txtDescricao.getText().equals("")) {

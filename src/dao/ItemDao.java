@@ -29,16 +29,15 @@ public class ItemDao {
     }
 
     public void salvar(Item item) {
-        try {
+         try {
             Connection conn = null;
             PreparedStatement ps = null;
 
-            String sql = "insert into item (codigo, descricao, unidade) values (?, ?, ?)";
+            String sql = "insert into item (descricao, unidade) values (?, ?)";
             conn = this.con;
             ps = conn.prepareStatement(sql);
-            ps.setString(1, Integer.toString(item.getCodigo()));
-            ps.setString(2, item.getDescricao());
-            ps.setString(3, item.getUnidade());
+            ps.setString(1, item.getDescricao());
+            ps.setString(2, item.getUnidade());
             ps.executeUpdate();
             GerandoConexão.fecharConexao(conn, ps);
             JOptionPane.showMessageDialog(null, "Item - " + item.getDescricao() + " - foi cadastrado com sucesso");

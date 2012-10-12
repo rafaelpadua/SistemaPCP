@@ -105,11 +105,6 @@ public class CadastroProduto extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        tabelaCP.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tabelaCPMouseClicked(evt);
-            }
-        });
         jScrollPane1.setViewportView(tabelaCP);
 
         jLabel5.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
@@ -177,8 +172,8 @@ public class CadastroProduto extends javax.swing.JFrame {
                         .addComponent(jLabel5)
                         .addComponent(txtSetup, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(48, 48, 48)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "CADASTRO QDE. ITENS", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 0, 14))); // NOI18N
@@ -358,11 +353,6 @@ public class CadastroProduto extends javax.swing.JFrame {
         bloquearCampos();
     }//GEN-LAST:event_btVisualizarActionPerformed
 
-    private void tabelaCPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaCPMouseClicked
-        sincronizarViewComModel((Produto) tabelaCP.getValueAt(tabelaCP.getSelectedRow(), 0));
-        bloquearCampos();
-    }//GEN-LAST:event_tabelaCPMouseClicked
-
     private void btCadastroItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastroItemActionPerformed
         controller.exibirCadastrodeItemView();
     }//GEN-LAST:event_btCadastroItemActionPerformed
@@ -439,7 +429,7 @@ public class CadastroProduto extends javax.swing.JFrame {
         if (!txtCodigo.getText().equals("")) {
             model.setCodigo(Integer.parseInt(txtCodigo.getText()));
         } else {
-            model.setCodigo(0);
+            model.setCodigo(null);
         }
 
         if (!txtDescricao.getText().equals("")) {

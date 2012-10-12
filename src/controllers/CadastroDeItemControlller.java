@@ -35,7 +35,6 @@ public class CadastroDeItemControlller {
      * Salva o cliente no banco de dados
      */
     public void salvarItem(){
-
         view.sincronizarModelComView(item);
         if (item.getCodigo() == null){
             new ItemDao().salvar(item);

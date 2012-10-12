@@ -34,14 +34,13 @@ public class ProdutoDao {
             Connection conn = null;
             PreparedStatement ps = null;
 
-            String sql = "insert into produto (codigo, descricao, taxaproducao, unidade, setup) values (?, ?, ?, ?, ?)";
+            String sql = "insert into produto (descricao, taxaproducao, unidade, setup) values (?, ?, ?, ?)";
             conn = this.con;
             ps = conn.prepareStatement(sql);
-            ps.setString(1, Integer.toString(produto.getCodigo()));
-            ps.setString(2, produto.getDescricao());
-            ps.setString(3, Float.toString(produto.getTaxaDeProducao()));
-            ps.setString(4, produto.getUnidade());
-            ps.setString(5, Integer.toString(produto.getSetup()));
+            ps.setString(1, produto.getDescricao());
+            ps.setString(2, Float.toString(produto.getTaxaDeProducao()));
+            ps.setString(3, produto.getUnidade());
+            ps.setString(4, Integer.toString(produto.getSetup()));
             ps.executeUpdate();
             GerandoConexão.fecharConexao(conn, ps);
             JOptionPane.showMessageDialog(null, "Produto - " + produto.getDescricao() + " - foi cadastrado com sucesso");

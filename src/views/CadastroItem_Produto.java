@@ -312,7 +312,7 @@ public void sincronizarModelComView(Item_Produto model) {
         if (!txtCodigoProduto.getText().equals("")) {
             model.setCodigoProduto(Integer.parseInt(txtCodigoProduto.getText()));
         } else {
-            model.setCodigoProduto(0);
+            model.setCodigoProduto(null);
         }
 
         if (!txtCodigoItem.getText().equals("")) {
