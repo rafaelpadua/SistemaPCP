@@ -15,8 +15,8 @@ import javax.swing.table.DefaultTableModel;
  * @author Rafael
  */
 public class CadastroItem extends javax.swing.JFrame {
-    
-     private CadastroDeItemControlller controller;
+
+    private CadastroDeItemControlller controller;
 
     /**
      * Creates new form CadastroItem
@@ -45,10 +45,10 @@ public class CadastroItem extends javax.swing.JFrame {
         txtCodigo = new javax.swing.JTextField();
         txtDescricao = new javax.swing.JTextField();
         txtUnidade = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        btNovo = new javax.swing.JButton();
         btSalvar = new javax.swing.JButton();
         btEditar = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btExcluir = new javax.swing.JButton();
         btSair = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tabelaCI = new javax.swing.JTable();
@@ -86,11 +86,11 @@ public class CadastroItem extends javax.swing.JFrame {
 
         txtUnidade.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
 
-        jButton1.setBackground(new java.awt.Color(227, 227, 227));
-        jButton1.setText("Novo");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btNovo.setBackground(new java.awt.Color(227, 227, 227));
+        btNovo.setText("Novo");
+        btNovo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btNovoActionPerformed(evt);
             }
         });
 
@@ -110,8 +110,13 @@ public class CadastroItem extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setBackground(new java.awt.Color(227, 227, 227));
-        jButton4.setText("Excluir");
+        btExcluir.setBackground(new java.awt.Color(227, 227, 227));
+        btExcluir.setText("Excluir");
+        btExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btExcluirActionPerformed(evt);
+            }
+        });
 
         btSair.setBackground(new java.awt.Color(227, 227, 227));
         btSair.setText("Sair");
@@ -132,6 +137,11 @@ public class CadastroItem extends javax.swing.JFrame {
                 "Codigo", "Descrição", "Unidade"
             }
         ));
+        tabelaCI.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelaCIMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tabelaCI);
 
         btVisualizar.setBackground(new java.awt.Color(227, 227, 227));
@@ -150,7 +160,7 @@ public class CadastroItem extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addComponent(btNovo)
                         .addGap(35, 35, 35)
                         .addComponent(btVisualizar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -158,7 +168,7 @@ public class CadastroItem extends javax.swing.JFrame {
                         .addGap(68, 68, 68)
                         .addComponent(btEditar)
                         .addGap(53, 53, 53)
-                        .addComponent(jButton4)
+                        .addComponent(btExcluir)
                         .addGap(34, 34, 34)
                         .addComponent(btSair))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -194,10 +204,10 @@ public class CadastroItem extends javax.swing.JFrame {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(btNovo)
                     .addComponent(btSalvar)
                     .addComponent(btEditar)
-                    .addComponent(jButton4)
+                    .addComponent(btExcluir)
                     .addComponent(btSair)
                     .addComponent(btVisualizar))
                 .addContainerGap())
@@ -223,9 +233,9 @@ public class CadastroItem extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btNovoActionPerformed
+        desbloquearCampos();
+    }//GEN-LAST:event_btNovoActionPerformed
 
     private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
         controller.salvarItem();
@@ -241,23 +251,35 @@ public class CadastroItem extends javax.swing.JFrame {
     private void btVisualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVisualizarActionPerformed
         controller.listarItens();
         preencheJtable();
+        bloquearCampos();
     }//GEN-LAST:event_btVisualizarActionPerformed
 
     private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
-
+        desbloquearCampos();
     }//GEN-LAST:event_btEditarActionPerformed
 
+    private void tabelaCIMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaCIMouseClicked
+        txtCodigo.setText(tabelaCI.getValueAt(tabelaCI.getSelectedRow(), 0).toString());
+        txtDescricao.setText(tabelaCI.getValueAt(tabelaCI.getSelectedRow(), 1).toString());
+        txtUnidade.setText(tabelaCI.getValueAt(tabelaCI.getSelectedRow(), 2).toString());
+        bloquearCampos();
+    }//GEN-LAST:event_tabelaCIMouseClicked
+
+    private void btExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirActionPerformed
+        controller.excluirItem();
+        preencheJtable();
+        limparCampos();
+    }//GEN-LAST:event_btExcluirActionPerformed
     /**
      * @param args the command line arguments
      */
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btEditar;
+    private javax.swing.JButton btExcluir;
+    private javax.swing.JButton btNovo;
     private javax.swing.JButton btSair;
     private javax.swing.JButton btSalvar;
     private javax.swing.JButton btVisualizar;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
@@ -270,11 +292,11 @@ public class CadastroItem extends javax.swing.JFrame {
     private javax.swing.JTextField txtDescricao;
     private javax.swing.JTextField txtUnidade;
     // End of variables declaration//GEN-END:variables
-public void sincronizarModelComView(Item model) {
+    public void sincronizarModelComView(Item model) {
 
         if (!txtCodigo.getText().equals("")) {
             model.setCodigo(Integer.parseInt(txtCodigo.getText()));
-        }else {
+        } else {
             model.setCodigo(null);
         }
 
@@ -315,16 +337,16 @@ public void sincronizarModelComView(Item model) {
      * Preenche as o jtable com os clientes cadastrados
      */
     public void preencheJtable() {
-        
+
         List<Item> lista = controller.listarItens();
         DefaultTableModel modelo = (DefaultTableModel) tabelaCI.getModel();
 
         for (int i = (modelo.getRowCount() - 1); i >= 0; --i) {
             modelo.removeRow(i);
         }
-        
+
         for (Item objeto : lista) {
-            modelo.addRow(new Object[]{objeto.getCodigo(),  objeto.getDescricao(), objeto.getUnidade()});
+            modelo.addRow(new Object[]{objeto.getCodigo(), objeto.getDescricao(), objeto.getUnidade()});
         }
     }
 

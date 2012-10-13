@@ -86,7 +86,7 @@ public class ItemDao {
 
             conn = this.con;
 
-            String sql = "select * from item where id = ? ";
+            String sql = "select * from item where codigo = ? ";
             ps = conn.prepareStatement(sql);
             ps.setInt(1, id);
             rs = ps.executeQuery();
@@ -115,9 +115,9 @@ public class ItemDao {
             String sql = "update item set descricao = ?, unidade = ? where codigo = ?";
             conn = this.con;
             ps = conn.prepareStatement(sql);
-            ps.setString(1, Integer.toString(item.getCodigo()));
-            ps.setString(2, item.getDescricao());
-            ps.setString(3, item.getUnidade());
+            ps.setString(1, item.getDescricao());
+            ps.setString(2, item.getUnidade());
+            ps.setString(3, Integer.toString(item.getCodigo()));
             ps.executeUpdate();
             GerandoConexão.fecharConexao(conn, ps);
             JOptionPane.showMessageDialog(null, "Item - " + item.getDescricao() + " - foi atualizado com sucesso  " + item.getCodigo());
@@ -132,7 +132,7 @@ public class ItemDao {
             Connection conn;
             PreparedStatement ps;
 
-            String sql = "delete from item where id = ?";
+            String sql = "delete from item where codigo = ?";
             conn = this.con;
             ps = conn.prepareStatement(sql);
             ps.setInt(1, item.getCodigo());

@@ -46,13 +46,12 @@ public class CadastroItem_Produto extends javax.swing.JFrame {
         btNovo = new javax.swing.JButton();
         btSalvar = new javax.swing.JButton();
         btEditar = new javax.swing.JButton();
-        btExcluir = new javax.swing.JButton();
         btsair = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelaItem_Produto = new javax.swing.JTable();
         btVisualizar = new javax.swing.JButton();
-        labelCodProd = new javax.swing.JLabel();
-        labelCodItem = new javax.swing.JLabel();
+        labelDescProd = new javax.swing.JLabel();
+        labelDescItem = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -94,8 +93,6 @@ public class CadastroItem_Produto extends javax.swing.JFrame {
 
         btEditar.setText("Editar");
 
-        btExcluir.setText("Excluir");
-
         btsair.setText("Sair");
         btsair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -129,9 +126,9 @@ public class CadastroItem_Produto extends javax.swing.JFrame {
             }
         });
 
-        labelCodProd.setText("jLabel3");
+        labelDescProd.setText("jLabel3");
 
-        labelCodItem.setText("jLabel5");
+        labelDescItem.setText("jLabel5");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -154,21 +151,20 @@ public class CadastroItem_Produto extends javax.swing.JFrame {
                                     .addComponent(txtCodigoProduto, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE))
                                 .addGap(45, 45, 45)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(labelCodProd)
-                                    .addComponent(labelCodItem))))
+                                    .addComponent(labelDescProd)
+                                    .addComponent(labelDescItem))))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(btNovo)
-                        .addGap(31, 31, 31)
+                        .addGap(71, 71, 71)
                         .addComponent(btVisualizar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btSalvar)
-                        .addGap(74, 74, 74)
+                        .addGap(84, 84, 84)
                         .addComponent(btEditar)
-                        .addGap(64, 64, 64)
-                        .addComponent(btExcluir)
-                        .addGap(58, 58, 58)
-                        .addComponent(btsair))
+                        .addGap(80, 80, 80)
+                        .addComponent(btsair)
+                        .addGap(35, 35, 35))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 654, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -179,12 +175,12 @@ public class CadastroItem_Produto extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtCodigoProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelCodProd))
+                    .addComponent(labelDescProd))
                 .addGap(31, 31, 31)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txtCodigoItem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelCodItem))
+                    .addComponent(labelDescItem))
                 .addGap(36, 36, 36)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -194,7 +190,6 @@ public class CadastroItem_Produto extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btNovo)
-                    .addComponent(btExcluir)
                     .addComponent(btsair)
                     .addComponent(btSalvar)
                     .addComponent(btEditar)
@@ -253,7 +248,6 @@ public class CadastroItem_Produto extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btEditar;
-    private javax.swing.JButton btExcluir;
     private javax.swing.JButton btNovo;
     private javax.swing.JButton btSalvar;
     private javax.swing.JButton btVisualizar;
@@ -263,8 +257,8 @@ public class CadastroItem_Produto extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel labelCodItem;
-    private javax.swing.JLabel labelCodProd;
+    private javax.swing.JLabel labelDescItem;
+    private javax.swing.JLabel labelDescProd;
     private javax.swing.JTable tabelaItem_Produto;
     private javax.swing.JTextField txtCodigoItem;
     private javax.swing.JTextField txtCodigoProduto;

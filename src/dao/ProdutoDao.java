@@ -16,7 +16,6 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import entidades.Produto;
 
-
 /**
  *
  * @author Rafael
@@ -34,13 +33,13 @@ public class ProdutoDao {
             Connection conn = null;
             PreparedStatement ps = null;
 
-            String sql = "insert into produto (descricao, taxaproducao, unidade, setup) values (?, ?, ?, ?)";
+            String sql = "insert into produto (descricao, taxaProducao, unidade, setup) values (?, ?, ?, ?)";
             conn = this.con;
             ps = conn.prepareStatement(sql);
             ps.setString(1, produto.getDescricao());
-            ps.setString(2, Float.toString(produto.getTaxaDeProducao()));
+            ps.setString(2, produto.getTaxaDeProducao().toString());
             ps.setString(3, produto.getUnidade());
-            ps.setString(4, Integer.toString(produto.getSetup()));
+            ps.setString(4, produto.getSetup().toString());
             ps.executeUpdate();
             GerandoConexão.fecharConexao(conn, ps);
             JOptionPane.showMessageDialog(null, "Produto - " + produto.getDescricao() + " - foi cadastrado com sucesso");
@@ -56,7 +55,7 @@ public class ProdutoDao {
         ResultSet rs = null;
         List<Produto> list = null;
         try {
-            
+
             conn = this.con;
 
             String sql = "select * from produto";
@@ -70,6 +69,8 @@ public class ProdutoDao {
                 produto.setTaxaDeProducao(rs.getFloat(3));
                 produto.setUnidade(rs.getString(4));
                 produto.setSetup(rs.getInt(5));
+
+
                 list.add(produto);
             }
             return list;
@@ -87,14 +88,14 @@ public class ProdutoDao {
             Connection conn = null;
             PreparedStatement ps = null;
 
-            String sql = "update produto set descricao = ?, taxaproducao = ?, unidade = ?, setup = ?  where codigo = ?";
+            String sql = "update produto set descricao = ?, taxaproducao = ?, unidade = ?, setup = ? where codigo = ?";
             conn = this.con;
             ps = conn.prepareStatement(sql);
             ps.setString(1, produto.getDescricao());
-            ps.setString(2, Float.toString(produto.getTaxaDeProducao()));
+            ps.setString(2, produto.getTaxaDeProducao().toString());
             ps.setString(3, produto.getUnidade());
-            ps.setString(4, Integer.toString(produto.getSetup()));
-             ps.setString(5, Integer.toString(produto.getCodigo()));
+            ps.setString(4, produto.getSetup().toString());
+            ps.setString(5, produto.getCodigo().toString());
             ps.executeUpdate();
             GerandoConexão.fecharConexao(conn, ps);
             JOptionPane.showMessageDialog(null, "Produto - " + produto.getDescricao() + " - foi atualizado com sucesso  " + produto.getCodigo());

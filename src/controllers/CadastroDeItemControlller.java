@@ -58,7 +58,7 @@ public class CadastroDeItemControlller {
     public void excluirItem(){
 
         view.sincronizarModelComView(item);
-        if(item.getCodigo() == null){
+        if(item.getCodigo() != null){
             new ItemDao().excluir(item);
         }
     }

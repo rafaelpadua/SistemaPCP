@@ -73,8 +73,8 @@
                                   </Group>
                                   <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="labelCodProd" min="-2" max="-2" attributes="0"/>
-                                      <Component id="labelCodItem" min="-2" max="-2" attributes="0"/>
+                                      <Component id="labelDescProd" min="-2" max="-2" attributes="0"/>
+                                      <Component id="labelDescItem" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -82,16 +82,15 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="btNovo" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
                           <Component id="btVisualizar" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                           <Component id="btSalvar" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="84" max="-2" attributes="0"/>
                           <Component id="btEditar" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
-                          <Component id="btExcluir" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
                           <Component id="btsair" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                       </Group>
                       <Component id="jScrollPane1" pref="654" max="32767" attributes="0"/>
                   </Group>
@@ -106,13 +105,13 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtCodigoProduto" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="labelCodProd" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="labelDescProd" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtCodigoItem" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="labelCodItem" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="labelDescItem" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -124,7 +123,6 @@
                   <EmptySpace pref="32" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="btNovo" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="btExcluir" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btsair" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btSalvar" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btEditar" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -205,11 +203,6 @@
             <Property name="text" type="java.lang.String" value="Editar"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="btExcluir">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Excluir"/>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JButton" name="btsair">
           <Properties>
             <Property name="text" type="java.lang.String" value="Sair"/>
@@ -250,12 +243,12 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btVisualizarActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="labelCodProd">
+        <Component class="javax.swing.JLabel" name="labelDescProd">
           <Properties>
             <Property name="text" type="java.lang.String" value="jLabel3"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="labelCodItem">
+        <Component class="javax.swing.JLabel" name="labelDescItem">
           <Properties>
             <Property name="text" type="java.lang.String" value="jLabel5"/>
           </Properties>

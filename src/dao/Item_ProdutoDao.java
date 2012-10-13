@@ -6,6 +6,7 @@ package dao;
 
 import conexoes.GerandoConexão;
 import entidades.Item_Produto;
+import entidades.Produto;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -49,6 +50,7 @@ public class Item_ProdutoDao {
     }
 
     public List listar() {
+        System.out.println("ta entrando no listar");
         PreparedStatement ps = null;
         Connection conn = null;
         ResultSet rs = null;
@@ -78,34 +80,32 @@ public class Item_ProdutoDao {
         return list;
     }
 
-    public Item_Produto listarPorId(Integer id) {
+    public Produto listarPorId(Integer id) {
         PreparedStatement ps = null;
         Connection conn = null;
         ResultSet rs = null;
-        Item_Produto item = null;
+        Produto produto = null;
         try {
 
             conn = this.con;
 
-            String sql = "select * from produto_item where id = ? ";
+            String sql = "select produto.descricao from produto where id = ? ";
             ps = conn.prepareStatement(sql);
             ps.setInt(1, id);
             rs = ps.executeQuery();
 
             while (rs.next()) {
-                item = new Item_Produto();
-                item.setCodigoProduto(rs.getInt(1));
-                item.setCodigoItem(rs.getInt(2));
-                item.setQuantidade(rs.getFloat(3));
+                produto = new Produto();
+                produto.setDescricao(rs.getString(1));
             }
-            return item;
+            return produto;
 
         } catch (SQLException ex) {
             Logger.getLogger(ItemDao.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             GerandoConexão.fecharConexao(conn, ps);
         }
-        return item;
+      return produto;
     }
     
     public void atualizar(Item_Produto item) {
@@ -113,7 +113,7 @@ public class Item_ProdutoDao {
             Connection conn = null;
             PreparedStatement ps = null;
 
-            String sql = "update item set descricao = ?, unidade = ? where codigo = ?";
+            String sql = "update produto_item set produto_codigo = ?, item_codigo = ?, quantidade = ?";
             conn = this.con;
             ps = conn.prepareStatement(sql);
             ps.setString(1, Integer.toString(item.getCodigoProduto()));
