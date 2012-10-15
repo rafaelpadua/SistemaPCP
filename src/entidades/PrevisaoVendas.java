@@ -10,21 +10,14 @@ import java.util.Date;
  *
  * @author Rafael
  */
-public class PrevisãoDeVendas {
+public class PrevisaoVendas {
     
     private Integer codigo;
-    private String Produto;
+    private Produto produto;
     private Float  quantidade;
     private Date dataDemanda;
     private Integer ordem;
-
-    public String getProduto() {
-        return Produto;
-    }
-
-    public void setProduto(String Produto) {
-        this.Produto = Produto;
-    }
+    private String unidade;
 
     public Integer getCodigo() {
         return codigo;
@@ -50,11 +43,32 @@ public class PrevisãoDeVendas {
         this.ordem = ordem;
     }
 
+    public Produto getProduto() {
+        return produto;
+    }
+
+    public void setProduto(Produto produto) {
+        this.produto = produto;
+    }
+
     public Float getQuantidade() {
         return quantidade;
     }
 
     public void setQuantidade(Float quantidade) {
         this.quantidade = quantidade;
+    }
+
+    public String getUnidade() {
+        return unidade;
+    }
+
+    public void setUnidade(String unidade) {
+        this.unidade = unidade;
+    }
+    
+     @Override
+    public String toString() {
+        return getProduto().getDescricao();
     }
 }

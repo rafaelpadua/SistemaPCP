@@ -4,7 +4,7 @@
  */
 package principal;
 
-import controllers.CadastroDeProdutoController;
+import controllers.TelaPrincipalController;
 
 /**
  *
@@ -14,6 +14,6 @@ public class Main {
 
     public static void main(String[] args) {
         
-         CadastroDeProdutoController.getInstancia().exibirInterfaceGrafica();
+         TelaPrincipalController.getInstancia().exibirInterfaceGrafica();
     }
 }

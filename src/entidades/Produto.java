@@ -57,5 +57,23 @@ public class Produto {
         this.unidade = unidade;
     }
     
+    @Override
+    public boolean equals(Object obj) {
+         if( obj instanceof Produto ) {
+             Produto o = ( Produto ) obj;
+             if( o.getCodigo() == this.getCodigo() ){
+                 return true;
+             } else {
+                 return false;}
+         } else{
+             return false;}
+     }
+
+    @Override
+    public String toString() {
+        return getDescricao();
+    }
+
+    
     
 }

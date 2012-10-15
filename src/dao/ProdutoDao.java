@@ -82,6 +82,63 @@ public class ProdutoDao {
         }
         return list;
     }
+    
+    public List listarDescricaoProduto() {
+        PreparedStatement ps = null;
+        Connection conn = null;
+        ResultSet rs = null;
+        List<Produto> list = null;
+        try {
+
+            conn = this.con;
+
+            String sql = "select produto.descricao from produto order by descricao";
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            list = new ArrayList<>();
+            while (rs.next()) {
+                Produto produto = new Produto();
+                produto.setDescricao(rs.getString(1));
+                list.add(produto);
+            }
+            return list;
+
+        } catch (SQLException ex) {
+            System.out.println("Erro ao listar produto");
+        } finally {
+            GerandoConexão.fecharConexao(conn, ps);
+        }
+        return list;
+    }
+
+
+    public Produto listarProdutoPorId(Integer codigo) {
+        
+        PreparedStatement ps = null;
+        Connection conn = null;
+        ResultSet rs = null;
+        Produto produto = null;
+        try {
+
+            conn = this.con;
+
+            String sql = "select * from produto where codigo = ? ";
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, codigo);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                produto = new Produto();
+                produto.setDescricao(rs.getString(1));
+            }
+            return produto;
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Produto.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            GerandoConexão.fecharConexao(conn, ps);
+        }
+        return produto;
+    }
 
     public void atualizar(Produto produto) {
         try {
