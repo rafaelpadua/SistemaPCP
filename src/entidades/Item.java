@@ -38,5 +38,20 @@ public class Item {
         this.unidade = unidade;
     }
     
-    
+    @Override
+    public boolean equals(Object obj) {
+         if( obj instanceof Item ) {
+             Item o = ( Item ) obj;
+             if( o.getCodigo() == this.getCodigo() ){
+                 return true;
+             } else {
+                 return false;}
+         } else{
+             return false;}
+     }
+
+    @Override
+    public String toString() {
+        return getDescricao();
+    }
 }

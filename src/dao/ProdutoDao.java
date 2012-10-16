@@ -128,7 +128,8 @@ public class ProdutoDao {
             rs = ps.executeQuery();
             while (rs.next()) {
                 produto = new Produto();
-                produto.setDescricao(rs.getString(1));
+                produto.setCodigo(rs.getInt(1));
+                produto.setDescricao(rs.getString(2));
             }
             return produto;
             

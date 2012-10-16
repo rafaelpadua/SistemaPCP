@@ -47,7 +47,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jPanel1.setFocusCycleRoot(true);
 
         btCadProd.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btCadProd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/CadastroProduto.png"))); // NOI18N
+        btCadProd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/icones/CadastroProduto.png"))); // NOI18N
         btCadProd.setText("Cadastro de Produto");
         btCadProd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -56,7 +56,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
 
         btPrevVendas.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btPrevVendas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/Demanda.png"))); // NOI18N
+        btPrevVendas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/icones/Demanda.png"))); // NOI18N
         btPrevVendas.setText("Previsão de Vendas");
         btPrevVendas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -106,7 +106,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/pcp.jpg"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/icones/pcp.jpg"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -114,10 +114,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(121, 121, 121)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(138, 138, 138)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 879, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(56, 56, 56)
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );

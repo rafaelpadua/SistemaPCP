@@ -120,6 +120,20 @@ public class PrevisaoDeVendasDao {
     
     
     public void excluir(PrevisaoVendas previsao){
+        try {
+            Connection conn;
+            PreparedStatement ps;
+
+            String sql = "delete from previsao where codigo  = ?";
+            conn = this.con;
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, previsao.getCodigo());
+            ps.executeUpdate();
+            GerandoConexão.fecharConexao(conn, ps);
+            JOptionPane.showMessageDialog(null, "Previsão foi excluido com sucesso.");
+        } catch (SQLException ex) {
+            Logger.getLogger(PrevisaoDeVendasDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
     
     }
     

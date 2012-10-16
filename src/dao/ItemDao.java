@@ -77,7 +77,7 @@ public class ItemDao {
         return list;
     }
 
-    public Item listarPorId(Integer id) {
+    public Item listarPorId(Integer codigo) {
         PreparedStatement ps = null;
         Connection conn = null;
         ResultSet rs = null;
@@ -88,14 +88,13 @@ public class ItemDao {
 
             String sql = "select * from item where codigo = ? ";
             ps = conn.prepareStatement(sql);
-            ps.setInt(1, id);
+            ps.setInt(1, codigo);
             rs = ps.executeQuery();
 
             while (rs.next()) {
                 item = new Item();
                 item.setCodigo(rs.getInt(1));
                 item.setDescricao(rs.getString(2));
-                item.setUnidade(rs.getString(3));
             }
             return item;
 

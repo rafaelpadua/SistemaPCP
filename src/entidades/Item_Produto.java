@@ -10,24 +10,24 @@ package entidades;
  */
 public class Item_Produto {
     
-    private Integer codigoProduto;
-    private Integer CodigoItem;
+    private Produto produto;
+    private Item item;
     private Float quantidade;
 
-    public Integer getCodigoItem() {
-        return CodigoItem;
+    public Item getItem() {
+        return item;
     }
 
-    public void setCodigoItem(Integer CodigoItem) {
-        this.CodigoItem = CodigoItem;
+    public void setItem(Item item) {
+        this.item = item;
     }
 
-    public Integer getCodigoProduto() {
-        return codigoProduto;
+    public Produto getProduto() {
+        return produto;
     }
 
-    public void setCodigoProduto(Integer codigoProduto) {
-        this.codigoProduto = codigoProduto;
+    public void setProduto(Produto produto) {
+        this.produto = produto;
     }
 
     public Float getQuantidade() {

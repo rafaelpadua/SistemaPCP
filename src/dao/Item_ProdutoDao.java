@@ -30,6 +30,7 @@ public class Item_ProdutoDao {
     }
 
     public void salvar(Item_Produto item) {
+        System.out.println("Entrado Item_ProdutoDaoSalvar");
         try {
             Connection conn = null;
             PreparedStatement ps = null;
@@ -37,8 +38,8 @@ public class Item_ProdutoDao {
             String sql = "insert into produto_item (produto_codigo, item_codigo, quantidade) values (?, ?, ?)";
             conn = this.con;
             ps = conn.prepareStatement(sql);
-            ps.setString(1, Integer.toString(item.getCodigoProduto()));
-            ps.setString(2, Integer.toString(item.getCodigoItem()));
+            ps.setInt(1, item.getProduto().getCodigo());
+            ps.setInt(2, item.getItem().getCodigo());
             ps.setString(3, Float.toString(item.getQuantidade()));
             ps.executeUpdate();
             GerandoConexão.fecharConexao(conn, ps);
@@ -50,7 +51,7 @@ public class Item_ProdutoDao {
     }
 
     public List listar() {
-        System.out.println("ta entrando no listar");
+        
         PreparedStatement ps = null;
         Connection conn = null;
         ResultSet rs = null;
@@ -65,8 +66,8 @@ public class Item_ProdutoDao {
             list = new ArrayList<>();
             while (rs.next()) {
                 Item_Produto item = new Item_Produto();
-                item.setCodigoProduto(rs.getInt(1));
-                item.setCodigoItem(rs.getInt(2));
+                item.setProduto(new ProdutoDao().listarProdutoPorId(rs.getInt(1)));
+                item.setItem(new ItemDao().listarPorId(rs.getInt(2)));
                 item.setQuantidade(rs.getFloat(3));
                 list.add(item);
             }
@@ -109,40 +110,40 @@ public class Item_ProdutoDao {
     }
     
     public void atualizar(Item_Produto item) {
-        try {
-            Connection conn = null;
-            PreparedStatement ps = null;
-
-            String sql = "update produto_item set produto_codigo = ?, item_codigo = ?, quantidade = ?";
-            conn = this.con;
-            ps = conn.prepareStatement(sql);
-            ps.setString(1, Integer.toString(item.getCodigoProduto()));
-            ps.setString(2, Integer.toString(item.getCodigoItem()));
-            ps.setString(3, Float.toString(item.getQuantidade()));
-            ps.executeUpdate();
-            GerandoConexão.fecharConexao(conn, ps);
-            JOptionPane.showMessageDialog(null, "Item_Produto foi atualizado com sucesso");
-        } catch (SQLException ex) {
-            Logger.getLogger(ItemDao.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//        try {
+//            Connection conn = null;
+//            PreparedStatement ps = null;
+//
+//            String sql = "update produto_item set produto_codigo = ?, item_codigo = ?, quantidade = ?";
+//            conn = this.con;
+//            ps = conn.prepareStatement(sql);
+//            ps.setString(1, Integer.toString(item.getCodigoProduto()));
+//            ps.setString(2, Integer.toString(item.getCodigoItem()));
+//            ps.setString(3, Float.toString(item.getQuantidade()));
+//            ps.executeUpdate();
+//            GerandoConexão.fecharConexao(conn, ps);
+//            JOptionPane.showMessageDialog(null, "Item_Produto foi atualizado com sucesso");
+//        } catch (SQLException ex) {
+//            Logger.getLogger(ItemDao.class.getName()).log(Level.SEVERE, null, ex);
+//        }
 
     }
 
     public void excluir(Item_Produto item) {
-        try {
-            Connection conn;
-            PreparedStatement ps;
-
-            String sql = "delete from produto_item where produto_codigo = ?, produto_item = ?";
-            conn = this.con;
-            ps = conn.prepareStatement(sql);
-            ps.setInt(1, item.getCodigoProduto());
-            ps.executeUpdate();
-            GerandoConexão.fecharConexao(conn, ps);
-            JOptionPane.showMessageDialog(null, "Item_Produto foi excluido com sucesso.");
-        } catch (SQLException ex) {
-            Logger.getLogger(ItemDao.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//        try {
+//            Connection conn;
+//            PreparedStatement ps;
+//
+//            String sql = "delete from produto_item where produto_codigo = ?, produto_item = ?";
+//            conn = this.con;
+//            ps = conn.prepareStatement(sql);
+//            ps.setInt(1, item.getCodigoProduto());
+//            ps.executeUpdate();
+//            GerandoConexão.fecharConexao(conn, ps);
+//            JOptionPane.showMessageDialog(null, "Item_Produto foi excluido com sucesso.");
+//        } catch (SQLException ex) {
+//            Logger.getLogger(ItemDao.class.getName()).log(Level.SEVERE, null, ex);
+//        }
     }
     
     
