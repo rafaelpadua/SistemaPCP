@@ -35,4 +35,8 @@ public class TelaPrincipalController {
         CadastroDemandaController.getInstancia().exibirInterfaceGrafica();
     }
     
+    public void exibirCadastroDeDisponibilidadeView(){
+        CadastroDisponibilidadeController.getInstancia().exibirInterfaceGrafica();
+    }
+    
 }

@@ -4,7 +4,7 @@
  */
 package dao;
 
-import conexoes.GerandoConexão;
+import conexoes.GerandoConexao;
 import entidades.PrevisaoVendas;
 import entidades.Produto;
 import java.sql.Connection;
@@ -26,7 +26,7 @@ public class PrevisaoDeVendasDao {
     private Connection con;
     
     public PrevisaoDeVendasDao(){
-        this.con = GerandoConexão.getConexao();
+        this.con = GerandoConexao.getConexao();
     }
     
     public void salvar(PrevisaoVendas previsao){
@@ -44,7 +44,7 @@ public class PrevisaoDeVendasDao {
             ps.setString(4, previsao.getUnidade());
             ps.setInt(5, previsao.getOrdem());
             ps.executeUpdate();
-            GerandoConexão.fecharConexao(conn, ps);
+            GerandoConexao.fecharConexao(conn, ps);
             JOptionPane.showMessageDialog(null, "Produto foi cadastrado com sucesso");
         } catch (SQLException ex) {
               System.out.println("Erro ao Salvar Demanda " + ex);
@@ -85,7 +85,7 @@ public class PrevisaoDeVendasDao {
         } catch (SQLException ex) {
             System.out.println("Erro ao listar previsão " + ex);
         } finally {
-            GerandoConexão.fecharConexao(conn, ps);
+            GerandoConexao.fecharConexao(conn, ps);
         }
         return listP;
     }
@@ -113,7 +113,7 @@ public class PrevisaoDeVendasDao {
         } catch (SQLException ex) {
             System.out.println("Erro ao listar previsão");
         } finally {
-            GerandoConexão.fecharConexao(conn, ps);
+            GerandoConexao.fecharConexao(conn, ps);
         }
         return list;
     }
@@ -129,7 +129,7 @@ public class PrevisaoDeVendasDao {
             ps = conn.prepareStatement(sql);
             ps.setInt(1, previsao.getCodigo());
             ps.executeUpdate();
-            GerandoConexão.fecharConexao(conn, ps);
+            GerandoConexao.fecharConexao(conn, ps);
             JOptionPane.showMessageDialog(null, "Previsão foi excluido com sucesso.");
         } catch (SQLException ex) {
             Logger.getLogger(PrevisaoDeVendasDao.class.getName()).log(Level.SEVERE, null, ex);

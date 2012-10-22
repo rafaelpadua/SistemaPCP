@@ -207,7 +207,7 @@ public class CadastroProduto extends javax.swing.JFrame {
         jPanel3.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
 
         btQtdItem.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btQtdItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/icones/CadastroProduto.png"))); // NOI18N
+        btQtdItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/salvar.png"))); // NOI18N
         btQtdItem.setText("Cadastro");
         btQtdItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -236,7 +236,7 @@ public class CadastroProduto extends javax.swing.JFrame {
         jPanel2.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
 
         btCadastroItem.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btCadastroItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/icones/CadastroProduto.png"))); // NOI18N
+        btCadastroItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/salvar.png"))); // NOI18N
         btCadastroItem.setText("Cadastro");
         btCadastroItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -264,7 +264,7 @@ public class CadastroProduto extends javax.swing.JFrame {
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
         btNovoCadastro.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btNovoCadastro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/icones/novo.png"))); // NOI18N
+        btNovoCadastro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/novo.png"))); // NOI18N
         btNovoCadastro.setText("Novo");
         btNovoCadastro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -273,7 +273,7 @@ public class CadastroProduto extends javax.swing.JFrame {
         });
 
         btVisualizar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btVisualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/icones/visualizar.png"))); // NOI18N
+        btVisualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/visualizar.png"))); // NOI18N
         btVisualizar.setText("Visualizar");
         btVisualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -282,7 +282,7 @@ public class CadastroProduto extends javax.swing.JFrame {
         });
 
         btSalvar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/icones/salvar.png"))); // NOI18N
+        btSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/salvar.png"))); // NOI18N
         btSalvar.setText("Salvar");
         btSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -291,7 +291,7 @@ public class CadastroProduto extends javax.swing.JFrame {
         });
 
         btEditar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/icones/editar.png"))); // NOI18N
+        btEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/editar.png"))); // NOI18N
         btEditar.setText("Editar");
         btEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -300,7 +300,7 @@ public class CadastroProduto extends javax.swing.JFrame {
         });
 
         btExcluir.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/icones/excluir.png"))); // NOI18N
+        btExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/excluir.png"))); // NOI18N
         btExcluir.setText("Excluir");
         btExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -309,7 +309,7 @@ public class CadastroProduto extends javax.swing.JFrame {
         });
 
         btSair.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/icones/sair.png"))); // NOI18N
+        btSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/sair.png"))); // NOI18N
         btSair.setText("Sair");
         btSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

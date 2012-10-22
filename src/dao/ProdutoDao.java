@@ -4,7 +4,7 @@
  */
 package dao;
 
-import conexoes.GerandoConexão;
+import conexoes.GerandoConexao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -25,7 +25,7 @@ public class ProdutoDao {
     private Connection con;
 
     public ProdutoDao() {
-        this.con = GerandoConexão.getConexao();
+        this.con = GerandoConexao.getConexao();
     }
 
     public void salvar(Produto produto) {
@@ -41,7 +41,7 @@ public class ProdutoDao {
             ps.setString(3, produto.getUnidade());
             ps.setString(4, produto.getSetup().toString());
             ps.executeUpdate();
-            GerandoConexão.fecharConexao(conn, ps);
+            GerandoConexao.fecharConexao(conn, ps);
             JOptionPane.showMessageDialog(null, "Produto - " + produto.getDescricao() + " - foi cadastrado com sucesso");
         } catch (SQLException ex) {
             Logger.getLogger(ProdutoDao.class.getName()).log(Level.SEVERE, null, ex);
@@ -78,7 +78,7 @@ public class ProdutoDao {
         } catch (SQLException ex) {
             System.out.println("Erro ao listar produto");
         } finally {
-            GerandoConexão.fecharConexao(conn, ps);
+            GerandoConexao.fecharConexao(conn, ps);
         }
         return list;
     }
@@ -106,7 +106,7 @@ public class ProdutoDao {
         } catch (SQLException ex) {
             System.out.println("Erro ao listar produto");
         } finally {
-            GerandoConexão.fecharConexao(conn, ps);
+            GerandoConexao.fecharConexao(conn, ps);
         }
         return list;
     }
@@ -136,7 +136,7 @@ public class ProdutoDao {
         } catch (SQLException ex) {
             Logger.getLogger(Produto.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
-            GerandoConexão.fecharConexao(conn, ps);
+            GerandoConexao.fecharConexao(conn, ps);
         }
         return produto;
     }
@@ -155,7 +155,7 @@ public class ProdutoDao {
             ps.setString(4, produto.getSetup().toString());
             ps.setString(5, produto.getCodigo().toString());
             ps.executeUpdate();
-            GerandoConexão.fecharConexao(conn, ps);
+            GerandoConexao.fecharConexao(conn, ps);
             JOptionPane.showMessageDialog(null, "Produto - " + produto.getDescricao() + " - foi atualizado com sucesso  " + produto.getCodigo());
         } catch (SQLException ex) {
             Logger.getLogger(ProdutoDao.class.getName()).log(Level.SEVERE, null, ex);
@@ -173,7 +173,7 @@ public class ProdutoDao {
             ps = conn.prepareStatement(sql);
             ps.setInt(1, produto.getCodigo());
             ps.executeUpdate();
-            GerandoConexão.fecharConexao(conn, ps);
+            GerandoConexao.fecharConexao(conn, ps);
             JOptionPane.showMessageDialog(null, "Produto - " + produto.getDescricao() + ""
                     + " - foi excluido com sucesso.");
         } catch (SQLException ex) {

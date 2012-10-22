@@ -4,7 +4,7 @@
  */
 package dao;
 
-import conexoes.GerandoConexão;
+import conexoes.GerandoConexao;
 import entidades.Item;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -25,7 +25,7 @@ public class ItemDao {
     private Connection con;
 
     public ItemDao() {
-        this.con = GerandoConexão.getConexao();
+        this.con = GerandoConexao.getConexao();
     }
 
     public void salvar(Item item) {
@@ -39,7 +39,7 @@ public class ItemDao {
             ps.setString(1, item.getDescricao());
             ps.setString(2, item.getUnidade());
             ps.executeUpdate();
-            GerandoConexão.fecharConexao(conn, ps);
+            GerandoConexao.fecharConexao(conn, ps);
             JOptionPane.showMessageDialog(null, "Item - " + item.getDescricao() + " - foi cadastrado com sucesso");
         } catch (SQLException ex) {
             Logger.getLogger(ProdutoDao.class.getName()).log(Level.SEVERE, null, ex);
@@ -72,7 +72,7 @@ public class ItemDao {
         } catch (SQLException ex) {
             System.out.println("Erro ao listar item");
         } finally {
-            GerandoConexão.fecharConexao(conn, ps);
+            GerandoConexao.fecharConexao(conn, ps);
         }
         return list;
     }
@@ -101,7 +101,7 @@ public class ItemDao {
         } catch (SQLException ex) {
             Logger.getLogger(ItemDao.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
-            GerandoConexão.fecharConexao(conn, ps);
+            GerandoConexao.fecharConexao(conn, ps);
         }
         return item;
     }
@@ -118,7 +118,7 @@ public class ItemDao {
             ps.setString(2, item.getUnidade());
             ps.setString(3, Integer.toString(item.getCodigo()));
             ps.executeUpdate();
-            GerandoConexão.fecharConexao(conn, ps);
+            GerandoConexao.fecharConexao(conn, ps);
             JOptionPane.showMessageDialog(null, "Item - " + item.getDescricao() + " - foi atualizado com sucesso  " + item.getCodigo());
         } catch (SQLException ex) {
             Logger.getLogger(ItemDao.class.getName()).log(Level.SEVERE, null, ex);
@@ -136,7 +136,7 @@ public class ItemDao {
             ps = conn.prepareStatement(sql);
             ps.setInt(1, item.getCodigo());
             ps.executeUpdate();
-            GerandoConexão.fecharConexao(conn, ps);
+            GerandoConexao.fecharConexao(conn, ps);
             JOptionPane.showMessageDialog(null, "Item - " + item.getDescricao() + ""
                     + " - foi excluido com sucesso.");
         } catch (SQLException ex) {

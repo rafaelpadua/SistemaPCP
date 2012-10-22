@@ -37,6 +37,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         btCadProd = new javax.swing.JButton();
         btPrevVendas = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        btDisponibilidade = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
 
@@ -47,7 +48,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jPanel1.setFocusCycleRoot(true);
 
         btCadProd.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btCadProd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/icones/CadastroProduto.png"))); // NOI18N
+        btCadProd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/CadastroProduto.png"))); // NOI18N
         btCadProd.setText("Cadastro de Produto");
         btCadProd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -56,7 +57,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
 
         btPrevVendas.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btPrevVendas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/icones/Demanda.png"))); // NOI18N
+        btPrevVendas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/Demanda.png"))); // NOI18N
         btPrevVendas.setText("Previsão de Vendas");
         btPrevVendas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -67,6 +68,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("jLabel1");
 
+        btDisponibilidade.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btDisponibilidade.setText("Disponibilidade");
+        btDisponibilidade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btDisponibilidadeActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -74,11 +83,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btCadProd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btPrevVendas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btPrevVendas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btDisponibilidade, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btCadProd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -92,6 +102,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
                         .addComponent(btCadProd)))
                 .addGap(28, 28, 28)
                 .addComponent(btPrevVendas, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btDisponibilidade, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -106,7 +118,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/icones/pcp.jpg"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/pcp.jpg"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -114,7 +126,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(138, 138, 138)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 879, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(56, 56, 56)
@@ -146,12 +158,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
         controller.exibirCadastroDeDemandaView();
     }//GEN-LAST:event_btPrevVendasActionPerformed
 
+    private void btDisponibilidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDisponibilidadeActionPerformed
+        controller.exibirCadastroDeDisponibilidadeView();
+    }//GEN-LAST:event_btDisponibilidadeActionPerformed
+
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btCadProd;
+    private javax.swing.JButton btDisponibilidade;
     private javax.swing.JButton btPrevVendas;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

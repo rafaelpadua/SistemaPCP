@@ -6,7 +6,7 @@ package views;
 
 import controllers.CadastroItem_ProdutoController;
 import entidades.Produto;
-import entidades.Item_Produto;
+import entidades.ItemProduto;
 import entidades.Item;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -53,7 +53,7 @@ public class CadastroItem_Produto extends javax.swing.JFrame {
         btVisualizar = new javax.swing.JButton();
         btSalvar = new javax.swing.JButton();
         btEditar = new javax.swing.JButton();
-        btExcluir = new javax.swing.JButton();
+        btAtualizar = new javax.swing.JButton();
         btsair = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -156,7 +156,7 @@ public class CadastroItem_Produto extends javax.swing.JFrame {
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
         btNovo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/icones/novo.png"))); // NOI18N
+        btNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/novo.png"))); // NOI18N
         btNovo.setText("Novo");
         btNovo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -165,7 +165,7 @@ public class CadastroItem_Produto extends javax.swing.JFrame {
         });
 
         btVisualizar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btVisualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/icones/visualizar.png"))); // NOI18N
+        btVisualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/visualizar.png"))); // NOI18N
         btVisualizar.setText("Visualizar");
         btVisualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -174,7 +174,7 @@ public class CadastroItem_Produto extends javax.swing.JFrame {
         });
 
         btSalvar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/icones/salvar.png"))); // NOI18N
+        btSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/salvar.png"))); // NOI18N
         btSalvar.setText("Salvar");
         btSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -183,7 +183,7 @@ public class CadastroItem_Produto extends javax.swing.JFrame {
         });
 
         btEditar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/icones/editar.png"))); // NOI18N
+        btEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/editar.png"))); // NOI18N
         btEditar.setText("Editar");
         btEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -191,17 +191,17 @@ public class CadastroItem_Produto extends javax.swing.JFrame {
             }
         });
 
-        btExcluir.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/icones/excluir.png"))); // NOI18N
-        btExcluir.setText("Excluir");
-        btExcluir.addActionListener(new java.awt.event.ActionListener() {
+        btAtualizar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btAtualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/salvar.png"))); // NOI18N
+        btAtualizar.setText("Atualizar");
+        btAtualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btExcluirActionPerformed(evt);
+                btAtualizarActionPerformed(evt);
             }
         });
 
         btsair.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btsair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/icones/sair.png"))); // NOI18N
+        btsair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/sair.png"))); // NOI18N
         btsair.setText("Sair");
         btsair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -215,33 +215,32 @@ public class CadastroItem_Produto extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(33, 33, 33)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btsair, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btAtualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(btNovo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btVisualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btSalvar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btEditar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(btsair, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(22, Short.MAX_VALUE))
+                        .addComponent(btEditar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addComponent(btNovo)
-                .addGap(36, 36, 36)
+                .addGap(18, 18, 18)
                 .addComponent(btVisualizar)
-                .addGap(45, 45, 45)
+                .addGap(18, 18, 18)
                 .addComponent(btSalvar)
-                .addGap(47, 47, 47)
+                .addGap(18, 18, 18)
                 .addComponent(btEditar)
-                .addGap(48, 48, 48)
-                .addComponent(btExcluir)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addGap(31, 31, 31)
+                .addComponent(btAtualizar)
+                .addGap(18, 18, 18)
                 .addComponent(btsair)
-                .addGap(27, 27, 27))
+                .addContainerGap(143, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -289,19 +288,20 @@ public class CadastroItem_Produto extends javax.swing.JFrame {
         limparCampos();
     }//GEN-LAST:event_btSalvarActionPerformed
 
-    private void btExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirActionPerformed
-        controller.excluirItem_Produto();
-        preencheJtable();
-        limparCampos();
-    }//GEN-LAST:event_btExcluirActionPerformed
+    private void btAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAtualizarActionPerformed
+            controller.atualizarItem_Produto();
+            preencheJtable();
+            limparCampos();
+    }//GEN-LAST:event_btAtualizarActionPerformed
 
     private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
         desbloquearCampos();
     }//GEN-LAST:event_btEditarActionPerformed
 
     private void tabelaItem_ProdutoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaItem_ProdutoMouseClicked
-        jComboBoxProduto.setSelectedItem(tabelaItem_Produto.getValueAt(tabelaItem_Produto.getSelectedRow(), 0).toString());
-        jComboBoxItem.setSelectedItem(tabelaItem_Produto.getValueAt(tabelaItem_Produto.getSelectedRow(), 1).toString());
+       
+        jComboBoxProduto.setSelectedItem((Produto)tabelaItem_Produto.getValueAt(tabelaItem_Produto.getSelectedRow(), 0));
+        jComboBoxItem.setSelectedItem((Item)tabelaItem_Produto.getValueAt(tabelaItem_Produto.getSelectedRow(), 1));
         txtQuantidade.setText(tabelaItem_Produto.getValueAt(tabelaItem_Produto.getSelectedRow(), 2).toString());
         bloquearCampos();
     }//GEN-LAST:event_tabelaItem_ProdutoMouseClicked
@@ -309,8 +309,8 @@ public class CadastroItem_Produto extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btAtualizar;
     private javax.swing.JButton btEditar;
-    private javax.swing.JButton btExcluir;
     private javax.swing.JButton btNovo;
     private javax.swing.JButton btSalvar;
     private javax.swing.JButton btVisualizar;
@@ -348,7 +348,7 @@ public class CadastroItem_Produto extends javax.swing.JFrame {
         }
     }
 
-    public boolean sincronizarModelComView(Item_Produto itemProduto) {
+    public boolean sincronizarModelComView(ItemProduto itemProduto) {
 
         if (!jComboBoxProduto.getSelectedItem().equals("Selecione")) {
             itemProduto.setProduto((Produto) jComboBoxProduto.getSelectedItem());
@@ -398,22 +398,22 @@ public class CadastroItem_Produto extends javax.swing.JFrame {
      */
     public void preencheJtable() {
 
-        List<Item_Produto> lista = controller.listarIten_Produto();
+        List<ItemProduto> lista = controller.listarIten_Produto();
         DefaultTableModel modelo = (DefaultTableModel) tabelaItem_Produto.getModel();
 
         for (int i = (modelo.getRowCount() - 1); i >= 0; --i) {
             modelo.removeRow(i);
         }
 
-        for (Item_Produto objeto : lista) {
-            modelo.addRow(new Object[]{objeto.getProduto().getDescricao(), objeto.getItem().getDescricao(), objeto.getQuantidade()});
+        for (ItemProduto objeto : lista) {
+            modelo.addRow(new Object[]{objeto.getProduto(), objeto.getItem(), objeto.getQuantidade()});
         }
     }
 
     /**
      * Sincroniza a camada de visão com o modelo
      */
-    public void sincronizarViewComModel(Item_Produto item_produto) {
+    public void sincronizarViewComModel(ItemProduto item_produto) {
 
         if (item_produto.getProduto() != null) {
             jComboBoxProduto.setSelectedItem(item_produto.getProduto().getDescricao());

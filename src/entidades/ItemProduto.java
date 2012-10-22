@@ -8,7 +8,7 @@ package entidades;
  *
  * @author Rafael
  */
-public class Item_Produto {
+public class ItemProduto {
     
     private Produto produto;
     private Item item;

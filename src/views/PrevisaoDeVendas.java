@@ -234,7 +234,7 @@ public class PrevisaoDeVendas extends javax.swing.JFrame {
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
         btNovo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/icones/novo.png"))); // NOI18N
+        btNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/novo.png"))); // NOI18N
         btNovo.setText("Novo");
         btNovo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -243,7 +243,7 @@ public class PrevisaoDeVendas extends javax.swing.JFrame {
         });
 
         btVisualizar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btVisualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/icones/visualizar.png"))); // NOI18N
+        btVisualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/visualizar.png"))); // NOI18N
         btVisualizar.setText("Visualizar");
         btVisualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -252,7 +252,7 @@ public class PrevisaoDeVendas extends javax.swing.JFrame {
         });
 
         btSalvar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/icones/salvar.png"))); // NOI18N
+        btSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/salvar.png"))); // NOI18N
         btSalvar.setText("Salvar");
         btSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -261,7 +261,7 @@ public class PrevisaoDeVendas extends javax.swing.JFrame {
         });
 
         btEditar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/icones/editar.png"))); // NOI18N
+        btEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/editar.png"))); // NOI18N
         btEditar.setText("Editar");
         btEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -270,7 +270,7 @@ public class PrevisaoDeVendas extends javax.swing.JFrame {
         });
 
         btExcluir.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/icones/excluir.png"))); // NOI18N
+        btExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/excluir.png"))); // NOI18N
         btExcluir.setText("Excluir");
         btExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -279,7 +279,7 @@ public class PrevisaoDeVendas extends javax.swing.JFrame {
         });
 
         btSair.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/icones/sair.png"))); // NOI18N
+        btSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/sair.png"))); // NOI18N
         btSair.setText("Sair");
         btSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -376,10 +376,6 @@ public class PrevisaoDeVendas extends javax.swing.JFrame {
         limparCampos();
     }//GEN-LAST:event_btExcluirActionPerformed
 
-    private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
-        dispose();
-    }//GEN-LAST:event_btSairActionPerformed
-
     private void tabelaDemandasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaDemandasMouseClicked
         txtCodigo.setText(tabelaDemandas.getValueAt(tabelaDemandas.getSelectedRow(), 0).toString());
         txtData.setText(tabelaDemandas.getValueAt(tabelaDemandas.getSelectedRow(), 1).toString());
@@ -389,6 +385,10 @@ public class PrevisaoDeVendas extends javax.swing.JFrame {
         txtPrioridade.setText(tabelaDemandas.getValueAt(tabelaDemandas.getSelectedRow(), 5).toString());
         bloquearCampos();
     }//GEN-LAST:event_tabelaDemandasMouseClicked
+
+    private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
+        dispose();
+    }//GEN-LAST:event_btSairActionPerformed
 
     /**
      * @param args the command line arguments
@@ -510,7 +510,7 @@ public class PrevisaoDeVendas extends javax.swing.JFrame {
             modelo.removeRow(i);
         }
 
-        SimpleDateFormat formatador = new SimpleDateFormat("dd/mm/yyyy");
+        SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
 
         for (PrevisaoVendas objeto : lista) {
 
@@ -525,7 +525,7 @@ public class PrevisaoDeVendas extends javax.swing.JFrame {
         }
         
         if (model.getProduto() != null) {
-            jComboBoxProduto.setSelectedItem(model.getProduto().getDescricao());
+            jComboBoxProduto.setSelectedItem(model.getProduto());
         }
 
         if (model.getDataDemanda() != null) {

@@ -5,9 +5,9 @@
 package controllers;
 
 import views.CadastroItem_Produto;
-import entidades.Item_Produto;
+import entidades.ItemProduto;
 import entidades.Item;
-import dao.Item_ProdutoDao;
+import dao.ItemProdutoDao;
 import entidades.Produto;
 import java.util.List;
 
@@ -19,7 +19,7 @@ public class CadastroItem_ProdutoController {
 
     private static CadastroItem_ProdutoController instancia = new CadastroItem_ProdutoController();
     private CadastroItem_Produto view;
-    private Item_Produto item_produto = new Item_Produto();
+    private ItemProduto item_produto = new ItemProduto();
 
     public CadastroItem_ProdutoController() {
     }
@@ -42,9 +42,9 @@ public class CadastroItem_ProdutoController {
         view.setVisible(true);
     }
 
-    public List<Item_Produto> listarIten_Produto() {
+    public List<ItemProduto> listarIten_Produto() {
 
-        List<Item_Produto> lista = new Item_ProdutoDao().listar();
+        List<ItemProduto> lista = new ItemProdutoDao().listar();
         return lista;
     }
 
@@ -55,30 +55,17 @@ public class CadastroItem_ProdutoController {
 
         if (view.sincronizarModelComView(item_produto)) {
             if ((item_produto.getItem() != null) && item_produto.getProduto() != null) {
-                new Item_ProdutoDao().salvar(item_produto);
+                new ItemProdutoDao().salvar(item_produto);
             }
         }
     }
 
-    /**
-     * Exclui o cliente no banco de dados
-     */
-    public void excluirItem_Produto() {
-        
-        view.sincronizarModelComView(item_produto);
-        if(item_produto.getProduto().getCodigo() != null){
-            new Item_ProdutoDao().excluir(item_produto);
-        }
-    }
-
-    public void alterarItem_Produto() {
-//        view.sincronizarModelComView(item_produto);
-//        if (item_produto.getCodigoItem() == null){
-//        new Item_ProdutoDao().atualizar(item_produto);
-//        }
-    }
-
-    public void listarPorCodigo() {
+    public void atualizarItem_Produto() {
+        if (view.sincronizarModelComView(item_produto)) {
+            if ((item_produto.getItem() != null) && item_produto.getProduto() != null) {
+                new ItemProdutoDao().atualizar(item_produto);
+            }
+        }    
     }
 
     public List<Produto> listarProdutos() {

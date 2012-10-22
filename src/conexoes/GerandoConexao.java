@@ -15,7 +15,7 @@ import java.util.logging.Logger;
  *
  * @author Rafael
  */
-public class GerandoConexão {
+public class GerandoConexao {
 
     public static Connection getConexao() {
    
@@ -37,7 +37,7 @@ public class GerandoConexão {
             con.close();
             stm.close();
         } catch (SQLException ex) {
-            Logger.getLogger(GerandoConexão.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GerandoConexao.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }
