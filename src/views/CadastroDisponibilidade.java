@@ -34,6 +34,7 @@ public class CadastroDisponibilidade extends javax.swing.JFrame {
         this.controller = controller;
         preencheComboMes();
         preencheComboAno();
+        preencerComboFiltar();
         bloquearCampos();
     }
 
@@ -69,6 +70,11 @@ public class CadastroDisponibilidade extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelaDisponibilidade = new javax.swing.JTable();
+        jPanel4 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tabelaFiltar = new javax.swing.JTable();
+        jComboBoxFiltar = new javax.swing.JComboBox();
+        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -86,8 +92,10 @@ public class CadastroDisponibilidade extends javax.swing.JFrame {
         txtCodigo.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
 
         txtDias.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        txtDias.setToolTipText("Dias uteis por mês");
 
         txtHoras.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        txtHoras.setToolTipText("horas por turno");
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Mês");
@@ -137,13 +145,13 @@ public class CadastroDisponibilidade extends javax.swing.JFrame {
                             .addComponent(txtObs)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(txtHoras, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 364, Short.MAX_VALUE)))))
+                                .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(45, 45, 45)
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -165,7 +173,7 @@ public class CadastroDisponibilidade extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
                     .addComponent(txtObs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
@@ -232,7 +240,7 @@ public class CadastroDisponibilidade extends javax.swing.JFrame {
                 .addComponent(btExcluir)
                 .addGap(34, 34, 34)
                 .addComponent(btSair)
-                .addContainerGap(156, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
@@ -240,17 +248,17 @@ public class CadastroDisponibilidade extends javax.swing.JFrame {
         tabelaDisponibilidade.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         tabelaDisponibilidade.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Código", "Mês", "Ano", "Dias", "Horas/Turno"
+                "Código", "Mês", "Ano", "Dias", "Horas/Turno", "Observação"
             }
         ));
         tabelaDisponibilidade.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_LAST_COLUMN);
@@ -269,7 +277,57 @@ public class CadastroDisponibilidade extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+
+        tabelaFiltar.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Mês", "Ano", "Total Disponibilidade"
+            }
+        ));
+        jScrollPane2.setViewportView(tabelaFiltar);
+
+        jComboBoxFiltar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jComboBoxFiltar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxFiltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxFiltarActionPerformed(evt);
+            }
+        });
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel7.setText("Classificar por");
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                .addComponent(jComboBoxFiltar, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 545, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(24, Short.MAX_VALUE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7)
+                    .addComponent(jComboBoxFiltar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -279,24 +337,29 @@ public class CadastroDisponibilidade extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(19, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -311,7 +374,7 @@ public class CadastroDisponibilidade extends javax.swing.JFrame {
     }//GEN-LAST:event_btSairActionPerformed
 
     private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
-     controller.salvar();
+        controller.salvar();
         preencheJtable();
         bloquearCampos();
         limparCampos();
@@ -319,7 +382,13 @@ public class CadastroDisponibilidade extends javax.swing.JFrame {
 
     private void btVisualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVisualizarActionPerformed
         controller.listarDisponibilidade();
+        preencheJtable();
     }//GEN-LAST:event_btVisualizarActionPerformed
+
+    private void jComboBoxFiltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxFiltarActionPerformed
+       controller.CalculandoDisponibilidadePorMes();
+       preencheTabelaFiltro();
+    }//GEN-LAST:event_jComboBoxFiltarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btEditar;
@@ -329,6 +398,7 @@ public class CadastroDisponibilidade extends javax.swing.JFrame {
     private javax.swing.JButton btSalvar;
     private javax.swing.JButton btVisualizar;
     private javax.swing.JComboBox jComboBoxAno;
+    private javax.swing.JComboBox jComboBoxFiltar;
     private javax.swing.JComboBox jComboBoxMes;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -336,11 +406,15 @@ public class CadastroDisponibilidade extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tabelaDisponibilidade;
+    private javax.swing.JTable tabelaFiltar;
     private javax.swing.JTextField txtCodigo;
     private javax.swing.JTextField txtDias;
     private javax.swing.JTextField txtHoras;
@@ -372,6 +446,12 @@ public class CadastroDisponibilidade extends javax.swing.JFrame {
             jComboBoxAno.addItem(i);
         }
     }
+    
+    public void preencerComboFiltar(){
+        jComboBoxFiltar.removeAllItems();
+        jComboBoxFiltar.addItem("Selecione");
+        jComboBoxFiltar.addItem("Mes");       
+    }
 
     public void sincronizarModelComView(Disponibilidade disp) {
 
@@ -382,33 +462,31 @@ public class CadastroDisponibilidade extends javax.swing.JFrame {
         }
 
         if (!jComboBoxMes.getSelectedItem().equals("Selecione")) {
-            disp.setMes((String) jComboBoxMes.getSelectedItem());     
+            disp.setMes((String) jComboBoxMes.getSelectedItem());
         } else {
             JOptionPane.showMessageDialog(null, "O campo mês é obrigatório");
         }
 
         if (!jComboBoxAno.getSelectedItem().equals("Selecione")) {
-            disp.setAno((Integer)jComboBoxAno.getSelectedItem());
+            disp.setAno((Integer) jComboBoxAno.getSelectedItem());
         } else {
             JOptionPane.showMessageDialog(null, "O campo Ano é obrigatório");
         }
 
         if (!txtDias.getText().equals("")) {
-            disp.setDia(Integer.parseInt(txtDias.getText()));      
+            disp.setDia(Integer.parseInt(txtDias.getText()));
         } else {
             JOptionPane.showMessageDialog(null, "O campo dias é obrigatório");
         }
 
         if (!txtHoras.getText().equals("")) {
-            disp.setHoras(Time.valueOf(txtHoras.getText()));         
+            disp.setHoras(Time.valueOf(txtHoras.getText()));
         } else {
             JOptionPane.showMessageDialog(null, "O campo horas é obrigatório");
         }
-        
-        if (!txtObs.getText().equals("")){
+
+        if (!txtObs.getText().equals("")) {
             disp.setObservacao(txtObs.getText());
-        }else{
-             JOptionPane.showMessageDialog(null, "O campo é obrigatório");
         }
     }
 
@@ -421,6 +499,7 @@ public class CadastroDisponibilidade extends javax.swing.JFrame {
         jComboBoxAno.setEditable(false);
         txtDias.setEditable(false);
         txtHoras.setEditable(false);
+        txtObs.setEditable(false);
 
     }
 
@@ -428,7 +507,7 @@ public class CadastroDisponibilidade extends javax.swing.JFrame {
      * Desbloqueia os campos do formulário para edição
      */
     public void desbloquearCampos() {
-        txtCodigo.setEditable(true);
+        txtCodigo.setEditable(false);
         jComboBoxMes.setEditable(true);
         jComboBoxAno.setEditable(true);
         txtDias.setEditable(true);
@@ -457,7 +536,20 @@ public class CadastroDisponibilidade extends javax.swing.JFrame {
         }
 
         for (Disponibilidade objeto : lista) {
-            modelo.addRow(new Object[]{objeto.getCodigo(), objeto.getMes(), objeto.getDia(), objeto.getHoras()});
+            modelo.addRow(new Object[]{objeto.getCodigo(), objeto.getMes(), objeto.getAno(), objeto.getDia(), objeto.getHoras(), objeto.getObservacao()});
+        }
+    }
+    
+    public void preencheTabelaFiltro(){
+    List<Disponibilidade> lista = controller.CalculandoDisponibilidadePorMes();
+    DefaultTableModel modelo = (DefaultTableModel) tabelaDisponibilidade.getModel();
+
+        for (int i = (modelo.getRowCount() - 1); i >= 0; --i) {
+            modelo.removeRow(i);
+        }
+
+        for (Disponibilidade objeto : lista) {
+            modelo.addRow(new Object[]{objeto.getMes(), objeto.getAno()});
         }
     }
 

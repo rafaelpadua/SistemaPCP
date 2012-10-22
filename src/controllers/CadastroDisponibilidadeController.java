@@ -43,6 +43,12 @@ public class CadastroDisponibilidadeController {
         List<Disponibilidade> lista = new CadastroDisponibilidadeDao().listar();
         return lista;
     }
+    
+    public List CalculandoDisponibilidadePorMes(){
+    
+        List disponivel =  new CadastroDisponibilidadeDao().listarPorMes();
+        return disponivel;
+    }
 
     /**
      * Salva o cliente no banco de dados

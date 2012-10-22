@@ -65,5 +65,5 @@ public class Disponibilidade {
 
     public void setAno(Integer Ano) {
         this.Ano = Ano;
-    } 
+    }
 }

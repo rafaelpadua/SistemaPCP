@@ -85,33 +85,30 @@ public class CadastroDisponibilidadeDao {
         return list;
     }
     
-    public Produto listarPorId(Integer codigo) {
+    public List listarPorMes() {
         
         PreparedStatement ps = null;
         Connection conn = null;
         ResultSet rs = null;
-        Produto produto = null;
+        List<Disponibilidade> dispo = null;
         try {
 
             conn = this.con;
 
-            String sql = "select * from produto where codigo = ? ";
+            String sql = "select disponibilidade.mes, disponibilidade.ano, (disponibilidade.dia * disponibilidade.hora) from disponibilidade order by disponibilidade.ano, disponibilidade.mes ";
             ps = conn.prepareStatement(sql);
-            ps.setInt(1, codigo);
             rs = ps.executeQuery();
             while (rs.next()) {
-                produto = new Produto();
-                produto.setCodigo(rs.getInt(1));
-                produto.setDescricao(rs.getString(2));
+                
             }
-            return produto;
+            return dispo;
             
         } catch (SQLException ex) {
             Logger.getLogger(Produto.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             GerandoConexao.fecharConexao(conn, ps);
         }
-        return produto;
+        return dispo;
     }
 
     public void atualizar(Disponibilidade disponib) {
