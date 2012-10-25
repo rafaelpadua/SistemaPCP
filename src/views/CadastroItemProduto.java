@@ -4,7 +4,7 @@
  */
 package views;
 
-import controllers.CadastroItem_ProdutoController;
+import controllers.CadastroItemProdutoController;
 import entidades.Produto;
 import entidades.ItemProduto;
 import entidades.Item;
@@ -16,14 +16,14 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Rafael
  */
-public class CadastroItem_Produto extends javax.swing.JFrame {
+public class CadastroItemProduto extends javax.swing.JFrame {
 
-    private CadastroItem_ProdutoController controller;
+    private CadastroItemProdutoController controller;
 
     /**
      * Creates new form CadastroItem_Produto
      */
-    public CadastroItem_Produto(CadastroItem_ProdutoController controller) {
+    public CadastroItemProduto(CadastroItemProdutoController controller) {
         initComponents();
         setLocationRelativeTo(null);
         this.controller = controller;
@@ -111,6 +111,11 @@ public class CadastroItem_Produto extends javax.swing.JFrame {
 
         jComboBoxItem.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jComboBoxItem.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxItemActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -305,6 +310,10 @@ public class CadastroItem_Produto extends javax.swing.JFrame {
         txtQuantidade.setText(tabelaItem_Produto.getValueAt(tabelaItem_Produto.getSelectedRow(), 2).toString());
         bloquearCampos();
     }//GEN-LAST:event_tabelaItem_ProdutoMouseClicked
+
+    private void jComboBoxItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxItemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxItemActionPerformed
     /**
      * @param args the command line arguments
      */

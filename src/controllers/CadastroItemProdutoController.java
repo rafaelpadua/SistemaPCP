@@ -4,7 +4,7 @@
  */
 package controllers;
 
-import views.CadastroItem_Produto;
+import views.CadastroItemProduto;
 import entidades.ItemProduto;
 import entidades.Item;
 import dao.ItemProdutoDao;
@@ -15,19 +15,19 @@ import java.util.List;
  *
  * @author Rafael
  */
-public class CadastroItem_ProdutoController {
+public class CadastroItemProdutoController {
 
-    private static CadastroItem_ProdutoController instancia = new CadastroItem_ProdutoController();
-    private CadastroItem_Produto view;
-    private ItemProduto item_produto = new ItemProduto();
+    private static CadastroItemProdutoController instancia = new CadastroItemProdutoController();
+    private CadastroItemProduto view;
+    private ItemProduto itemProduto = new ItemProduto();
 
-    public CadastroItem_ProdutoController() {
+    public CadastroItemProdutoController() {
     }
 
     /**
      * @return a instancia do controlador
      */
-    public static CadastroItem_ProdutoController getInstancia() {
+    public static CadastroItemProdutoController getInstancia() {
         return instancia;
     }
 
@@ -37,7 +37,7 @@ public class CadastroItem_ProdutoController {
     public void exibirInterfaceGrafica() {
 
         if (view == null) {
-            view = new CadastroItem_Produto(this);
+            view = new CadastroItemProduto(this);
         }
         view.setVisible(true);
     }
@@ -53,17 +53,17 @@ public class CadastroItem_ProdutoController {
      */
     public void salvarItem_Produto() {
 
-        if (view.sincronizarModelComView(item_produto)) {
-            if ((item_produto.getItem() != null) && item_produto.getProduto() != null) {
-                new ItemProdutoDao().salvar(item_produto);
+        if (view.sincronizarModelComView(itemProduto)) {
+            if ((itemProduto.getItem() != null) && itemProduto.getProduto() != null) {
+                new ItemProdutoDao().salvar(itemProduto);
             }
         }
     }
 
     public void atualizarItem_Produto() {
-        if (view.sincronizarModelComView(item_produto)) {
-            if ((item_produto.getItem() != null) && item_produto.getProduto() != null) {
-                new ItemProdutoDao().atualizar(item_produto);
+        if (view.sincronizarModelComView(itemProduto)) {
+            if ((itemProduto.getItem() != null) && itemProduto.getProduto() != null) {
+                new ItemProdutoDao().atualizar(itemProduto);
             }
         }    
     }

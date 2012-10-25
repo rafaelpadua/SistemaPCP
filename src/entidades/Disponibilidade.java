@@ -16,8 +16,9 @@ public class Disponibilidade {
     private String mes;
     private Integer Ano;
     private Integer dia;
-    private Time horas;
+    private Integer horas;
     private String observacao;
+    private Integer total;
 
     public Integer getCodigo() {
         return codigo;
@@ -35,11 +36,11 @@ public class Disponibilidade {
         this.dia = dia;
     }
 
-    public Time getHoras() {
+    public Integer getHoras() {
         return horas;
     }
 
-    public void setHoras(Time horas) {
+    public void setHoras(Integer horas) {
         this.horas = horas;
     }
 
@@ -66,4 +67,12 @@ public class Disponibilidade {
     public void setAno(Integer Ano) {
         this.Ano = Ano;
     }
+
+    public Integer getTotal() {
+        return total;
+    }
+
+    public void setTotal(Integer total) {
+        this.total = total;
+    }    
 }

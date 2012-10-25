@@ -74,7 +74,7 @@ public class CadastroDeProdutoController {
     }
     
     public void exibirCadastrodeitem_produtoView(){
-        CadastroItem_ProdutoController.getInstancia().exibirInterfaceGrafica();
+        CadastroItemProdutoController.getInstancia().exibirInterfaceGrafica();
     }
     
     

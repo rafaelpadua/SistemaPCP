@@ -6,29 +6,23 @@ package views;
 
 import controllers.CadastroDisponibilidadeController;
 import entidades.Disponibilidade;
-import java.sql.Time;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.text.MaskFormatter;
 
 /**
  *
  * @author Rafael
  */
-public class CadastroDisponibilidade extends javax.swing.JFrame {
+public class DisponibilidadeView extends javax.swing.JFrame {
 
-    private MaskFormatter formatoData;
     private CadastroDisponibilidadeController controller;
     private Disponibilidade disponivel;
 
     /**
      * Creates new form CadastroDisponivel
      */
-    public CadastroDisponibilidade(CadastroDisponibilidadeController controller) {
+    public DisponibilidadeView(CadastroDisponibilidadeController controller) {
         initComponents();
         setLocationRelativeTo(null);
         this.controller = controller;
@@ -58,8 +52,6 @@ public class CadastroDisponibilidade extends javax.swing.JFrame {
         jComboBoxMes = new javax.swing.JComboBox();
         jLabel5 = new javax.swing.JLabel();
         jComboBoxAno = new javax.swing.JComboBox();
-        jLabel6 = new javax.swing.JLabel();
-        txtObs = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         btNovo = new javax.swing.JButton();
         btSalvar = new javax.swing.JButton();
@@ -90,6 +82,11 @@ public class CadastroDisponibilidade extends javax.swing.JFrame {
         jLabel4.setText("Horas");
 
         txtCodigo.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        txtCodigo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtCodigoMouseClicked(evt);
+            }
+        });
 
         txtDias.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtDias.setToolTipText("Dias uteis por mês");
@@ -109,11 +106,6 @@ public class CadastroDisponibilidade extends javax.swing.JFrame {
         jComboBoxAno.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jComboBoxAno.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel6.setText("Obs:");
-
-        txtObs.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -121,6 +113,10 @@ public class CadastroDisponibilidade extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtHoras, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
@@ -135,18 +131,8 @@ public class CadastroDisponibilidade extends javax.swing.JFrame {
                                 .addComponent(jLabel5)
                                 .addGap(18, 18, 18)
                                 .addComponent(jComboBoxAno, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel6))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtObs)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(txtHoras, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))))
-                .addContainerGap())
+                            .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -169,11 +155,7 @@ public class CadastroDisponibilidade extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtHoras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
-                    .addComponent(txtObs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
@@ -193,8 +175,18 @@ public class CadastroDisponibilidade extends javax.swing.JFrame {
         });
 
         btEditar.setText("Editar");
+        btEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btEditarActionPerformed(evt);
+            }
+        });
 
         btExcluir.setText("Excluir");
+        btExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btExcluirActionPerformed(evt);
+            }
+        });
 
         btSair.setText("Sair");
         btSair.addActionListener(new java.awt.event.ActionListener() {
@@ -248,20 +240,25 @@ public class CadastroDisponibilidade extends javax.swing.JFrame {
         tabelaDisponibilidade.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         tabelaDisponibilidade.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Código", "Mês", "Ano", "Dias", "Horas/Turno", "Observação"
+                "Código", "Mês", "Ano", "Dias", "Horas/Turno"
             }
         ));
-        tabelaDisponibilidade.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_LAST_COLUMN);
+        tabelaDisponibilidade.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
+        tabelaDisponibilidade.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelaDisponibilidadeMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tabelaDisponibilidade);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -285,13 +282,13 @@ public class CadastroDisponibilidade extends javax.swing.JFrame {
 
         tabelaFiltar.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Mês", "Ano", "Total Disponibilidade"
+                "Código", "Mês", "Ano", "Total Disponibilidade"
             }
         ));
         jScrollPane2.setViewportView(tabelaFiltar);
@@ -386,9 +383,29 @@ public class CadastroDisponibilidade extends javax.swing.JFrame {
     }//GEN-LAST:event_btVisualizarActionPerformed
 
     private void jComboBoxFiltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxFiltarActionPerformed
-       controller.CalculandoDisponibilidadePorMes();
-       preencheTabelaFiltro();
+        if (jComboBoxFiltar.getSelectedItem() == "Mes") {
+            preencheTabelaFiltro();
+        }
     }//GEN-LAST:event_jComboBoxFiltarActionPerformed
+
+    private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
+        desbloquearCampos();
+    }//GEN-LAST:event_btEditarActionPerformed
+
+    private void tabelaDisponibilidadeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaDisponibilidadeMouseClicked
+        listarTabelaDisponibilidade();
+        bloquearCampos();
+    }//GEN-LAST:event_tabelaDisponibilidadeMouseClicked
+
+    private void btExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirActionPerformed
+        controller.excluir();
+        preencheJtable();
+        preencheTabelaFiltro();
+    }//GEN-LAST:event_btExcluirActionPerformed
+
+    private void txtCodigoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtCodigoMouseClicked
+        txtCodigo.setEditable(true);
+    }//GEN-LAST:event_txtCodigoMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btEditar;
@@ -405,7 +422,6 @@ public class CadastroDisponibilidade extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -418,7 +434,6 @@ public class CadastroDisponibilidade extends javax.swing.JFrame {
     private javax.swing.JTextField txtCodigo;
     private javax.swing.JTextField txtDias;
     private javax.swing.JTextField txtHoras;
-    private javax.swing.JTextField txtObs;
     // End of variables declaration//GEN-END:variables
 
     public void preencheComboMes() {
@@ -446,11 +461,11 @@ public class CadastroDisponibilidade extends javax.swing.JFrame {
             jComboBoxAno.addItem(i);
         }
     }
-    
-    public void preencerComboFiltar(){
+
+    public void preencerComboFiltar() {
         jComboBoxFiltar.removeAllItems();
         jComboBoxFiltar.addItem("Selecione");
-        jComboBoxFiltar.addItem("Mes");       
+        jComboBoxFiltar.addItem("Mes");
     }
 
     public void sincronizarModelComView(Disponibilidade disp) {
@@ -480,13 +495,9 @@ public class CadastroDisponibilidade extends javax.swing.JFrame {
         }
 
         if (!txtHoras.getText().equals("")) {
-            disp.setHoras(Time.valueOf(txtHoras.getText()));
+            disp.setHoras((Integer.parseInt(txtHoras.getText())));
         } else {
             JOptionPane.showMessageDialog(null, "O campo horas é obrigatório");
-        }
-
-        if (!txtObs.getText().equals("")) {
-            disp.setObservacao(txtObs.getText());
         }
     }
 
@@ -499,8 +510,6 @@ public class CadastroDisponibilidade extends javax.swing.JFrame {
         jComboBoxAno.setEditable(false);
         txtDias.setEditable(false);
         txtHoras.setEditable(false);
-        txtObs.setEditable(false);
-
     }
 
     /**
@@ -511,7 +520,7 @@ public class CadastroDisponibilidade extends javax.swing.JFrame {
         jComboBoxMes.setEditable(true);
         jComboBoxAno.setEditable(true);
         txtDias.setEditable(true);
-        txtHoras.setEditable(true);
+        txtHoras.setEditable(true);  
     }
 
     public void limparCampos() {
@@ -539,29 +548,29 @@ public class CadastroDisponibilidade extends javax.swing.JFrame {
             modelo.addRow(new Object[]{objeto.getCodigo(), objeto.getMes(), objeto.getAno(), objeto.getDia(), objeto.getHoras(), objeto.getObservacao()});
         }
     }
-    
-    public void preencheTabelaFiltro(){
-    List<Disponibilidade> lista = controller.CalculandoDisponibilidadePorMes();
-    DefaultTableModel modelo = (DefaultTableModel) tabelaDisponibilidade.getModel();
 
-        for (int i = (modelo.getRowCount() - 1); i >= 0; --i) {
-            modelo.removeRow(i);
+    public void preencheTabelaFiltro() {
+
+        List<Disponibilidade> listaFiltro = controller.CalculandoDisponibilidadePorMes();
+
+        DefaultTableModel modeloFiltro = (DefaultTableModel) tabelaFiltar.getModel();
+
+        for (int i = (modeloFiltro.getRowCount() - 1); i >= 0; --i) {
+            modeloFiltro.removeRow(i);
         }
 
-        for (Disponibilidade objeto : lista) {
-            modelo.addRow(new Object[]{objeto.getMes(), objeto.getAno()});
+        for (Disponibilidade disp : listaFiltro) {
+            modeloFiltro.addRow(new Object[]{disp.getCodigo(), disp.getMes(), disp.getAno(), disp.getTotal() + " horas" });
         }
     }
 
-    private Date formatarData(String text) {
-        SimpleDateFormat formatador = new SimpleDateFormat("MM/yyyy");
-        Date dataFormatada = null;
-        try {
-            dataFormatada = formatador.parse(text);
-            return dataFormatada;
-        } catch (ParseException ex) {
-            System.out.println("Erro ao formatar data" + ex);
-        }
-        return dataFormatada;
+    public void listarTabelaDisponibilidade() {
+      
+        
+        txtCodigo.setText(tabelaDisponibilidade.getValueAt(tabelaDisponibilidade.getSelectedRow(), 0).toString());
+        jComboBoxMes.setSelectedItem((String) tabelaDisponibilidade.getValueAt(tabelaDisponibilidade.getSelectedRow(), 1));
+        jComboBoxAno.setSelectedItem((Integer) tabelaDisponibilidade.getValueAt(tabelaDisponibilidade.getSelectedRow(), 2));
+        txtDias.setText(tabelaDisponibilidade.getValueAt(tabelaDisponibilidade.getSelectedRow(), 3).toString());
+        txtHoras.setText(tabelaDisponibilidade.getValueAt(tabelaDisponibilidade.getSelectedRow(), 4).toString());
     }
 }

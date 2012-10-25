@@ -3,7 +3,7 @@ package controllers;
 
 import java.util.List;
 import entidades.Disponibilidade;
-import views.CadastroDisponibilidade;
+import views.DisponibilidadeView;
 
 
 /**
@@ -14,7 +14,7 @@ import dao.CadastroDisponibilidadeDao;
 public class CadastroDisponibilidadeController {
     
     private static CadastroDisponibilidadeController instancia = new CadastroDisponibilidadeController();
-    private CadastroDisponibilidade view;
+    private DisponibilidadeView view;
     private Disponibilidade disponib = new Disponibilidade();
 
     public CadastroDisponibilidadeController() {
@@ -33,12 +33,35 @@ public class CadastroDisponibilidadeController {
     public void exibirInterfaceGrafica() {
 
         if (view == null) {
-            view = new CadastroDisponibilidade(this);
+            view = new DisponibilidadeView(this);
         }
         view.setVisible(true);
     }
+    
+    
+    public void excluir(){
+    
+        view.sincronizarModelComView(disponib);
+        if (disponib.getCodigo() != null){
+        new CadastroDisponibilidadeDao().excluir(disponib);
+        }
+    
+    }
+    
+    /**
+     * Salva o cliente no banco de dados
+     */
+    public void salvar() {
 
-    public List<Disponibilidade> listarDisponibilidade() {
+      view.sincronizarModelComView(disponib);       
+        if(disponib.getCodigo() == null){
+        new CadastroDisponibilidadeDao().salvar(disponib);     
+    }else{
+        new CadastroDisponibilidadeDao().atualizar(disponib);
+        }
+    }
+    
+        public List<Disponibilidade> listarDisponibilidade() {
 
         List<Disponibilidade> lista = new CadastroDisponibilidadeDao().listar();
         return lista;
@@ -46,36 +69,7 @@ public class CadastroDisponibilidadeController {
     
     public List CalculandoDisponibilidadePorMes(){
     
-        List disponivel =  new CadastroDisponibilidadeDao().listarPorMes();
-        return disponivel;
+        List<Disponibilidade> disponivel =  new CadastroDisponibilidadeDao().listarPorMes();
+        return disponivel;     
     }
-
-    /**
-     * Salva o cliente no banco de dados
-     */
-    public void salvar() {
-
-      view.sincronizarModelComView(disponib);
-       System.out.println(disponib.getCodigo());
-       System.out.println(disponib.getMes());
-       System.out.println(disponib.getAno());
-       System.out.println(disponib.getDia());
-       System.out.println(disponib.getHoras());
-       
-        if(disponib.getCodigo() == null){
-            System.out.println("Disponibilidade Constroller entrando...");
-        new CadastroDisponibilidadeDao().salvar(disponib);
-        
-    }else{
-        new CadastroDisponibilidadeDao().atualizar(disponib);
-        }
-    }
-
-    public void atualizarItem_Produto() {
-//        if (view.sincronizarModelComView(disponib)) {
-//            if ((disponib.getItem() != null) && disponib.getProduto() != null) {
-//                new Item_ProdutoDao().atualizar(disponib);
-//            }
-//        }    
-    }    
 }
