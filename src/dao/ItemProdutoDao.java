@@ -80,34 +80,6 @@ public class ItemProdutoDao {
         return list;
     }
 
-    public Produto listarPorId(Integer id) {
-        PreparedStatement ps = null;
-        Connection conn = null;
-        ResultSet rs = null;
-        Produto produto = null;
-        try {
-
-            conn = this.con;
-
-            String sql = "select produto.descricao from produto where id = ? ";
-            ps = conn.prepareStatement(sql);
-            ps.setInt(1, id);
-            rs = ps.executeQuery();
-
-            while (rs.next()) {
-                produto = new Produto();
-                produto.setDescricao(rs.getString(1));
-            }
-            return produto;
-
-        } catch (SQLException ex) {
-            Logger.getLogger(ItemDao.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            GerandoConexao.fecharConexao(conn, ps);
-        }
-      return produto;
-    }
-    
     public void atualizar(ItemProduto item) {
         try {
             Connection conn = null;

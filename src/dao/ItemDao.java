@@ -95,6 +95,7 @@ public class ItemDao {
                 item = new Item();
                 item.setCodigo(rs.getInt(1));
                 item.setDescricao(rs.getString(2));
+                item.setUnidade(rs.getString(3));
             }
             return item;
 

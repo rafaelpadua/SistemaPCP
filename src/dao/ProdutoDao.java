@@ -83,7 +83,7 @@ public class ProdutoDao {
         return list;
     }
     
-    public List listarDescricaoProduto() {
+    public List listarProdutoPorDescricao() {
         PreparedStatement ps = null;
         Connection conn = null;
         ResultSet rs = null;
@@ -119,9 +119,7 @@ public class ProdutoDao {
         ResultSet rs = null;
         Produto produto = null;
         try {
-
             conn = this.con;
-
             String sql = "select * from produto where codigo = ? ";
             ps = conn.prepareStatement(sql);
             ps.setInt(1, codigo);

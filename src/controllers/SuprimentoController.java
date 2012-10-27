@@ -1,9 +1,9 @@
 
 package controllers;
 
-import dao.ItemProdutoDao;
-import entidades.Suprimento;
 import dao.ProdutoDao;
+import entidades.Suprimento;
+import dao.SuprimentoDao;
 import entidades.Produto;
 import java.util.List;
 import views.SuprimentoView;
@@ -34,9 +34,24 @@ public class SuprimentoController {
         }
         view.setVisible(true);
     }
+    
+    public List ListarSuprimentos(){
+    List<Suprimento> lista = new SuprimentoDao().listarSuprimento();
+    return  lista;
+    }
+    
+    public List<Produto> listaProduto(){
+    
+    List<Produto> lista = new ProdutoDao().listar();
+    return lista;
+    }
 
-    public List<Produto> listarProdutos() {
-        List<Produto> lista = new ProdutoDao().listar();
-        return lista;
-    }    
+    public List<Suprimento> listarSuprimentos(Object descricao) {
+        
+        List<Suprimento> lista = new SuprimentoDao().listarSuprimentosPorNome(15);
+        System.out.println(lista);
+        
+        return null;
+    }
 }
+      

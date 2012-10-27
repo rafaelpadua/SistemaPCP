@@ -13,15 +13,32 @@ import views.PrevisaoDeVendas;
 public class Suprimento {
     
     private Produto produto;
-    private PrevisaoVendas previsao;
-    private Double total;
+    private String descItem;
+    private Integer total;
+    private String Unidade;
 
-    public PrevisaoVendas getPrevisao() {
-        return previsao;
+    public String getUnidade() {
+        return Unidade;
     }
 
-    public void setPrevisao(PrevisaoVendas previsao) {
-        this.previsao = previsao;
+    public void setUnidade(String Unidade) {
+        this.Unidade = Unidade;
+    }
+
+    public String getDescItem() {
+        return descItem;
+    }
+
+    public void setDescItem(String descItem) {
+        this.descItem = descItem;
+    }
+
+    public Integer getTotal() {
+        return total;
+    }
+
+    public void setTotal(Integer total) {
+        this.total = total;
     }
 
     public Produto getProduto() {
@@ -32,13 +49,4 @@ public class Suprimento {
         this.produto = produto;
     }
 
-    public Double getTotal() {
-        return total;
-    }
-
-    public void setTotal(Double total) {
-        this.total = total;
-    }
-    
-    
 }

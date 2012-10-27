@@ -89,36 +89,7 @@ public class PrevisaoDeVendasDao {
         }
         return listP;
     }
-    
-    public List<Produto> listarProdutoPorDescricao(){
-        PreparedStatement ps = null;
-        Connection conn = null;
-        ResultSet rs = null;
-        List<Produto> list = null;
-        try {
-
-            conn = this.con;
-
-            String sql = "select * from produto order by descricao";
-            ps = conn.prepareStatement(sql);
-            rs = ps.executeQuery();
-            list = new ArrayList<>();
-            while (rs.next()) {
-                Produto produto = new Produto();
-                produto.setDescricao(rs.getString(2));             
-                list.add(produto);
-            }
-            return list;
-
-        } catch (SQLException ex) {
-            System.out.println("Erro ao listar previsão");
-        } finally {
-            GerandoConexao.fecharConexao(conn, ps);
-        }
-        return list;
-    }
-    
-    
+        
     public void excluir(PrevisaoVendas previsao){
         try {
             Connection conn;
@@ -134,7 +105,40 @@ public class PrevisaoDeVendasDao {
         } catch (SQLException ex) {
             Logger.getLogger(PrevisaoDeVendasDao.class.getName()).log(Level.SEVERE, null, ex);
         }
-    
     }
     
+    public PrevisaoVendas listarPrevisaoPorCodigo(Integer codigo){
+        
+        PreparedStatement ps = null;
+        Connection conn = null;
+        ResultSet rs = null;
+        PrevisaoVendas previsao = null;
+        try {
+
+            conn = this.con;
+
+            String sql = "select * from previsao where codigo = ? ";
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, codigo);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                previsao = new PrevisaoVendas();
+                previsao.setCodigo(rs.getInt(1));
+                previsao.setDataDemanda(rs.getDate(2));
+                previsao.setProduto(new ProdutoDao().listarProdutoPorId(rs.getInt(3)));
+                previsao.setQuantidade(rs.getFloat(4));
+                previsao.setUnidade(rs.getString(5));
+                previsao.setOrdem(rs.getInt(6));
+            }
+            return previsao;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ItemDao.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            GerandoConexao.fecharConexao(conn, ps);
+        }
+        return previsao;
+    
+    }
 }
