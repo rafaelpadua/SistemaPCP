@@ -4,8 +4,6 @@
  */
 package entidades;
 
-import views.PrevisaoDeVendas;
-
 /**
  *
  * @author Rafael

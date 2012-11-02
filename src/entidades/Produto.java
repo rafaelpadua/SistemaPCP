@@ -13,15 +13,15 @@ public class Produto {
     
     private Integer codigo;
     private String descricao;
-    private Float TaxaDeProducao;
+    private Double TaxaDeProducao;
     private String unidade;
     private Integer  setup;
 
-    public Float getTaxaDeProducao() {
+    public Double getTaxaDeProducao() {
         return TaxaDeProducao;
     }
 
-    public void setTaxaDeProducao(Float TaxaDeProducao) {
+    public void setTaxaDeProducao(Double TaxaDeProducao) {
         this.TaxaDeProducao = TaxaDeProducao;
     }
 

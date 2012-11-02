@@ -41,17 +41,13 @@ public class SuprimentoController {
     }
     
     public List<Produto> listaProduto(){
-    
     List<Produto> lista = new ProdutoDao().listar();
     return lista;
     }
 
-    public List<Suprimento> listarSuprimentos(Object descricao) {
-        
-        List<Suprimento> lista = new SuprimentoDao().listarSuprimentosPorNome(15);
-        System.out.println(lista);
-        
-        return null;
+    public List<Suprimento> listarSuprimentos(String descricao) {
+        List<Suprimento> lista = new SuprimentoDao().listarSuprimentosPorDescricao(descricao);
+        return lista;
     }
 }
       

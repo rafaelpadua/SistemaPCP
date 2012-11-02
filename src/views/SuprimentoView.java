@@ -10,7 +10,6 @@ import controllers.SuprimentoController;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import org.w3c.dom.events.MouseEvent;
 
 /**
  *
@@ -27,7 +26,6 @@ public class SuprimentoView extends javax.swing.JFrame {
         initComponents();
          setLocationRelativeTo(null);
         this.controller = controller;
-        preencheComboProdutos();
     }
 
     /**
@@ -46,15 +44,17 @@ public class SuprimentoView extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelaSuprimentoFiltro = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
-        jComboBoxProduto = new javax.swing.JComboBox();
+        txtFiltro = new javax.swing.JTextField();
+        btFiltrar = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         btVisualizar = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(null, "NECESSIDADE DE MATERIAIS", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 1, 14)))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(null, "SUPRIMENTOS", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 1, 14)))); // NOI18N
 
+        TabelaSuprimento.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         TabelaSuprimento.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -63,7 +63,7 @@ public class SuprimentoView extends javax.swing.JFrame {
                 {null, null, null, null, null}
             },
             new String [] {
-                "Código (Produto)", "Descrição (Item)", "Descrição (Item)", "Total Suprimento", "Unidade"
+                "Código (Produto)", "Descrição (Produto)", "Descrição (Item)", "Total Suprimento", "Unidade"
             }
         ));
         jScrollPane2.setViewportView(TabelaSuprimento);
@@ -80,22 +80,23 @@ public class SuprimentoView extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(65, 65, 65)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
+        tabelaSuprimentoFiltro.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         tabelaSuprimentoFiltro.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Produto", "Demanda", "Taxa de Produção", "Suprimento", "Título 5", "Título 6"
+                "Código (Produto)", "Descrição (Produto)", "Descrição (Item)", "Total Suprimento", "Unidade"
             }
         ));
         jScrollPane1.setViewportView(tabelaSuprimentoFiltro);
@@ -103,11 +104,12 @@ public class SuprimentoView extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setText("Selecione o Produto:");
 
-        jComboBoxProduto.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jComboBoxProduto.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBoxProduto.addActionListener(new java.awt.event.ActionListener() {
+        txtFiltro.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        btFiltrar.setText("Filtrar");
+        btFiltrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBoxProdutoActionPerformed(evt);
+                btFiltrarActionPerformed(evt);
             }
         });
 
@@ -117,23 +119,31 @@ public class SuprimentoView extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 666, Short.MAX_VALUE)
                 .addGap(22, 22, 22))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(147, 147, 147)
                 .addComponent(jLabel1)
-                .addGap(29, 29, 29)
-                .addComponent(jComboBoxProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(192, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(txtFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btFiltrar)
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jComboBoxProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(txtFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btFiltrar)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -162,19 +172,23 @@ public class SuprimentoView extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btVisualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 2, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btVisualizar)))
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(166, 166, 166)
+                .addGap(89, 89, 89)
                 .addComponent(btVisualizar)
-                .addGap(37, 37, 37)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(23, 23, 23))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -206,10 +220,6 @@ public class SuprimentoView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jComboBoxProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxProdutoActionPerformed
-
-    }//GEN-LAST:event_jComboBoxProdutoActionPerformed
-
     private void btVisualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVisualizarActionPerformed
         controller.ListarSuprimentos();
         preencheTabelaSuprimento();
@@ -219,11 +229,16 @@ public class SuprimentoView extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void btFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btFiltrarActionPerformed
+        controller.listarSuprimentos(txtFiltro.getText());
+        preencherTabelaSuprimentoFiltro(txtFiltro.getText());
+    }//GEN-LAST:event_btFiltrarActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable TabelaSuprimento;
+    private javax.swing.JButton btFiltrar;
     private javax.swing.JButton btVisualizar;
     private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox jComboBoxProduto;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -231,25 +246,15 @@ public class SuprimentoView extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tabelaSuprimentoFiltro;
+    private javax.swing.JTextField txtFiltro;
     // End of variables declaration//GEN-END:variables
 
-  public void preencheComboProdutos() {
-
-        jComboBoxProduto.removeAllItems();
-        List<Produto> listaProduto = controller.listaProduto();
-        jComboBoxProduto.addItem("Selecione");
-        for (Produto objeto : listaProduto) {
-            jComboBoxProduto.addItem(objeto);
-        }
-    }
-    
-   
     public void sincronizarModelComView(Suprimento necessidade) {
-
-        if (!jComboBoxProduto.getSelectedItem().equals("Selecione")) {
-            necessidade.setProduto((Produto)jComboBoxProduto.getSelectedItem());
+        
+        if (!txtFiltro.getText().equals("")) {
+            necessidade.setDescItem(txtFiltro.getText());
         } else {
-            JOptionPane.showMessageDialog(null, "O campo produto é obrigatório");
+            necessidade.setDescItem(null);
         }
 
     }
@@ -269,24 +274,19 @@ public class SuprimentoView extends javax.swing.JFrame {
             modelo.addRow(new Object[]{objeto.getProduto().getCodigo(), objeto.getProduto().getDescricao(), objeto.getDescItem(), objeto.getTotal(), objeto.getUnidade()+"s"});
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    
+    private void preencherTabelaSuprimentoFiltro(String descricao){
+        
+        List<Suprimento> lista = controller.listarSuprimentos(descricao);
+        
+        DefaultTableModel modelo = (DefaultTableModel) tabelaSuprimentoFiltro.getModel();
+        
+        for (int i = (modelo.getRowCount() -1); i >= 0; --i){
+            modelo.removeRow(i);
+        }
+        
+        for (Suprimento obj : lista){
+            modelo.addRow(new Object[]{obj.getProduto().getCodigo(), obj.getProduto().getDescricao(), obj.getDescItem(), obj.getTotal(), obj.getUnidade()+"s"});
+        }
+    }
 }

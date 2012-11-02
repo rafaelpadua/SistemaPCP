@@ -65,7 +65,7 @@ public class SuprimentoDao {
         return lista;
     }
 
-    public List listarSuprimentosPorNome(Integer descricao) {
+    public List listarSuprimentosPorDescricao(String supri) {
 
         java.sql.PreparedStatement ps = null;
         Connection conn = null;
@@ -75,23 +75,24 @@ public class SuprimentoDao {
 
         try {
             conn = this.con;
-            String sql = "select produto.codigo, produto.descricao,  item.descricao, (previsao.quantidade * produto_item.quantidade), "
-                    + "item.unidade from produto , item , produto_item , previsao "
-                    + "where produto.descricao = ? "
-                    + "and produto_item.item_codigo = item.codigo and produto_item.produto_codigo = produto.codigo "
-                    + "and previsao.produto_codigo = produto_item.produto_codigo order by 4 asc ";
+            String sql = "select produto.codigo, item.descricao, sum(previsao.quantidade * produto_item.quantidade) ,item.unidade  "
+                    + "from produto , item , produto_item , previsao where produto.descricao = ? "
+                    + "and produto_item.item_codigo = item.codigo "
+                    + "and produto_item.produto_codigo = produto.codigo "
+                    + "and previsao.produto_codigo = produto_item.produto_codigo group by item.descricao";
+                    
             ps = conn.prepareStatement(sql);
-            ps.setInt(1, descricao);
+            ps.setString(1,supri);
             rs = ps.executeQuery();
+            lista = new ArrayList<>();
 
             while (rs.next()) {
                 suprimento = new Suprimento();
                 suprimento.setProduto(new ProdutoDao().listarProdutoPorId(rs.getInt(1)));
                 suprimento.setDescItem((rs.getString(2)));
-                suprimento.setTotal((rs.getInt(4)));
-                suprimento.setUnidade(rs.getString(5));
+                suprimento.setTotal((rs.getInt(3)));
+                suprimento.setUnidade(rs.getString(4));
                 lista.add(suprimento);
-
             }
             return lista;
 

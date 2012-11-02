@@ -66,7 +66,7 @@ public class ProdutoDao {
                 Produto produto = new Produto();
                 produto.setCodigo(rs.getInt(1));
                 produto.setDescricao(rs.getString(2));
-                produto.setTaxaDeProducao(rs.getFloat(3));
+                produto.setTaxaDeProducao(rs.getDouble(3));
                 produto.setUnidade(rs.getString(4));
                 produto.setSetup(rs.getInt(5));
 

@@ -6,7 +6,6 @@ package dao;
 
 import conexoes.GerandoConexao;
 import entidades.PrevisaoVendas;
-import entidades.Produto;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -22,16 +21,16 @@ import javax.swing.JOptionPane;
  * @author Rafael
  */
 public class PrevisaoDeVendasDao {
-    
+
     private Connection con;
-    
-    public PrevisaoDeVendasDao(){
+
+    public PrevisaoDeVendasDao() {
         this.con = GerandoConexao.getConexao();
     }
-    
-    public void salvar(PrevisaoVendas previsao){
 
-          try {
+    public void salvar(PrevisaoVendas previsao) {
+
+        try {
             Connection conn = null;
             PreparedStatement ps = null;
 
@@ -40,23 +39,22 @@ public class PrevisaoDeVendasDao {
             ps = conn.prepareStatement(sql);
             ps.setDate(1, new java.sql.Date(previsao.getDataDemanda().getTime()));
             ps.setInt(2, previsao.getProduto().getCodigo());
-            ps.setFloat(3, previsao.getQuantidade());
+            ps.setDouble(3, previsao.getQuantidade());
             ps.setString(4, previsao.getUnidade());
             ps.setInt(5, previsao.getOrdem());
             ps.executeUpdate();
             GerandoConexao.fecharConexao(conn, ps);
             JOptionPane.showMessageDialog(null, "Produto foi cadastrado com sucesso");
         } catch (SQLException ex) {
-              System.out.println("Erro ao Salvar Demanda " + ex);
+            System.out.println("Erro ao Salvar Demanda " + ex);
         }
-    
+
     }
-    
-    public void atualizar(PrevisaoVendas previsao){
-    
+
+    public void atualizar(PrevisaoVendas previsao) {
     }
-    
-    public List listar(){
+
+    public List listar() {
         PreparedStatement ps = null;
         Connection conn = null;
         ResultSet rs = null;
@@ -64,9 +62,12 @@ public class PrevisaoDeVendasDao {
         try {
 
             conn = this.con;
-            // codigo, data, produto_codigo quantidade, unidade, ordem
-            String sql = "select * from previsao order by codigo";
-            ps = conn.prepareStatement(sql);
+
+            String sql = "select previsao.codigo, previsao.data, previsao.produto_codigo, previsao.quantidade, previsao.unidade, previsao.ordem, (previsao.quantidade /produto.TaxaProducao) "
+                    + "from previsao, produto where produto_codigo = produto.codigo";
+
+            ps = conn.prepareStatement(sql); 
+          
             rs = ps.executeQuery();
             listP = new ArrayList<>();
             while (rs.next()) {
@@ -74,10 +75,11 @@ public class PrevisaoDeVendasDao {
                 previsao.setCodigo(rs.getInt(1));
                 previsao.setDataDemanda(new java.util.Date(rs.getDate(2).getTime()));
                 previsao.setProduto(new ProdutoDao().listarProdutoPorId(rs.getInt(3)));
-                previsao.setQuantidade(rs.getFloat(4));
+                previsao.setQuantidade(rs.getDouble(4));
                 previsao.setUnidade(rs.getString(5));
                 previsao.setOrdem(rs.getInt(6));
-                
+                previsao.setCarregamento(rs.getDouble(7));
+
                 listP.add(previsao);
             }
             return listP;
@@ -89,8 +91,8 @@ public class PrevisaoDeVendasDao {
         }
         return listP;
     }
-        
-    public void excluir(PrevisaoVendas previsao){
+
+    public void excluir(PrevisaoVendas previsao) {
         try {
             Connection conn;
             PreparedStatement ps;
@@ -106,9 +108,9 @@ public class PrevisaoDeVendasDao {
             Logger.getLogger(PrevisaoDeVendasDao.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    public PrevisaoVendas listarPrevisaoPorCodigo(Integer codigo){
-        
+
+    public PrevisaoVendas listarPrevisaoPorCodigo(Integer codigo) {
+
         PreparedStatement ps = null;
         Connection conn = null;
         ResultSet rs = null;
@@ -127,7 +129,7 @@ public class PrevisaoDeVendasDao {
                 previsao.setCodigo(rs.getInt(1));
                 previsao.setDataDemanda(rs.getDate(2));
                 previsao.setProduto(new ProdutoDao().listarProdutoPorId(rs.getInt(3)));
-                previsao.setQuantidade(rs.getFloat(4));
+                previsao.setQuantidade(rs.getDouble(4));
                 previsao.setUnidade(rs.getString(5));
                 previsao.setOrdem(rs.getInt(6));
             }
@@ -139,6 +141,35 @@ public class PrevisaoDeVendasDao {
             GerandoConexao.fecharConexao(conn, ps);
         }
         return previsao;
+    } 
     
+    public List calculandoCarregamento(){
+        PreparedStatement ps = null;
+        Connection conn = null;
+        ResultSet rs = null;
+        List<PrevisaoVendas> listCarreg = null;
+        try {
+
+            conn = this.con;
+
+            String sql = "select (previsao.quantidade /produto.TaxaProducao) "
+                    + "from previsao, produto where produto_codigo = produto.codigo";
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            listCarreg = new ArrayList<>();
+            while (rs.next()) {
+                PrevisaoVendas previsao = new PrevisaoVendas();
+                previsao.setCarregamento(rs.getDouble(1));
+                listCarreg.add(previsao);
+            }
+            return listCarreg;
+
+        } catch (SQLException ex) {
+            System.out.println("Erro ao listar Carregamento " + ex);
+        } finally {
+            GerandoConexao.fecharConexao(conn, ps);
+        }
+        return listCarreg;
     }
+
 }

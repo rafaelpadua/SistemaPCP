@@ -79,7 +79,7 @@ public class CadastroDisponibilidadeDao {
         return list;
     }
 
-    public List listarPorMes() {
+    public List listarPorMes(String mes) {
 
         PreparedStatement ps = null;
         Connection conn = null;
@@ -89,8 +89,9 @@ public class CadastroDisponibilidadeDao {
 
             conn = this.con;
 
-            String sql = "select disponibilidade.codigo, disponibilidade.mes, disponibilidade.ano, (disponibilidade.dia * disponibilidade.hora) from disponibilidade order by disponibilidade.ano, disponibilidade.mes ";
+            String sql = "select disponibilidade.codigo, disponibilidade.mes, disponibilidade.ano, (disponibilidade.dia * disponibilidade.hora) from disponibilidade where mes = ? ";
             ps = conn.prepareStatement(sql);
+            ps.setString(1, mes);
             rs = ps.executeQuery();
             listaDispo = new ArrayList<>();
             while (rs.next()) {
@@ -110,7 +111,7 @@ public class CadastroDisponibilidadeDao {
         }
         return listaDispo;
     }
-
+    
     public void atualizar(Disponibilidade disponib) {
         try {
             Connection conn = null;

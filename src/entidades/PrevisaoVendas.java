@@ -14,10 +14,11 @@ public class PrevisaoVendas {
     
     private Integer codigo;
     private Produto produto;
-    private Float  quantidade;
+    private Double  quantidade;
     private Date dataDemanda;
     private Integer ordem;
     private String unidade;
+    private Double carregamento;
 
     public Integer getCodigo() {
         return codigo;
@@ -51,11 +52,11 @@ public class PrevisaoVendas {
         this.produto = produto;
     }
 
-    public Float getQuantidade() {
+    public Double getQuantidade() {
         return quantidade;
     }
 
-    public void setQuantidade(Float quantidade) {
+    public void setQuantidade(Double quantidade) {
         this.quantidade = quantidade;
     }
 
@@ -66,7 +67,17 @@ public class PrevisaoVendas {
     public void setUnidade(String unidade) {
         this.unidade = unidade;
     }
+
+    public Double getCarregamento() {
+        return carregamento;
+    }
+
+    public void setCarregamento(Double carregamento) {
+        this.carregamento = carregamento;
+    }
     
+    
+     
      @Override
     public String toString() {
         return getProduto().getDescricao();

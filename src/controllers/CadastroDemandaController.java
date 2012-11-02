@@ -44,9 +44,7 @@ public class CadastroDemandaController {
         return CadastroDeProdutoController.getInstancia().listarProdutos();
 
     }
-
     
-
     public void salvarDemandas() {
 
         if (view.sincronizarModelComView(model)) {
@@ -66,7 +64,6 @@ public class CadastroDemandaController {
         return lista;
     }
     
-    
     public void excluirServico(){
 
         view.sincronizarModelComView(model);
@@ -74,4 +71,10 @@ public class CadastroDemandaController {
             new PrevisaoDeVendasDao().excluir(model);
         }
     }    
+    
+    public List<PrevisaoVendas> listarCarregamentos(){
+        
+        List<PrevisaoVendas> lista = new PrevisaoDeVendasDao().calculandoCarregamento();
+        return lista;
+    }
 }
