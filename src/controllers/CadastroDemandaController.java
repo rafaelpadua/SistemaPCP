@@ -5,7 +5,7 @@
 package controllers;
 
 import java.util.List;
-import views.PrevisaoDeVendas;
+import views.PrevisaoDeVendasView;
 import entidades.Produto;
 import entidades.PrevisaoVendas;
 import dao.PrevisaoDeVendasDao;
@@ -16,7 +16,7 @@ import dao.PrevisaoDeVendasDao;
 public class CadastroDemandaController {
     
     private static CadastroDemandaController instancia = new CadastroDemandaController();
-    private PrevisaoDeVendas view;
+    private PrevisaoDeVendasView view;
     private PrevisaoVendas model = new PrevisaoVendas();
 
     public CadastroDemandaController() {
@@ -32,7 +32,7 @@ public class CadastroDemandaController {
     public void exibirInterfaceGrafica() {
 
         if (view == null) {
-            view = new PrevisaoDeVendas(this);
+            view = new PrevisaoDeVendasView(this);
         }
 
         view.setVisible(true);

@@ -22,7 +22,7 @@ public class GerandoConexao {
             Connection con = null;
 
             try {
-                con = DriverManager.getConnection("jdbc:mysql://localhost/projeto", "root", "120284");
+                con = DriverManager.getConnection("jdbc:mysql://localhost/sistemapcp", "root", "120284");
             } catch (SQLException exception) {
                 System.out.println("Deu pau na conexao");
             }

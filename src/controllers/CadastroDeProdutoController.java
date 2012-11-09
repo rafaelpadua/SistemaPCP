@@ -6,14 +6,14 @@ package controllers;
 
 import dao.ProdutoDao;
 import entidades.Produto;
-import views.CadastroProduto;
+import views.CadastroProdutoView;
 import java.util.List;
 
 
 public class CadastroDeProdutoController {
     
     private static CadastroDeProdutoController instancia = new CadastroDeProdutoController();
-    private CadastroProduto view;
+    private CadastroProdutoView view;
     private Produto produto = new Produto();  
     
     public CadastroDeProdutoController() {
@@ -33,7 +33,7 @@ public class CadastroDeProdutoController {
     public void exibirInterfaceGrafica(){
 
         if(view == null){
-            view = new CadastroProduto(this);
+            view = new CadastroProdutoView(this);
         }
         view.setVisible(true);
     }

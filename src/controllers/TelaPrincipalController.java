@@ -4,7 +4,7 @@
  */
 package controllers;
 
-import views.TelaPrincipal;
+import views.TelaPrincipalView;
 
 /**
  *
@@ -13,7 +13,7 @@ import views.TelaPrincipal;
 public class TelaPrincipalController {
     
     private static TelaPrincipalController instancia = new TelaPrincipalController();
-    private TelaPrincipal view;
+    private TelaPrincipalView view;
     
     public static TelaPrincipalController getInstancia(){
     return instancia;
@@ -22,7 +22,7 @@ public class TelaPrincipalController {
     public void exibirInterfaceGrafica(){
 
         if(view == null){            
-            view = new TelaPrincipal(this);
+            view = new TelaPrincipalView(this);
         }
         view.setVisible(true);
     }
@@ -43,4 +43,11 @@ public class TelaPrincipalController {
         SuprimentoController.getInstancia().exibirInterfaceGrafica();
     }
     
+    public void exibirSetupView(){
+        SetupController.getInstancia().exibirInterfaceGrafica();
+    }
+    
+    public void exibirPcpView(){
+        PcpController.getInstancia().exibirInterfaceGrafica();
+    }
 }

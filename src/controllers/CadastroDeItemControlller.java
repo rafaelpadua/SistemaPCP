@@ -5,14 +5,14 @@
 package controllers;
 
 import dao.ItemDao;
-import views.CadastroItem;
+import views.CadastroItemView;
 import entidades.Item;
 import java.util.List;
 
 public class CadastroDeItemControlller {
 
     private static CadastroDeItemControlller instancia = new CadastroDeItemControlller();
-    private CadastroItem view;
+    private CadastroItemView view;
     private Item item = new Item();
 
     public CadastroDeItemControlller() {
@@ -25,7 +25,7 @@ public class CadastroDeItemControlller {
     public void exibirInterfaceGrafica(){
 
         if(view == null){
-            view = new CadastroItem(this);
+            view = new CadastroItemView(this);
         }
         view.setVisible(true);
     }
