@@ -6,7 +6,6 @@ package dao;
 
 import conexoes.GerandoConexao;
 import entidades.ItemProduto;
-import entidades.Produto;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

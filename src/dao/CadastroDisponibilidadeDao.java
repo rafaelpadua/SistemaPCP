@@ -89,7 +89,7 @@ public class CadastroDisponibilidadeDao {
 
             conn = this.con;
 
-            String sql = "select disponibilidade.codigo, disponibilidade.mes, disponibilidade.ano, (disponibilidade.dia * disponibilidade.hora) from disponibilidade where mes = ? ";
+            String sql = "select disponibilidade.codigo, disponibilidade.mes, disponibilidade.ano, disponibilidade.dia, (disponibilidade.dia * disponibilidade.hora) from disponibilidade where mes = ? ";
             ps = conn.prepareStatement(sql);
             ps.setString(1, mes);
             rs = ps.executeQuery();
@@ -99,7 +99,8 @@ public class CadastroDisponibilidadeDao {
                 dis.setCodigo(rs.getInt(1));
                 dis.setMes(rs.getString(2));
                 dis.setAno(rs.getInt(3));
-                dis.setTotal(rs.getInt(4));
+                dis.setDia(rs.getInt(4));
+                dis.setTotal(rs.getInt(5));
                 listaDispo.add(dis);
             }
             return listaDispo;

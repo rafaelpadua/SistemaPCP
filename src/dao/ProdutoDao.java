@@ -33,13 +33,12 @@ public class ProdutoDao {
             Connection conn = null;
             PreparedStatement ps = null;
 
-            String sql = "insert into produto (descricao, taxaProducao, unidade, setup) values (?, ?, ?, ?)";
+            String sql = "insert into produto (descricao, taxaProducao, unidade) values (?, ?, ?)";
             conn = this.con;
             ps = conn.prepareStatement(sql);
             ps.setString(1, produto.getDescricao());
             ps.setString(2, produto.getTaxaDeProducao().toString());
             ps.setString(3, produto.getUnidade());
-            ps.setString(4, produto.getSetup().toString());
             ps.executeUpdate();
             GerandoConexao.fecharConexao(conn, ps);
             JOptionPane.showMessageDialog(null, "Produto - " + produto.getDescricao() + " - foi cadastrado com sucesso");
@@ -68,9 +67,6 @@ public class ProdutoDao {
                 produto.setDescricao(rs.getString(2));
                 produto.setTaxaDeProducao(rs.getDouble(3));
                 produto.setUnidade(rs.getString(4));
-                produto.setSetup(rs.getInt(5));
-
-
                 list.add(produto);
             }
             return list;
@@ -144,14 +140,13 @@ public class ProdutoDao {
             Connection conn = null;
             PreparedStatement ps = null;
 
-            String sql = "update produto set descricao = ?, taxaproducao = ?, unidade = ?, setup = ? where codigo = ?";
+            String sql = "update produto set descricao = ?, taxaproducao = ?, unidade = ? where codigo = ?";
             conn = this.con;
             ps = conn.prepareStatement(sql);
             ps.setString(1, produto.getDescricao());
             ps.setString(2, produto.getTaxaDeProducao().toString());
             ps.setString(3, produto.getUnidade());
-            ps.setString(4, produto.getSetup().toString());
-            ps.setString(5, produto.getCodigo().toString());
+            ps.setString(4, produto.getCodigo().toString());
             ps.executeUpdate();
             GerandoConexao.fecharConexao(conn, ps);
             JOptionPane.showMessageDialog(null, "Produto - " + produto.getDescricao() + " - foi atualizado com sucesso  " + produto.getCodigo());

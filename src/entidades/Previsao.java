@@ -10,15 +10,31 @@ import java.util.Date;
  *
  * @author Rafael
  */
-public class PrevisaoVendas {
+public class Previsao {
     
     private Integer codigo;
+    private String mes;
+    private Integer ano;
     private Produto produto;
     private Double  quantidade;
-    private Date dataDemanda;
     private Integer ordem;
-    private String unidade;
     private Double carregamento;
+
+    public Integer getAno() {
+        return ano;
+    }
+
+    public void setAno(Integer ano) {
+        this.ano = ano;
+    }
+
+    public Double getCarregamento() {
+        return carregamento;
+    }
+
+    public void setCarregamento(Double carregamento) {
+        this.carregamento = carregamento;
+    }
 
     public Integer getCodigo() {
         return codigo;
@@ -28,12 +44,12 @@ public class PrevisaoVendas {
         this.codigo = codigo;
     }
 
-    public Date getDataDemanda() {
-        return dataDemanda;
+    public String getMes() {
+        return mes;
     }
 
-    public void setDataDemanda(Date dataDemanda) {
-        this.dataDemanda = dataDemanda;
+    public void setMes(String mes) {
+        this.mes = mes;
     }
 
     public Integer getOrdem() {
@@ -59,25 +75,7 @@ public class PrevisaoVendas {
     public void setQuantidade(Double quantidade) {
         this.quantidade = quantidade;
     }
-
-    public String getUnidade() {
-        return unidade;
-    }
-
-    public void setUnidade(String unidade) {
-        this.unidade = unidade;
-    }
-
-    public Double getCarregamento() {
-        return carregamento;
-    }
-
-    public void setCarregamento(Double carregamento) {
-        this.carregamento = carregamento;
-    }
     
-    
-     
      @Override
     public String toString() {
         return getProduto().getDescricao();

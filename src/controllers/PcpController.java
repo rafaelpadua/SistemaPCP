@@ -4,10 +4,13 @@
  */
 package controllers;
 
+import dao.CadastroDisponibilidadeDao;
+import dao.PrevisaoDao;
+import entidades.Disponibilidade;
 import entidades.Pcp;
+import entidades.Previsao;
 import java.util.List;
 import views.PcpView;
-import views.PlanejamentoView;
 
 /**
  *
@@ -17,7 +20,7 @@ public class PcpController {
 
     private static PcpController instancia = new PcpController();
     private PcpView view;
-    private Pcp pcp = new Pcp();
+    private Pcp pcp;
 
     public PcpController() {
     }
@@ -36,5 +39,15 @@ public class PcpController {
 
     public List calculandoCarregamento() {
         return null;
+    }
+    
+    public List listarDisponibilidadeporMes(String mes){
+        List<Disponibilidade>lista = new CadastroDisponibilidadeDao().listarPorMes(mes);
+        return  lista;
+    }
+    
+    public List listarPrevisoes(String mes){
+        List<Previsao> lista = new PrevisaoDao().listarPrevisaoPorMes(mes);
+        return lista;
     }
 }

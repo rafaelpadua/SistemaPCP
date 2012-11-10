@@ -4,32 +4,30 @@
  */
 package views;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.text.MaskFormatter;
 import controllers.CadastroDemandaController;
-import entidades.PrevisaoVendas;
+import entidades.Previsao;
 import entidades.Produto;
-import javax.swing.JFormattedTextField;
 
 /**
  *
  * @author Rafael
  */
-public class PrevisaoDeVendasView extends javax.swing.JFrame {
-
-    private MaskFormatter formatoData;
+public final class PrevisaoView extends javax.swing.JFrame {
+    
     private CadastroDemandaController controller;
-
-    public PrevisaoDeVendasView(CadastroDemandaController controller) {
+    
+    public PrevisaoView(CadastroDemandaController controller) {
         initComponents();
         setLocationRelativeTo(null);
         this.controller = controller;
         bloquearCampos();
+        preencheComboMes();
+        preencheComboProdutos();
+        preencherComboboxAno();
     }
 
     /**
@@ -46,13 +44,8 @@ public class PrevisaoDeVendasView extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        try{     formatoData = new MaskFormatter("##/##/####"); }catch(Exception erro){    JOptionPane.showMessageDialog(null, "Nao foi possivel setar a mascara: " + erro); }
-        txtData = new JFormattedTextField(formatoData);
         txtQuantidade = new javax.swing.JTextField();
-        txtUnidade = new javax.swing.JTextField();
         jComboBoxProduto = new javax.swing.JComboBox();
         jLabel5 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -61,6 +54,10 @@ public class PrevisaoDeVendasView extends javax.swing.JFrame {
         txtCodigo = new javax.swing.JLabel();
         txtTaxa = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jComboBoxMes = new javax.swing.JComboBox();
+        jComboBoxAno = new javax.swing.JComboBox();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tabelaDemandas = new javax.swing.JTable();
@@ -102,16 +99,8 @@ public class PrevisaoDeVendasView extends javax.swing.JFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "DEMANDA", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 1, 14))); // NOI18N
 
-        jLabel1.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
-        jLabel1.setText("Data:");
-
         jLabel2.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
         jLabel2.setText("Produto:");
-
-        jLabel4.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
-        jLabel4.setText("Unidade:");
-
-        txtData.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
 
         txtQuantidade.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtQuantidade.addActionListener(new java.awt.event.ActionListener() {
@@ -119,8 +108,6 @@ public class PrevisaoDeVendasView extends javax.swing.JFrame {
                 txtQuantidadeActionPerformed(evt);
             }
         });
-
-        txtUnidade.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
 
         jComboBoxProduto.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jComboBoxProduto.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -146,7 +133,19 @@ public class PrevisaoDeVendasView extends javax.swing.JFrame {
         txtTaxa.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jLabel8.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
-        jLabel8.setText("Taxa de Produção (horas)");
+        jLabel8.setText("Taxa (horas)");
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel7.setText("Mês:");
+
+        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel9.setText("Ano:");
+
+        jComboBoxMes.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jComboBoxMes.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jComboBoxAno.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jComboBoxAno.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -157,85 +156,108 @@ public class PrevisaoDeVendasView extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1)
                             .addComponent(jLabel5)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel6))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtUnidade, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBoxProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(txtCodigo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtData, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 37, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel8)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(51, 51, 51)
-                                .addComponent(txtTaxa, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
+                            .addComponent(jLabel2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtPrioridade, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jComboBoxProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                                .addComponent(jLabel8)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtTaxa, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(32, 32, 32))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(txtQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtPrioridade, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel7)
+                                    .addComponent(jLabel9))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(37, 37, 37)
+                                        .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(41, 41, 41)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jComboBoxMes, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jComboBoxAno, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                        .addContainerGap())))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(43, 43, 43)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(27, 27, 27)
-                                .addComponent(jLabel1))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGap(21, 21, 21)
-                                .addComponent(txtData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(jComboBoxMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(jComboBoxAno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBoxProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2)
+                    .addComponent(txtTaxa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel2)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jComboBoxProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtTaxa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(28, 28, 28)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(txtQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel4)
-                    .addComponent(txtUnidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtPrioridade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "CADASTRADAS", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 1, 14))); // NOI18N
 
-        tabelaDemandas.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        tabelaDemandas.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         tabelaDemandas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Codigo", "Data", "Produto", "Quantidade", "Unidade", "Prioridade", "Carregamento"
+                "Codigo", "Mes", "Ano", "Produto", "Quantidade", "Prioridade", "Carregamento"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, true, false, false, false, false, true
+                false, false, true, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -258,7 +280,7 @@ public class PrevisaoDeVendasView extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -331,7 +353,7 @@ public class PrevisaoDeVendasView extends javax.swing.JFrame {
                     .addComponent(btEditar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btExcluir, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btSair, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -348,19 +370,20 @@ public class PrevisaoDeVendasView extends javax.swing.JFrame {
                 .addComponent(btExcluir)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btSair)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(9, 9, 9)
+                        .addContainerGap()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
@@ -371,11 +394,11 @@ public class PrevisaoDeVendasView extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         pack();
@@ -384,50 +407,50 @@ public class PrevisaoDeVendasView extends javax.swing.JFrame {
     private void btNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btNovoActionPerformed
         desbloquearCampos();
     }//GEN-LAST:event_btNovoActionPerformed
-
+    
     private void btVisualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVisualizarActionPerformed
         controller.listarDemandas();
         preencheJtable();
         bloquearCampos();
     }//GEN-LAST:event_btVisualizarActionPerformed
-
+    
     private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
         controller.salvarDemandas();
         preencheJtable();
         bloquearCampos();
         limparCampos();
     }//GEN-LAST:event_btSalvarActionPerformed
-
+    
     private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
         desbloquearCampos();
     }//GEN-LAST:event_btEditarActionPerformed
-
+    
     private void btExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirActionPerformed
         controller.excluirServico();
         preencheJtable();
         limparCampos();
     }//GEN-LAST:event_btExcluirActionPerformed
-
+    
     private void tabelaDemandasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaDemandasMouseClicked
         txtCodigo.setText(tabelaDemandas.getValueAt(tabelaDemandas.getSelectedRow(), 0).toString());
-        txtData.setText(tabelaDemandas.getValueAt(tabelaDemandas.getSelectedRow(), 1).toString());
-        jComboBoxProduto.setSelectedItem(tabelaDemandas.getValueAt(tabelaDemandas.getSelectedRow(), 2).toString());
-        txtQuantidade.setText(tabelaDemandas.getValueAt(tabelaDemandas.getSelectedRow(), 3).toString());
-        txtUnidade.setText(tabelaDemandas.getValueAt(tabelaDemandas.getSelectedRow(), 4).toString());
+        jComboBoxMes.setSelectedItem(tabelaDemandas.getValueAt(tabelaDemandas.getSelectedRow(), 1).toString());
+        jComboBoxAno.setSelectedItem(tabelaDemandas.getValueAt(tabelaDemandas.getSelectedRow(), 2).toString());
+        jComboBoxProduto.setSelectedItem(tabelaDemandas.getValueAt(tabelaDemandas.getSelectedRow(), 3).toString());
+        txtQuantidade.setText(tabelaDemandas.getValueAt(tabelaDemandas.getSelectedRow(), 4).toString());
         txtPrioridade.setText(tabelaDemandas.getValueAt(tabelaDemandas.getSelectedRow(), 5).toString());
         bloquearCampos();
-
-
+        
+        
     }//GEN-LAST:event_tabelaDemandasMouseClicked
-
+    
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
         dispose();
     }//GEN-LAST:event_btSairActionPerformed
-
+    
     private void jComboBoxProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxProdutoActionPerformed
         listarTaxadeProdução();
     }//GEN-LAST:event_jComboBoxProdutoActionPerformed
-
+    
     private void txtQuantidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtQuantidadeActionPerformed
     }//GEN-LAST:event_txtQuantidadeActionPerformed
     /**
@@ -440,14 +463,16 @@ public class PrevisaoDeVendasView extends javax.swing.JFrame {
     private javax.swing.JButton btSair;
     private javax.swing.JButton btSalvar;
     private javax.swing.JButton btVisualizar;
+    private javax.swing.JComboBox jComboBoxAno;
+    private javax.swing.JComboBox jComboBoxMes;
     private javax.swing.JComboBox jComboBoxProduto;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -458,15 +483,12 @@ public class PrevisaoDeVendasView extends javax.swing.JFrame {
     private javax.swing.JTable jTable2;
     private javax.swing.JTable tabelaDemandas;
     private javax.swing.JLabel txtCodigo;
-    private javax.swing.JTextField txtData;
     private javax.swing.JTextField txtPrioridade;
     private javax.swing.JTextField txtQuantidade;
     private javax.swing.JTextField txtTaxa;
-    private javax.swing.JTextField txtUnidade;
     // End of variables declaration//GEN-END:variables
 
     public List preencheComboProdutos() {
-
         jComboBoxProduto.removeAllItems();
         List<Produto> lista = controller.listaTiposDeProduto();
         jComboBoxProduto.addItem("Selecione");
@@ -475,7 +497,32 @@ public class PrevisaoDeVendasView extends javax.swing.JFrame {
         }
         return lista;
     }
-
+    
+    public void preencheComboMes() {
+        jComboBoxMes.removeAllItems();
+        jComboBoxMes.addItem("Selecione");
+        jComboBoxMes.addItem("Janeiro");
+        jComboBoxMes.addItem("Fevereiro");
+        jComboBoxMes.addItem("Março");
+        jComboBoxMes.addItem("Abril");
+        jComboBoxMes.addItem("Maio");
+        jComboBoxMes.addItem("Junho");
+        jComboBoxMes.addItem("Julho");
+        jComboBoxMes.addItem("Agosto");
+        jComboBoxMes.addItem("Setembro");
+        jComboBoxMes.addItem("Outubro");
+        jComboBoxMes.addItem("Novembro");
+        jComboBoxMes.addItem("Dezembro");        
+    }
+    
+    public void preencherComboboxAno() {
+        jComboBoxAno.removeAllItems();
+        jComboBoxAno.addItem("Selecione"); 
+        for (int i = 2012; i <=2020; i++){
+        jComboBoxAno.addItem(i);
+        }
+    }
+    
     public void listarTaxadeProdução() {
         List<Produto> lista = controller.listaTiposDeProduto();
         for (Produto obj : lista) {
@@ -484,62 +531,56 @@ public class PrevisaoDeVendasView extends javax.swing.JFrame {
             }
         }
     }
-
+    
     public void bloquearCampos() {
-
-        txtData.setEditable(false);
         jComboBoxProduto.setEditable(false);
         txtQuantidade.setEditable(false);
-        txtUnidade.setEditable(false);
         txtPrioridade.setEditable(false);
     }
-
+    
     public void desbloquearCampos() {
         txtCodigo.setEnabled(true);
-        txtData.setEditable(true);
         jComboBoxProduto.setEditable(true);
         txtQuantidade.setEditable(true);
-        txtUnidade.setEditable(true);
         txtPrioridade.setEditable(true);
     }
-
-    public boolean sincronizarModelComView(PrevisaoVendas model) {
-
+    
+    public boolean sincronizarModelComView(Previsao model) {
+        
         if (!txtCodigo.getText().equals("")) {
             model.setCodigo(Integer.parseInt(txtCodigo.getText()));
         } else {
             model.setCodigo(null);
         }
-
-
-        if (!txtData.getText().equals("")) {
-            model.setDataDemanda(formatarData(txtData.getText()));
+        
+        if (!jComboBoxMes.getSelectedItem().equals("Selecione")) {
+            model.setMes( jComboBoxProduto.getSelectedItem().toString());
         } else {
-            JOptionPane.showMessageDialog(null, "A data é obrigatória");
+            JOptionPane.showMessageDialog(null, "O mes é obrigatório");
             return false;
         }
-
+        
+        if (!jComboBoxAno.getSelectedItem().equals("Selecione")) {
+            model.setAno((Integer)jComboBoxProduto.getSelectedItem());
+        } else {
+            JOptionPane.showMessageDialog(null, "O Ano é obrigatório");
+            return false;
+        }
+        
         if (!jComboBoxProduto.getSelectedItem().equals("Selecione")) {
             model.setProduto((Produto) jComboBoxProduto.getSelectedItem());
         } else {
             JOptionPane.showMessageDialog(null, "O produto é obrigatório");
             return false;
         }
-
+        
         if (!txtQuantidade.getText().equals("")) {
             model.setQuantidade(Double.parseDouble(txtQuantidade.getText()));
         } else {
             JOptionPane.showMessageDialog(null, "O campo quantidade é obrigatório");
             return false;
         }
-
-        if (!txtUnidade.getText().equals("")) {
-            model.setUnidade(txtUnidade.getText());
-        } else {
-            JOptionPane.showMessageDialog(null, "O campo unidade é obrigatório");
-            return false;
-        }
-
+        
         if (!txtPrioridade.getText().equals("")) {
             model.setOrdem(Integer.parseInt(txtPrioridade.getText()));
         } else {
@@ -553,77 +594,60 @@ public class PrevisaoDeVendasView extends javax.swing.JFrame {
      * Preenche as o jtable com os clientes cadastrados
      */
     public void preencheJtable() {
-
-        List<PrevisaoVendas> lista = controller.listarDemandas();
-        List<PrevisaoVendas> listaCarreg = controller.listarCarregamentos();
-
+        
+        List<Previsao> lista = controller.listarDemandas();
+        
         DefaultTableModel modelo = (DefaultTableModel) tabelaDemandas.getModel();
-
+        
         for (int i = (modelo.getRowCount() - 1); i >= 0; --i) {
             modelo.removeRow(i);
         }
-
-        SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
-
-        for (PrevisaoVendas objeto : lista) {
-            modelo.addRow(new Object[]{objeto.getCodigo(), formatador.format(objeto.getDataDemanda()), objeto.getProduto(), objeto.getQuantidade(), objeto.getUnidade(), objeto.getOrdem(), objeto.getCarregamento()});
+        
+        for (Previsao objeto : lista) {
+            modelo.addRow(new Object[]{objeto.getCodigo(), objeto.getMes(), objeto.getAno(), objeto.getProduto(), objeto.getQuantidade(), objeto.getOrdem(), objeto.getCarregamento() + " horas"});
         }
     }
-
-    public void sincronizarViewComModel(PrevisaoVendas model) {
-
+    
+    public void sincronizarViewComModel(Previsao model) {
+        
         if (model.getCodigo() != null) {
             txtCodigo.setText(model.getCodigo().toString());
         }
-
+        
+        if (model.getMes() != null){
+            jComboBoxMes.setSelectedItem(model.getMes());
+        }
+        
+        if (model.getAno() != null){
+            jComboBoxAno.setSelectedItem(model.getAno());
+        }
+        
         if (model.getProduto() != null) {
             jComboBoxProduto.setSelectedItem(model.getProduto());
         }
-
-        if (model.getDataDemanda() != null) {
-            SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
-            txtData.setText(formatador.format(model.getDataDemanda()));
-        }
-
+        
         if (model.getQuantidade() != null) {
             txtQuantidade.setText(model.getQuantidade().toString());
         }
-
-        if (model.getUnidade() != null) {
-            txtUnidade.setText(model.getUnidade());
-        }
-
+        
         if (model.getOrdem() != null) {
             txtPrioridade.setText(model.getOrdem().toString());
         }
     }
-
+    
     public void limparCampos() {
-
+        
         txtCodigo.setText("");
-        txtData.setText("");
         jComboBoxProduto.setSelectedItem("Selecione");
+        jComboBoxMes.setSelectedItem("Selecione");
+        jComboBoxAno.setSelectedItem("Selecione");
         txtQuantidade.setText("");
-        txtUnidade.setText("");
         txtPrioridade.setText("");
     }
-
+    
     @Override
     public void setVisible(boolean b) {
         super.setVisible(b);
         preencheComboProdutos();
-    }
-
-    private Date formatarData(String dataString) {
-
-        SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
-        Date dataFormatada = null;
-        try {
-            dataFormatada = formatador.parse(dataString);
-            return dataFormatada;
-        } catch (ParseException ex) {
-            System.out.println("Erro ao formatar data" + ex);
-        }
-        return dataFormatada;
     }
 }

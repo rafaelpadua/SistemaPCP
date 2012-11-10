@@ -39,8 +39,6 @@ public class CadastroProdutoView extends javax.swing.JFrame {
         txtDescricao = new javax.swing.JTextField();
         txtTaxaProducao = new javax.swing.JTextField();
         txtUnidade = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        txtSetup = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelaCP = new javax.swing.JTable();
@@ -81,26 +79,21 @@ public class CadastroProdutoView extends javax.swing.JFrame {
 
         txtUnidade.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
 
-        jLabel5.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        jLabel5.setText("Setup");
-
-        txtSetup.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "PRODUTOS CADASTRADOS", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 1, 14), new java.awt.Color(0, 0, 0))); // NOI18N
 
         tabelaCP.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Codigo", "Descrição", "Taxa de Produção", "Unidade", "Setup"
+                "Codigo", "Descrição", "Taxa de Produção", "Unidade"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -156,13 +149,9 @@ public class CadastroProdutoView extends javax.swing.JFrame {
                         .addComponent(txtTaxaProducao, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(252, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5))
+                        .addComponent(jLabel4)
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtUnidade, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
-                            .addComponent(txtSetup))
+                        .addComponent(txtUnidade, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
@@ -185,11 +174,7 @@ public class CadastroProdutoView extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel4)
                     .addComponent(txtUnidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(txtSetup, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -412,7 +397,6 @@ public class CadastroProdutoView extends javax.swing.JFrame {
         txtDescricao.setText(tabelaCP.getValueAt(tabelaCP.getSelectedRow(), 1).toString());
         txtTaxaProducao.setText(tabelaCP.getValueAt(tabelaCP.getSelectedRow(), 2).toString());
         txtUnidade.setText(tabelaCP.getValueAt(tabelaCP.getSelectedRow(), 3).toString());
-        txtSetup.setText(tabelaCP.getValueAt(tabelaCP.getSelectedRow(), 4).toString());
         bloquearCampos();
     }//GEN-LAST:event_tabelaCPMouseClicked
 
@@ -437,7 +421,6 @@ public class CadastroProdutoView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -447,7 +430,6 @@ public class CadastroProdutoView extends javax.swing.JFrame {
     private javax.swing.JTable tabelaCP;
     private javax.swing.JTextField txtCodigo;
     private javax.swing.JTextField txtDescricao;
-    private javax.swing.JTextField txtSetup;
     private javax.swing.JTextField txtTaxaProducao;
     private javax.swing.JTextField txtUnidade;
     // End of variables declaration//GEN-END:variables
@@ -477,12 +459,6 @@ public class CadastroProdutoView extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(null, "A unidade é obrigatório");
         }
-
-        if (!txtSetup.getText().equals("")) {
-            produto.setSetup(Integer.parseInt(txtSetup.getText()));
-        } else {
-            JOptionPane.showMessageDialog(null, "O Setuo é obrigatório");
-        }
     }
 
     /**
@@ -494,7 +470,6 @@ public class CadastroProdutoView extends javax.swing.JFrame {
         txtDescricao.setEditable(false);
         txtTaxaProducao.setEditable(false);
         txtUnidade.setEditable(false);
-        txtSetup.setEditable(false);
     }
 
     /**
@@ -506,31 +481,21 @@ public class CadastroProdutoView extends javax.swing.JFrame {
         txtDescricao.setEditable(true);
         txtTaxaProducao.setEditable(true);
         txtUnidade.setEditable(true);
-        txtSetup.setEditable(true);
     }
 
     /**
      * Preenche as o jtable com os clientes cadastrados
      */
     public void preencheJtable() {
-
-        tabelaCP.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-        tabelaCP.getColumn("Codigo").setPreferredWidth(50);
-        tabelaCP.getColumn("Descrição").setPreferredWidth(205);
-        tabelaCP.getColumn("Taxa de Produção").setPreferredWidth(120);
-        tabelaCP.getColumn("Unidade").setPreferredWidth(80);
-        tabelaCP.getColumn("Setup").setPreferredWidth(50);
-
-
+        
         List<Produto> lista = controller.listarProdutos();
         DefaultTableModel modelo = (DefaultTableModel) tabelaCP.getModel();
 
         for (int i = (modelo.getRowCount() - 1); i >= 0; --i) {
             modelo.removeRow(i);
         }
-
         for (Produto objeto : lista) {          
-            modelo.addRow(new Object[]{objeto.getCodigo(), objeto.getDescricao(), String.format("%.2f", objeto.getTaxaDeProducao()), objeto.getUnidade(), objeto.getSetup()});
+            modelo.addRow(new Object[]{objeto.getCodigo(), objeto.getDescricao(), String.format("%.2f", objeto.getTaxaDeProducao()), objeto.getUnidade()});
         }
     }
 
@@ -538,11 +503,9 @@ public class CadastroProdutoView extends javax.swing.JFrame {
      * Limpa os campos do formulário
      */
     public void limparCampos() {
-
         txtCodigo.setText("");
         txtDescricao.setText("");
         txtTaxaProducao.setText("");
         txtUnidade.setText("");
-        txtSetup.setText("");
     }
 }

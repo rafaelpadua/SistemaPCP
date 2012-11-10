@@ -15,8 +15,7 @@ public class Produto {
     private String descricao;
     private Double TaxaDeProducao;
     private String unidade;
-    private Integer  setup;
-
+   
     public Double getTaxaDeProducao() {
         return TaxaDeProducao;
     }
@@ -39,14 +38,6 @@ public class Produto {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
-    }
-
-    public Integer getSetup() {
-        return setup;
-    }
-
-    public void setSetup(Integer setup) {
-        this.setup = setup;
     }
 
     public String getUnidade() {

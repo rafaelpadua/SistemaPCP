@@ -4,8 +4,6 @@
  */
 package entidades;
 
-import java.sql.Time;
-
 /**
  *
  * @author Rafael
@@ -19,6 +17,10 @@ public class Disponibilidade {
     private Integer horas;
     private String observacao;
     private Integer total;
+    
+    public Integer retornaCalculo() {
+        return this.total = (dia * horas);
+    }
 
     public Integer getCodigo() {
         return codigo;

@@ -5,19 +5,20 @@
 package controllers;
 
 import java.util.List;
-import views.PrevisaoDeVendasView;
+import views.PrevisaoView;
 import entidades.Produto;
-import entidades.PrevisaoVendas;
-import dao.PrevisaoDeVendasDao;
+import entidades.Previsao;
+import dao.PrevisaoDao;
+
 /**
  *
  * @author Rafael
  */
 public class CadastroDemandaController {
-    
+
     private static CadastroDemandaController instancia = new CadastroDemandaController();
-    private PrevisaoDeVendasView view;
-    private PrevisaoVendas model = new PrevisaoVendas();
+    private PrevisaoView view;
+    private Previsao model = new Previsao();
 
     public CadastroDemandaController() {
     }
@@ -32,7 +33,7 @@ public class CadastroDemandaController {
     public void exibirInterfaceGrafica() {
 
         if (view == null) {
-            view = new PrevisaoDeVendasView(this);
+            view = new PrevisaoView(this);
         }
 
         view.setVisible(true);
@@ -44,37 +45,31 @@ public class CadastroDemandaController {
         return CadastroDeProdutoController.getInstancia().listarProdutos();
 
     }
-    
+
     public void salvarDemandas() {
 
         if (view.sincronizarModelComView(model)) {
 
             if (model.getCodigo() == null) {
-                new PrevisaoDeVendasDao().salvar(model);
+                new PrevisaoDao().salvar(model);
             } else {
-                new PrevisaoDeVendasDao().atualizar(model);
+                new PrevisaoDao().atualizar(model);
             }
         }
 
     }
 
-    public List<PrevisaoVendas> listarDemandas(){
-        
-        List<PrevisaoVendas> lista = new PrevisaoDeVendasDao().listar();
+    public List<Previsao> listarDemandas() {
+
+        List<Previsao> lista = new PrevisaoDao().listar();
         return lista;
     }
-    
-    public void excluirServico(){
+
+    public void excluirServico() {
 
         view.sincronizarModelComView(model);
-        if(model.getCodigo() != null){
-            new PrevisaoDeVendasDao().excluir(model);
+        if (model.getCodigo() != null) {
+            new PrevisaoDao().excluir(model);
         }
-    }    
-    
-    public List<PrevisaoVendas> listarCarregamentos(){
-        
-        List<PrevisaoVendas> lista = new PrevisaoDeVendasDao().calculandoCarregamento();
-        return lista;
     }
 }
