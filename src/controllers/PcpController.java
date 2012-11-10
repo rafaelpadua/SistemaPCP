@@ -10,7 +10,7 @@ import entidades.Disponibilidade;
 import entidades.Pcp;
 import entidades.Previsao;
 import java.util.List;
-import views.PcpView;
+import views.PCPView;
 
 /**
  *
@@ -19,7 +19,7 @@ import views.PcpView;
 public class PcpController {
 
     private static PcpController instancia = new PcpController();
-    private PcpView view;
+    private PCPView view;
     private Pcp pcp;
 
     public PcpController() {
@@ -32,7 +32,7 @@ public class PcpController {
     public void exibirInterfaceGrafica() {
 
         if (view == null) {
-            view = new PcpView(this);
+            view = new PCPView(this);
         }
         view.setVisible(true);
     }

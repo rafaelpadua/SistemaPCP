@@ -7,7 +7,6 @@ package views;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.text.MaskFormatter;
 import controllers.CadastroDemandaController;
 import entidades.Previsao;
 import entidades.Produto;
