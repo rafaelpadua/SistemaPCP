@@ -9,7 +9,6 @@ import dao.ProdutoDao;
 import entidades.Produto;
 import entidades.Setup;
 import java.util.List;
-import views.PlanejamentoView;
 import views.SetupView;
 
 /**

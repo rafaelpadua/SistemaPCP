@@ -67,9 +67,9 @@ public class CadastroDisponibilidadeController {
         return lista;
     }
     
-    public List CalculandoDisponibilidadePorMes(String mes){
+    public Disponibilidade CalculandoDisponibilidadePorMes(String mes){
     
-        List<Disponibilidade> disponivel =  new CadastroDisponibilidadeDao().listarPorMes(mes);
-        return disponivel;     
+        Disponibilidade disponivel =  new CadastroDisponibilidadeDao().listarPorMes(mes);
+        return disponivel;
     }
 }

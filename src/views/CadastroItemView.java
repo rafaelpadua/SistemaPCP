@@ -42,11 +42,11 @@ public class CadastroItemView extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        txtCodigo = new javax.swing.JTextField();
         txtDescricao = new javax.swing.JTextField();
         txtUnidade = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         tabelaCI = new javax.swing.JTable();
+        txtCodigo = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         btNovo = new javax.swing.JButton();
         btVisualizar = new javax.swing.JButton();
@@ -81,8 +81,6 @@ public class CadastroItemView extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel4.setText("Unidade:");
 
-        txtCodigo.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-
         txtDescricao.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
 
         txtUnidade.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
@@ -105,6 +103,8 @@ public class CadastroItemView extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(tabelaCI);
 
+        txtCodigo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -120,8 +120,8 @@ public class CadastroItemView extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtUnidade, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 519, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 519, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jScrollPane2))
                 .addContainerGap())
@@ -129,11 +129,11 @@ public class CadastroItemView extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
+                .addGap(28, 28, 28)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31)
+                    .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(34, 34, 34)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txtDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -328,7 +328,7 @@ public class CadastroItemView extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable tabelaCI;
-    private javax.swing.JTextField txtCodigo;
+    private javax.swing.JLabel txtCodigo;
     private javax.swing.JTextField txtDescricao;
     private javax.swing.JTextField txtUnidade;
     // End of variables declaration//GEN-END:variables
@@ -358,7 +358,7 @@ public class CadastroItemView extends javax.swing.JFrame {
      */
     public void bloquearCampos() {
 
-        txtCodigo.setEditable(false);
+        txtCodigo.setEnabled(false);
         txtDescricao.setEditable(false);
         txtUnidade.setEditable(false);
     }
@@ -368,7 +368,7 @@ public class CadastroItemView extends javax.swing.JFrame {
      */
     public void desbloquearCampos() {
 
-        txtCodigo.setEditable(true);
+        txtCodigo.setEnabled(true);
         txtDescricao.setEditable(true);
         txtUnidade.setEditable(true);
     }

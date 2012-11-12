@@ -550,17 +550,17 @@ public class DisponibilidadeView extends javax.swing.JFrame {
 
     public void preencheTabelaFiltro(String mes) {
 
-        List<Disponibilidade> listaFiltro = controller.CalculandoDisponibilidadePorMes(mes);
+        Disponibilidade listaFiltro = controller.CalculandoDisponibilidadePorMes(mes);
 
         DefaultTableModel modeloFiltro = (DefaultTableModel) tabelaFiltar.getModel();
 
         for (int i = (modeloFiltro.getRowCount() - 1); i >= 0; --i) {
             modeloFiltro.removeRow(i);
         }
-
-        for (Disponibilidade disp : listaFiltro) {
-            modeloFiltro.addRow(new Object[]{disp.getCodigo(), disp.getMes(), disp.getAno(), disp.getTotal() + " horas" });
-        }
+        
+  
+            modeloFiltro.addRow(new Object[]{listaFiltro.getCodigo(), listaFiltro.getMes(), listaFiltro.getAno(), listaFiltro.getTotal() + " horas" });
+        
     }
 
     public void listarTabelaDisponibilidade() {

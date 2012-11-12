@@ -8,7 +8,6 @@ import controllers.SetupController;
 import entidades.Produto;
 import entidades.Setup;
 import java.util.List;
-import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -17,7 +16,7 @@ import javax.swing.table.DefaultTableModel;
  * @author Rafael
  */
 public class SetupView extends javax.swing.JFrame {
-    
+
     private SetupController controller;
     private Setup setup;
 
@@ -29,6 +28,7 @@ public class SetupView extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         this.controller = controller;
         preencherComboboxProduto();
+        bloquearCampos();
     }
 
     /**
@@ -50,12 +50,12 @@ public class SetupView extends javax.swing.JFrame {
         jComboBoxProdutoDois = new javax.swing.JComboBox();
         txtHoras = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        btNovo = new javax.swing.JButton();
+        btSalvar = new javax.swing.JButton();
+        btVisualizar = new javax.swing.JButton();
+        btEditar = new javax.swing.JButton();
+        btExcluir = new javax.swing.JButton();
+        btSair = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tabelaSetup = new javax.swing.JTable();
@@ -135,27 +135,42 @@ public class SetupView extends javax.swing.JFrame {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
-        jButton1.setText("Novo");
-
-        jButton2.setText("Salvar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btNovo.setText("Novo");
+        btNovo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btNovoActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Visualizar");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btSalvar.setText("Salvar");
+        btSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btSalvarActionPerformed(evt);
             }
         });
 
-        jButton4.setText("Editar");
+        btVisualizar.setText("Visualizar");
+        btVisualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btVisualizarActionPerformed(evt);
+            }
+        });
 
-        jButton5.setText("Excluir");
+        btEditar.setText("Editar");
+        btEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btEditarActionPerformed(evt);
+            }
+        });
 
-        jButton6.setText("Sair");
+        btExcluir.setText("Excluir");
+
+        btSair.setText("Sair");
+        btSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSairActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -164,29 +179,29 @@ public class SetupView extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btVisualizar, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
+                    .addComponent(btSalvar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btNovo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btEditar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btExcluir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btSair, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(33, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton1)
+                .addComponent(btNovo)
                 .addGap(59, 59, 59)
-                .addComponent(jButton2)
+                .addComponent(btSalvar)
                 .addGap(64, 64, 64)
-                .addComponent(jButton3)
+                .addComponent(btVisualizar)
                 .addGap(65, 65, 65)
-                .addComponent(jButton4)
+                .addComponent(btEditar)
                 .addGap(64, 64, 64)
-                .addComponent(jButton5)
+                .addComponent(btExcluir)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton6)
+                .addComponent(btSair)
                 .addGap(24, 24, 24))
         );
 
@@ -203,6 +218,11 @@ public class SetupView extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Título 4"
             }
         ));
+        tabelaSetup.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelaSetupMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tabelaSetup);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -251,25 +271,44 @@ public class SetupView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
         desbloquearCampos();
         controller.salvar();
         preencheJtable();
         bloquearCampos();
-    }//GEN-LAST:event_jButton2ActionPerformed
+        limparCampos();
+    }//GEN-LAST:event_btSalvarActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btVisualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVisualizarActionPerformed
         controller.listarSetupCadastrado();
         preencheJtable();
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btVisualizarActionPerformed
 
+    private void btNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btNovoActionPerformed
+        limparCampos();
+        desbloquearCampos();
+    }//GEN-LAST:event_btNovoActionPerformed
+
+    private void tabelaSetupMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaSetupMouseClicked
+        jComboBoxProdutoUm.setSelectedItem(tabelaSetup.getValueAt(tabelaSetup.getSelectedRow(), 1).toString());
+        jComboBoxProdutoDois.setSelectedItem(tabelaSetup.getValueAt(tabelaSetup.getSelectedRow(), 2));
+        txtHoras.setText(tabelaSetup.getValueAt(tabelaSetup.getSelectedRow(), 3).toString());
+    }//GEN-LAST:event_tabelaSetupMouseClicked
+
+    private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
+        desbloquearCampos();
+    }//GEN-LAST:event_btEditarActionPerformed
+
+    private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
+        dispose();
+    }//GEN-LAST:event_btSairActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
+    private javax.swing.JButton btEditar;
+    private javax.swing.JButton btExcluir;
+    private javax.swing.JButton btNovo;
+    private javax.swing.JButton btSair;
+    private javax.swing.JButton btSalvar;
+    private javax.swing.JButton btVisualizar;
     private javax.swing.JComboBox jComboBoxProdutoDois;
     private javax.swing.JComboBox jComboBoxProdutoUm;
     private javax.swing.JLabel jLabel1;
@@ -284,22 +323,22 @@ public class SetupView extends javax.swing.JFrame {
     private javax.swing.JTable tabelaSetup;
     private javax.swing.JTextField txtHoras;
     // End of variables declaration//GEN-END:variables
+
     public void preencherComboboxProduto() {
-    
-    jComboBoxProdutoUm.removeAllItems();
-    jComboBoxProdutoDois.removeAllItems();
+
+        jComboBoxProdutoUm.removeAllItems();
+        jComboBoxProdutoDois.removeAllItems();
         List<Produto> listaProduto = controller.listarProdutosCadastrados();
         jComboBoxProdutoUm.addItem("Selecione");
         jComboBoxProdutoDois.addItem("Selecione");
         for (Produto objeto : listaProduto) {
             jComboBoxProdutoUm.addItem(objeto);
         }
-        
-        for (Produto obj : listaProduto){
+        for (Produto obj : listaProduto) {
             jComboBoxProdutoDois.addItem(obj);
         }
     }
-    
+
     public boolean sincronizarModelComView(Setup setup) {
 
         if (!jComboBoxProdutoUm.getSelectedItem().equals("Selecione")) {
@@ -388,11 +427,5 @@ public class SetupView extends javax.swing.JFrame {
         jComboBoxProdutoUm.setSelectedItem("Selecione");
         jComboBoxProdutoDois.setSelectedItem("Selecione");
         txtHoras.setText("");
-    }
-
-    @Override
-    public void setVisible(boolean b) {
-        super.setVisible(b);
-        preencherComboboxProduto();
     }
 }

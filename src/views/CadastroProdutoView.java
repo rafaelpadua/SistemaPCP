@@ -35,13 +35,13 @@ public class CadastroProdutoView extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        txtCodigo = new javax.swing.JTextField();
         txtDescricao = new javax.swing.JTextField();
         txtTaxaProducao = new javax.swing.JTextField();
         txtUnidade = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelaCP = new javax.swing.JTable();
+        txtCodigo = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         btQtdItem = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
@@ -69,8 +69,6 @@ public class CadastroProdutoView extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel4.setText("Unidade:");
-
-        txtCodigo.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
 
         txtDescricao.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
 
@@ -124,6 +122,8 @@ public class CadastroProdutoView extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        txtCodigo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -133,16 +133,16 @@ public class CadastroProdutoView extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtDescricao))
+                                .addComponent(txtDescricao)
+                                .addContainerGap(24, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(21, 21, 21)
-                                .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addContainerGap(24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap())))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addGap(18, 18, 18)
@@ -159,10 +159,10 @@ public class CadastroProdutoView extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(35, 35, 35)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
                     .addComponent(txtDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -343,7 +343,7 @@ public class CadastroProdutoView extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(14, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -428,7 +428,7 @@ public class CadastroProdutoView extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tabelaCP;
-    private javax.swing.JTextField txtCodigo;
+    private javax.swing.JLabel txtCodigo;
     private javax.swing.JTextField txtDescricao;
     private javax.swing.JTextField txtTaxaProducao;
     private javax.swing.JTextField txtUnidade;
@@ -465,8 +465,7 @@ public class CadastroProdutoView extends javax.swing.JFrame {
      * Bloquea os campos do formulário para edição
      */
     public void bloquearCampos() {
-
-        txtCodigo.setEditable(false);
+        txtCodigo.setEnabled(false);
         txtDescricao.setEditable(false);
         txtTaxaProducao.setEditable(false);
         txtUnidade.setEditable(false);
@@ -477,7 +476,7 @@ public class CadastroProdutoView extends javax.swing.JFrame {
      */
     public void desbloquearCampos() {
 
-        txtCodigo.setEditable(true);
+        txtCodigo.setEnabled(true);
         txtDescricao.setEditable(true);
         txtTaxaProducao.setEditable(true);
         txtUnidade.setEditable(true);
@@ -495,9 +494,10 @@ public class CadastroProdutoView extends javax.swing.JFrame {
             modelo.removeRow(i);
         }
         for (Produto objeto : lista) {          
-            modelo.addRow(new Object[]{objeto.getCodigo(), objeto.getDescricao(), String.format("%.2f", objeto.getTaxaDeProducao()), objeto.getUnidade()});
+            modelo.addRow(new Object[]{objeto.getCodigo(), objeto.getDescricao(), objeto.getTaxaDeProducao(), objeto.getUnidade()});
         }
     }
+
 
     /**
      * Limpa os campos do formulário

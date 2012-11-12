@@ -102,13 +102,8 @@ public final class PrevisaoView extends javax.swing.JFrame {
         jLabel2.setText("Produto:");
 
         txtQuantidade.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        txtQuantidade.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtQuantidadeActionPerformed(evt);
-            }
-        });
 
-        jComboBoxProduto.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jComboBoxProduto.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jComboBoxProduto.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBoxProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -160,8 +155,8 @@ public final class PrevisaoView extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jComboBoxProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                                .addComponent(jComboBoxProduto, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(47, 47, 47)
                                 .addComponent(jLabel8)
                                 .addGap(18, 18, 18)
                                 .addComponent(txtTaxa, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -189,7 +184,7 @@ public final class PrevisaoView extends javax.swing.JFrame {
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jComboBoxMes, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(jComboBoxAno, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                        .addContainerGap())))
+                        .addContainerGap(230, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -228,23 +223,6 @@ public final class PrevisaoView extends javax.swing.JFrame {
         tabelaDemandas.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         tabelaDemandas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
@@ -404,6 +382,7 @@ public final class PrevisaoView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btNovoActionPerformed
+        limparCampos();
         desbloquearCampos();
     }//GEN-LAST:event_btNovoActionPerformed
     
@@ -449,10 +428,7 @@ public final class PrevisaoView extends javax.swing.JFrame {
     private void jComboBoxProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxProdutoActionPerformed
         listarTaxadeProdução();
     }//GEN-LAST:event_jComboBoxProdutoActionPerformed
-    
-    private void txtQuantidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtQuantidadeActionPerformed
-    }//GEN-LAST:event_txtQuantidadeActionPerformed
-    /**
+        /**
      * @param args the command line arguments
      */
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -532,6 +508,9 @@ public final class PrevisaoView extends javax.swing.JFrame {
     }
     
     public void bloquearCampos() {
+        txtCodigo.setEnabled(false);
+        jComboBoxMes.setEditable(false);
+        jComboBoxAno.setEditable(false);
         jComboBoxProduto.setEditable(false);
         txtQuantidade.setEditable(false);
         txtPrioridade.setEditable(false);
@@ -539,49 +518,51 @@ public final class PrevisaoView extends javax.swing.JFrame {
     
     public void desbloquearCampos() {
         txtCodigo.setEnabled(true);
+        jComboBoxMes.setEditable(true);
+        jComboBoxAno.setEditable(true);
         jComboBoxProduto.setEditable(true);
         txtQuantidade.setEditable(true);
         txtPrioridade.setEditable(true);
     }
     
-    public boolean sincronizarModelComView(Previsao model) {
+    public boolean sincronizarModelComView(Previsao previsaoModel) {
         
         if (!txtCodigo.getText().equals("")) {
-            model.setCodigo(Integer.parseInt(txtCodigo.getText()));
+            previsaoModel.setCodigo(Integer.parseInt(txtCodigo.getText()));
         } else {
-            model.setCodigo(null);
+            previsaoModel.setCodigo(null);
         }
         
         if (!jComboBoxMes.getSelectedItem().equals("Selecione")) {
-            model.setMes( jComboBoxProduto.getSelectedItem().toString());
+            previsaoModel.setMes( jComboBoxMes.getSelectedItem().toString());
         } else {
             JOptionPane.showMessageDialog(null, "O mes é obrigatório");
             return false;
         }
         
         if (!jComboBoxAno.getSelectedItem().equals("Selecione")) {
-            model.setAno((Integer)jComboBoxProduto.getSelectedItem());
+            previsaoModel.setAno(Integer.parseInt(jComboBoxAno.getSelectedItem().toString()));
         } else {
             JOptionPane.showMessageDialog(null, "O Ano é obrigatório");
             return false;
         }
         
         if (!jComboBoxProduto.getSelectedItem().equals("Selecione")) {
-            model.setProduto((Produto) jComboBoxProduto.getSelectedItem());
+            previsaoModel.setProduto((Produto) jComboBoxProduto.getSelectedItem());
         } else {
             JOptionPane.showMessageDialog(null, "O produto é obrigatório");
             return false;
         }
         
         if (!txtQuantidade.getText().equals("")) {
-            model.setQuantidade(Double.parseDouble(txtQuantidade.getText()));
+            previsaoModel.setQuantidade(Double.parseDouble(txtQuantidade.getText()));
         } else {
             JOptionPane.showMessageDialog(null, "O campo quantidade é obrigatório");
             return false;
         }
         
         if (!txtPrioridade.getText().equals("")) {
-            model.setOrdem(Integer.parseInt(txtPrioridade.getText()));
+            previsaoModel.setOrdem(Integer.parseInt(txtPrioridade.getText()));
         } else {
             JOptionPane.showMessageDialog(null, "O campo prioridade é obrigatório");
             return false;
@@ -635,18 +616,11 @@ public final class PrevisaoView extends javax.swing.JFrame {
     }
     
     public void limparCampos() {
-        
         txtCodigo.setText("");
         jComboBoxProduto.setSelectedItem("Selecione");
         jComboBoxMes.setSelectedItem("Selecione");
         jComboBoxAno.setSelectedItem("Selecione");
         txtQuantidade.setText("");
         txtPrioridade.setText("");
-    }
-    
-    @Override
-    public void setVisible(boolean b) {
-        super.setVisible(b);
-        preencheComboProdutos();
     }
 }

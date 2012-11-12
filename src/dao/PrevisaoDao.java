@@ -75,10 +75,10 @@ public class PrevisaoDao {
                 previsao.setCodigo(rs.getInt(1));
                 previsao.setMes(rs.getString(2));
                 previsao.setAno(rs.getInt(3));
-                previsao.setProduto(new ProdutoDao().listarProdutoPorId(rs.getInt(3)));
-                previsao.setQuantidade(rs.getDouble(4));
-                previsao.setOrdem(rs.getInt(5));
-                previsao.setCarregamento(rs.getDouble(6));
+                previsao.setProduto(new ProdutoDao().listarProdutoPorId(rs.getInt(4)));
+                previsao.setQuantidade(rs.getDouble(5));
+                previsao.setOrdem(rs.getInt(6));
+                previsao.setCarregamento(rs.getDouble(7));
 
                 listP.add(previsao);
             }
@@ -143,13 +143,12 @@ public class PrevisaoDao {
         return previsao;
     } 
     
-        public List listarPrevisaoPorMes(String mes) {
+        public Previsao listarPrevisaoPorMes(String mes) {
 
         PreparedStatement ps = null;
         Connection conn = null;
         ResultSet rs = null;
         Previsao previsao = null;
-        List<Previsao>lista = null;
         try {
 
             conn = this.con;
@@ -158,7 +157,6 @@ public class PrevisaoDao {
             ps = conn.prepareStatement(sql);
             ps.setString(1, mes);
             rs = ps.executeQuery();
-            lista = new ArrayList<>();
 
             while (rs.next()) {
                 previsao = new Previsao();
@@ -168,15 +166,14 @@ public class PrevisaoDao {
                 previsao.setProduto(new ProdutoDao().listarProdutoPorId(rs.getInt(4)));
                 previsao.setQuantidade(rs.getDouble(5));
                 previsao.setOrdem(rs.getInt(6));
-                lista.add(previsao);
             }
-            return lista;
+            return previsao;
 
         } catch (SQLException ex) {
             Logger.getLogger(ItemDao.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             GerandoConexao.fecharConexao(conn, ps);
         }
-        return lista;
+        return previsao;
     }
 }

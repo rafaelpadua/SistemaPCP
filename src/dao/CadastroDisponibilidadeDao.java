@@ -79,40 +79,40 @@ public class CadastroDisponibilidadeDao {
         return list;
     }
 
-    public List listarPorMes(String mes) {
+    public Disponibilidade listarPorMes(String mes) {
 
         PreparedStatement ps = null;
         Connection conn = null;
         ResultSet rs = null;
-        List<Disponibilidade> listaDispo = null;
+        Disponibilidade disponibilidade = null;
         try {
 
             conn = this.con;
 
-            String sql = "select disponibilidade.codigo, disponibilidade.mes, disponibilidade.ano, disponibilidade.dia, (disponibilidade.dia * disponibilidade.hora) from disponibilidade where mes = ? ";
+            String sql = "select disponibilidade.codigo, disponibilidade.mes, disponibilidade.ano, disponibilidade.dia, disponibilidade.hora, (disponibilidade.dia * disponibilidade.hora) from disponibilidade where mes = ? ";
             ps = conn.prepareStatement(sql);
             ps.setString(1, mes);
             rs = ps.executeQuery();
-            listaDispo = new ArrayList<>();
+
             while (rs.next()) {
-                Disponibilidade dis = new Disponibilidade();
-                dis.setCodigo(rs.getInt(1));
-                dis.setMes(rs.getString(2));
-                dis.setAno(rs.getInt(3));
-                dis.setDia(rs.getInt(4));
-                dis.setTotal(rs.getInt(5));
-                listaDispo.add(dis);
+                disponibilidade = new Disponibilidade();
+                disponibilidade.setCodigo(rs.getInt(1));
+                disponibilidade.setMes(rs.getString(2));
+                disponibilidade.setAno(rs.getInt(3));
+                disponibilidade.setDia(rs.getInt(4));
+                disponibilidade.setHoras(rs.getInt(5));
+                disponibilidade.setTotal(rs.getInt(6));
             }
-            return listaDispo;
+            return disponibilidade;
 
         } catch (SQLException ex) {
             Logger.getLogger(Produto.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             GerandoConexao.fecharConexao(conn, ps);
         }
-        return listaDispo;
+        return disponibilidade;
     }
-    
+
     public void atualizar(Disponibilidade disponib) {
         try {
             Connection conn = null;

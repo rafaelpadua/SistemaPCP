@@ -48,6 +48,6 @@ public class TelaPrincipalController {
     }
     
     public void exibirPcpView(){
-        PcpController.getInstancia().exibirInterfaceGrafica();
+        PlanejamentoController.getInstancia().exibirInterfaceGrafica();
     }
 }
