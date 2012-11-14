@@ -12,8 +12,6 @@ public class Planejamento {
    
 private Produto produto;
 private Disponibilidade disponibilidade;
-private Previsao previsao;
-private Setup setup;
 private Integer HorasCarregamento;
 
     public Integer getHorasCarregamento() {
@@ -38,21 +36,5 @@ private Integer HorasCarregamento;
 
     public void setDisponibilidade(Disponibilidade disponibilidade) {
         this.disponibilidade = disponibilidade;
-    }
-
-    public Previsao getPrevisao() {
-        return previsao;
-    }
-
-    public void setPrevisao(Previsao previsao) {
-        this.previsao = previsao;
-    }
-
-    public Setup getSetup() {
-        return setup;
-    }
-
-    public void setSetup(Setup setup) {
-        this.setup = setup;
     }
 }

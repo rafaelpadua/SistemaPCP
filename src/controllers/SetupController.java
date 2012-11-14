@@ -37,7 +37,7 @@ public class SetupController {
     }
     
     public void salvar(){
-        view.sincronizarModelComView(setup);
+        
         if (setup.getCodigo() == null){
             new CadasroSetupDao().salvar(setup);
         }else{ 

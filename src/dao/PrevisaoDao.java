@@ -202,6 +202,5 @@ public class PrevisaoDao {
             GerandoConexao.fecharConexao(conn, ps);
         }
         return soma;
-
-    }
+    }    
 }

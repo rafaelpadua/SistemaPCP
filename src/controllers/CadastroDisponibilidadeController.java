@@ -5,7 +5,6 @@ import java.util.List;
 import entidades.Disponibilidade;
 import views.DisponibilidadeView;
 
-
 /**
  *
  * @author Rafael

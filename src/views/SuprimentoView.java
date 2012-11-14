@@ -54,7 +54,7 @@ public class SuprimentoView extends javax.swing.JFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(null, "SUPRIMENTOS", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 1, 14)))); // NOI18N
 
-        TabelaSuprimento.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        TabelaSuprimento.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         TabelaSuprimento.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -87,7 +87,7 @@ public class SuprimentoView extends javax.swing.JFrame {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
-        tabelaSuprimentoFiltro.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tabelaSuprimentoFiltro.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         tabelaSuprimentoFiltro.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},

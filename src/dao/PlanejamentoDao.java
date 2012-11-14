@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.text.PlainDocument;
 
 /**
  *
@@ -47,8 +46,6 @@ public class PlanejamentoDao {
                 planejamento.setProduto(new ProdutoDao().listarProdutoPorId(rs.getInt(1)));
                 planejamento.setHorasCarregamento(rs.getInt(2));
                 planejamento.setDisponibilidade(new CadastroDisponibilidadeDao().listarPorMes(rs.getString(3)));
-                planejamento.setPrevisao(new PrevisaoDao().listarPrevisaoPorMes(rs.getString(4)));
-                planejamento.setSetup(new CadasroSetupDao().listarSetupPorCodigoProduto(rs.getInt(5)));
                 lista.add(planejamento);
             }
             return lista;

@@ -4,15 +4,9 @@
  */
 package controllers;
 
-import com.sun.org.apache.bcel.internal.generic.LLOAD;
-import dao.CadastroDisponibilidadeDao;
 import dao.PlanejamentoDao;
-import dao.PrevisaoDao;
-import entidades.Disponibilidade;
 import entidades.Planejamento;
-import entidades.Previsao;
 import java.util.List;
-import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import views.PlanejamentoProducaoView;
@@ -58,3 +52,5 @@ public class PlanejamentoController {
         }
     }
 }
+    
+

@@ -222,7 +222,7 @@ public final class PrevisaoView extends javax.swing.JFrame {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "CADASTRADAS", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 1, 14))); // NOI18N
 
-        tabelaDemandas.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tabelaDemandas.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         tabelaDemandas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},

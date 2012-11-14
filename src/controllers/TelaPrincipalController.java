@@ -4,7 +4,6 @@
  */
 package controllers;
 
-import javax.swing.JButton;
 import views.TelaPrincipalView;
 
 /**

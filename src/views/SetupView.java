@@ -218,6 +218,7 @@ public class SetupView extends javax.swing.JFrame {
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "SETUP'S CADASTRADOS", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 1, 14))); // NOI18N
 
+        tabelaSetup.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         tabelaSetup.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -226,7 +227,7 @@ public class SetupView extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Título 4"
+                "Codigo", "Produto inicio", "Produti fim", "setup"
             }
         ));
         tabelaSetup.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -358,19 +359,9 @@ public class SetupView extends javax.swing.JFrame {
 
     public boolean sincronizarModelComView(Setup setup) {
 
-        if (!jComboBoxProdutoUm.getSelectedItem().equals("Selecione")) {
             setup.setProdutoinicio((Produto) jComboBoxProdutoUm.getSelectedItem());
-        } else {
-            JOptionPane.showMessageDialog(null, "O produto inicio é obrigatório");
-            return false;
-        }
-
-        if (!jComboBoxProdutoDois.getSelectedItem().equals("Selecione")) {
+            
             setup.setProdutofim((Produto) jComboBoxProdutoDois.getSelectedItem());
-        } else {
-            JOptionPane.showMessageDialog(null, "O produto fim é obrigatório");
-            return false;
-        }
 
         if (!txtHoras.getText().equals("")) {
             setup.setHoras(Integer.parseInt(txtHoras.getText()));
@@ -424,11 +415,11 @@ public class SetupView extends javax.swing.JFrame {
     public void sincronizarViewComModel(Setup setup) {
 
         if (setup.getProdutoinicio() != null) {
-            jComboBoxProdutoUm.setSelectedItem(setup.getProdutoinicio().getDescricao());
+            jComboBoxProdutoUm.setSelectedItem(setup.getProdutoinicio());
         }
 
         if (setup.getProdutofim() != null) {
-            jComboBoxProdutoDois.setSelectedItem(setup.getProdutofim().getDescricao());
+            jComboBoxProdutoDois.setSelectedItem(setup.getProdutofim());
         }
 
         if (setup.getHoras() != null) {

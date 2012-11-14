@@ -124,10 +124,5 @@ public class CadasroSetupDao {
 
             Logger.getLogger(ProdutoDao.class.getName()).log(Level.SEVERE, null, ex);
         }
-    
-    
-    }
-    
-    
-    
+    }  
 }

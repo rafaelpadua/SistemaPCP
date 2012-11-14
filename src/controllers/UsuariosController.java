@@ -7,8 +7,6 @@ package controllers;
 import dao.LoginDao;
 import entidades.Usuarios;
 import java.util.List;
-import javax.swing.JComboBox;
-import javax.swing.JOptionPane;
 import views.LoginView;
 
 /**
