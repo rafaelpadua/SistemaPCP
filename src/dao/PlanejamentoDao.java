@@ -28,7 +28,7 @@ public class PlanejamentoDao {
         this.con = GerandoConexao.getConexao();
     }
 
-    public List listarPlanejamentoDoMes(String mes) {
+    public List listarPlanejamentoDoMes() {
 
         PreparedStatement ps = null;
         Connection conn = null;
@@ -36,17 +36,19 @@ public class PlanejamentoDao {
         List<Planejamento> lista = null;
         try {
             conn = this.con;
-            String sql = "select produto.codigo , (previsao.quantidade / produto.taxaProducao ) from produto , previsao where produto.codigo = previsao.produto_codigo and previsao.mes = ?";
+            String sql = "select produto.codigo, (previsao.quantidade / produto.taxaproducao ), disponibilidade.mes, previsao.mes, setup.produto_codmont from produto , previsao, disponibilidade, setup where produto.codigo = previsao.produto_codigo and produto.codigo = setup.produto_coddesmont order by 4 asc;";
 
             ps = conn.prepareStatement(sql);
-            ps.setString(1, mes);
             rs = ps.executeQuery();
             lista = new ArrayList<>();
 
             while (rs.next()) {
-               Planejamento planejamento = new Planejamento();
+                Planejamento planejamento = new Planejamento();
                 planejamento.setProduto(new ProdutoDao().listarProdutoPorId(rs.getInt(1)));
                 planejamento.setHorasCarregamento(rs.getInt(2));
+                planejamento.setDisponibilidade(new CadastroDisponibilidadeDao().listarPorMes(rs.getString(3)));
+                planejamento.setPrevisao(new PrevisaoDao().listarPrevisaoPorMes(rs.getString(4)));
+                planejamento.setSetup(new CadasroSetupDao().listarSetupPorCodigoProduto(rs.getInt(5)));
                 lista.add(planejamento);
             }
             return lista;

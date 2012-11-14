@@ -21,7 +21,7 @@ import javax.swing.JOptionPane;
  * @author Rafael
  */
 public class CadasroSetupDao {
-    
+
     private Connection con;
 
     public CadasroSetupDao() {
@@ -29,7 +29,7 @@ public class CadasroSetupDao {
     }
 
     public void salvar(Setup setup) {
-         try {
+        try {
             Connection conn = null;
             PreparedStatement ps = null;
 
@@ -46,7 +46,7 @@ public class CadasroSetupDao {
             Logger.getLogger(ProdutoDao.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     public List listar() {
         PreparedStatement ps = null;
         Connection conn = null;
@@ -77,5 +77,57 @@ public class CadasroSetupDao {
         }
         return list;
     }
+
+    public Setup listarSetupPorCodigoProduto(Integer codigo) {
+        PreparedStatement ps = null;
+        Connection conn = null;
+        ResultSet rs = null;
+        Setup setup = null;
+        try {
+
+            conn = this.con;
+
+            String sql = "select setup.horas from setup where produto_codmont = ?";
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, codigo);
+            rs = ps.executeQuery();
+          
+            while (rs.next()) {
+                setup = new Setup();
+                setup.setHoras(rs.getInt(1));
+            }
+            return setup;
+
+        } catch (SQLException ex) {
+            System.out.println("Erro ao listar setup por produto");
+        } finally {
+            GerandoConexao.fecharConexao(conn, ps);
+        }
+        return setup;
+    }
+    
+    public void excluir(Setup setup){
+    
+               try {
+            Connection conn;
+            PreparedStatement ps;
+
+            String sql = "select * from setup where codigo = ?";
+            conn = this.con;
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, setup.getCodigo());
+            ps.executeUpdate();
+            GerandoConexao.fecharConexao(conn, ps);
+            JOptionPane.showMessageDialog(null, "Setup - " + setup.getCodigo() + ""
+                    + " - foi excluido com sucesso.");
+        } catch (SQLException ex) {
+
+            Logger.getLogger(ProdutoDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    
+    
+    }
+    
+    
     
 }

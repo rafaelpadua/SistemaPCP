@@ -9,11 +9,12 @@ package entidades;
  * @author Rafael
  */
 public class Planejamento {
-    
-    private String mes;
-    private Integer ano;
-    private Produto produto;
-    private Integer HorasCarregamento;
+   
+private Produto produto;
+private Disponibilidade disponibilidade;
+private Previsao previsao;
+private Setup setup;
+private Integer HorasCarregamento;
 
     public Integer getHorasCarregamento() {
         return HorasCarregamento;
@@ -23,27 +24,35 @@ public class Planejamento {
         this.HorasCarregamento = HorasCarregamento;
     }
 
-    public Integer getAno() {
-        return ano;
-    }
-
-    public void setAno(Integer ano) {
-        this.ano = ano;
-    }
-
-    public String getMes() {
-        return mes;
-    }
-
-    public void setMes(String mes) {
-        this.mes = mes;
-    }
-
     public Produto getProduto() {
         return produto;
     }
 
     public void setProduto(Produto produto) {
         this.produto = produto;
+    }
+
+    public Disponibilidade getDisponibilidade() {
+        return disponibilidade;
+    }
+
+    public void setDisponibilidade(Disponibilidade disponibilidade) {
+        this.disponibilidade = disponibilidade;
+    }
+
+    public Previsao getPrevisao() {
+        return previsao;
+    }
+
+    public void setPrevisao(Previsao previsao) {
+        this.previsao = previsao;
+    }
+
+    public Setup getSetup() {
+        return setup;
+    }
+
+    public void setSetup(Setup setup) {
+        this.setup = setup;
     }
 }

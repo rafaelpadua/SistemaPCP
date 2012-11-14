@@ -152,4 +152,30 @@ public class CadastroDisponibilidadeDao {
             Logger.getLogger(ProdutoDao.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    public Double totalDisponivel(){
+    PreparedStatement ps = null;
+        Connection conn = null;
+        ResultSet rs = null;
+        Double soma = null;
+        try {
+
+            conn = this.con;
+
+            String sql = "select (disponibilidade.dia * disponibilidade.hora) from disponibilidade";
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                soma = rs.getDouble(1);
+            }
+            return soma;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ItemDao.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            GerandoConexao.fecharConexao(conn, ps);
+        }
+        return soma;
+    }
 }

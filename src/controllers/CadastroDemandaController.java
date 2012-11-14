@@ -4,6 +4,7 @@
  */
 package controllers;
 
+import dao.CadastroDisponibilidadeDao;
 import java.util.List;
 import views.PrevisaoView;
 import entidades.Produto;
@@ -71,5 +72,15 @@ public class CadastroDemandaController {
         if (model.getCodigo() != null) {
             new PrevisaoDao().excluir(model);
         }
+    }
+    
+    public Double TotalCarregamento(){
+        Double total = new PrevisaoDao().somarCarregamento();
+        return total;
+    }
+    
+    public Double CalcularDispo(){
+    Double total = new CadastroDisponibilidadeDao().totalDisponivel();
+    return total;
     }
 }

@@ -13,7 +13,6 @@ import controllers.TelaPrincipalController;
 public class TelaPrincipalView extends javax.swing.JFrame {
     
     TelaPrincipalController controller;
-   
 
     /**
      * Creates new form TelaPrincipal
@@ -72,6 +71,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         jLabel1.setText("jLabel1");
 
         btDisponibilidade.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btDisponibilidade.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/dispo.png"))); // NOI18N
         btDisponibilidade.setText("Disponibilidade");
         btDisponibilidade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -80,6 +80,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         });
 
         btSuprimento.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btSuprimento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/suprimentos.png"))); // NOI18N
         btSuprimento.setText("Suprimentos");
         btSuprimento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -88,6 +89,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         });
 
         btSetup.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btSetup.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/setup.png"))); // NOI18N
         btSetup.setText("setup");
         btSetup.setActionCommand("");
         btSetup.addActionListener(new java.awt.event.ActionListener() {
@@ -97,6 +99,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         });
 
         btPcp.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btPcp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/pcp.png"))); // NOI18N
         btPcp.setText("PCP");
         btPcp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -190,27 +193,26 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     private void btCadProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadProdActionPerformed
         controller.exibirCadastroDeProdutoView();
     }//GEN-LAST:event_btCadProdActionPerformed
-
+    
     private void btPrevVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPrevVendasActionPerformed
         controller.exibirCadastroDeDemandaView();
     }//GEN-LAST:event_btPrevVendasActionPerformed
-
+    
     private void btDisponibilidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDisponibilidadeActionPerformed
         controller.exibirCadastroDeDisponibilidadeView();
     }//GEN-LAST:event_btDisponibilidadeActionPerformed
-
+    
     private void btSuprimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSuprimentoActionPerformed
         controller.exibirSuprimentosView();
     }//GEN-LAST:event_btSuprimentoActionPerformed
-
+    
     private void btSetupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSetupActionPerformed
         controller.exibirSetupView();
     }//GEN-LAST:event_btSetupActionPerformed
-
+    
     private void btPcpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPcpActionPerformed
         controller.exibirPcpView();
     }//GEN-LAST:event_btPcpActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btCadProd;
     private javax.swing.JButton btDisponibilidade;
@@ -223,4 +225,33 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
+
+    public void bloquearBotoesEngenheiroProducao() {
+        btDisponibilidade.setEnabled(false);
+        btPcp.setEnabled(false);
+        btPrevVendas.setEnabled(false);
+        btSuprimento.setEnabled(false);
+        btDisponibilidade.setEnabled(false);
+    }
+    
+    public void bloquearBotoesAnalistaPCP(){
+    btCadProd.setEnabled(false);
+    btSetup.setEnabled(false);
+    btSuprimento.setEnabled(false);
+    }
+    
+    public void BloquearCompras(){
+    btCadProd.setEnabled(false);
+    btDisponibilidade.setEnabled(false);
+    btPcp.setEnabled(false);
+    btPrevVendas.setEnabled(false);
+    btSetup.setEnabled(false);
+    }
+    
+    public void bloquearGerenytePCP(){
+    btCadProd.setEnabled(false);
+    btDisponibilidade.setEnabled(false);
+    btSetup.setEnabled(false);
+    btSuprimento.setEnabled(false);
+    }
 }

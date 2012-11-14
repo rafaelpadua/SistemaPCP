@@ -124,6 +124,7 @@ public class ProdutoDao {
                 produto = new Produto();
                 produto.setCodigo(rs.getInt(1));
                 produto.setDescricao(rs.getString(2));
+                produto.setTaxaDeProducao(rs.getDouble(3));
             }
             return produto;
             

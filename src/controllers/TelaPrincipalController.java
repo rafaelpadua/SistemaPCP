@@ -4,6 +4,7 @@
  */
 package controllers;
 
+import javax.swing.JButton;
 import views.TelaPrincipalView;
 
 /**
@@ -19,14 +20,46 @@ public class TelaPrincipalController {
     return instancia;
     }
     
-    public void exibirInterfaceGrafica(){
-
+    public void exibirInterfaceGraficaAdministrador(){
         if(view == null){            
             view = new TelaPrincipalView(this);
         }
         view.setVisible(true);
     }
     
+    public void exibirInterfaceGraficaEngenheiroProducao(){
+    
+    if(view == null){            
+            view = new TelaPrincipalView(this);
+        }
+        view.setVisible(true);
+        view.bloquearBotoesEngenheiroProducao();
+    }
+    
+    public void exibirGraficaAnalistaPCP(){
+    if(view == null){            
+            view = new TelaPrincipalView(this);
+        }
+        view.setVisible(true);
+        view.bloquearBotoesAnalistaPCP();
+    }
+    
+    public void exibirGraficaCompras(){
+     if(view == null){            
+            view = new TelaPrincipalView(this);
+        }
+        view.setVisible(true);
+       view.BloquearCompras();
+    }
+    
+    public void exibirGraficaGerentePCP(){
+    if(view == null){            
+            view = new TelaPrincipalView(this);
+        }
+        view.setVisible(true);
+       view.bloquearGerenytePCP();
+    }
+   
     public void exibirCadastroDeProdutoView(){
         CadastroDeProdutoController.getInstancia().exibirInterfaceGrafica();
     }

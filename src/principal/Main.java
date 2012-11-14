@@ -4,7 +4,7 @@
  */
 package principal;
 
-import controllers.TelaPrincipalController;
+import controllers.UsuariosController;
 
 /**
  *
@@ -14,6 +14,6 @@ public class Main {
 
     public static void main(String[] args) {
         
-         TelaPrincipalController.getInstancia().exibirInterfaceGrafica();
+         UsuariosController.getInastancia().exibirInterfaceGrafica();
     }
 }

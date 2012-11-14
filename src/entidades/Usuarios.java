@@ -10,16 +10,25 @@ package entidades;
  */
 public class Usuarios {
     
+    private Integer codigo;
     private String funcao;
-    private String cpf;
+    private String usuario;
     private String senha;
 
-    public String getCpf() {
-        return cpf;
+    public Integer getCodigo() {
+        return codigo;
     }
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
+    public void setCodigo(Integer codigo) {
+        this.codigo = codigo;
+    }
+
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String cpf) {
+        this.usuario = cpf;
     }
 
     public String getFuncao() {

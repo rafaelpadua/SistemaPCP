@@ -66,8 +66,8 @@ public class PrevisaoDao {
             String sql = "select previsao.codigo, previsao.mes, previsao.ano, previsao.produto_codigo, previsao.quantidade, previsao.ordem, (previsao.quantidade /produto.TaxaProducao) "
                     + "from previsao, produto where produto_codigo = produto.codigo";
 
-            ps = conn.prepareStatement(sql); 
-          
+            ps = conn.prepareStatement(sql);
+
             rs = ps.executeQuery();
             listP = new ArrayList<>();
             while (rs.next()) {
@@ -141,9 +141,9 @@ public class PrevisaoDao {
             GerandoConexao.fecharConexao(conn, ps);
         }
         return previsao;
-    } 
-    
-        public Previsao listarPrevisaoPorMes(String mes) {
+    }
+
+    public Previsao listarPrevisaoPorMes(String mes) {
 
         PreparedStatement ps = null;
         Connection conn = null;
@@ -175,5 +175,33 @@ public class PrevisaoDao {
             GerandoConexao.fecharConexao(conn, ps);
         }
         return previsao;
+    }
+
+    public Double somarCarregamento() {
+
+        PreparedStatement ps = null;
+        Connection conn = null;
+        ResultSet rs = null;
+        Double soma = null;
+        try {
+
+            conn = this.con;
+
+            String sql = "select sum(previsao.quantidade /produto.TaxaProducao) from previsao, produto where produto_codigo = produto.codigo";
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                soma = rs.getDouble(1);
+            }
+            return soma;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ItemDao.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            GerandoConexao.fecharConexao(conn, ps);
+        }
+        return soma;
+
     }
 }

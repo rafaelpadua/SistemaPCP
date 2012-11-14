@@ -12,6 +12,7 @@ import entidades.Disponibilidade;
 import entidades.Planejamento;
 import entidades.Previsao;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import views.PlanejamentoProducaoView;
@@ -41,24 +42,19 @@ public class PlanejamentoController {
         view.setVisible(true);
     }
 
-    public void listarProdutosCadastrados(String mes, JTable tabela) {
-        List<Planejamento> lista = new PlanejamentoDao().listarPlanejamentoDoMes(mes);
-        Disponibilidade listaDispo = new CadastroDisponibilidadeDao().listarPorMes(mes);
-
+    public void listarProdutosCadastrados(JTable tabela) {
+        int x = 0;
+        List<Planejamento> lista = new PlanejamentoDao().listarPlanejamentoDoMes();
         DefaultTableModel modelo = (DefaultTableModel) tabela.getModel();
+        modelo.setNumRows(0);
 
-        for (int i = (modelo.getRowCount() - 1); i >= 0; --i) {
-            modelo.removeRow(i);
-        }
-
-        for (Planejamento obj : lista) {
-            for (int i = 1; i <= listaDispo.getDia(); i++) {
-                for (int y = 1; y <= listaDispo.getHoras(); y++) {
-                    while(obj.getHorasCarregamento() > listaDispo.getHoras()){
-                    modelo.addRow(new Object[]{i, y, obj.getProduto().getDescricao()});
-                    }
+        while (x < lista.size()) {
+            for (int i = 1; i <= lista.get(x).getDisponibilidade().getDia(); i++) {
+                for (int y = 1; y <= lista.get(x).getDisponibilidade().getHoras(); y++) {
+                    modelo.addRow(new Object[]{i, y, lista.get(x).getProduto().getDescricao()});      
                 }
             }
+            x++;
         }
     }
 }

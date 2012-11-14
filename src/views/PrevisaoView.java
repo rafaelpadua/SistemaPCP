@@ -16,9 +16,9 @@ import entidades.Produto;
  * @author Rafael
  */
 public final class PrevisaoView extends javax.swing.JFrame {
-    
+
     private CadastroDemandaController controller;
-    
+
     public PrevisaoView(CadastroDemandaController controller) {
         initComponents();
         setLocationRelativeTo(null);
@@ -67,6 +67,8 @@ public final class PrevisaoView extends javax.swing.JFrame {
         btEditar = new javax.swing.JButton();
         btExcluir = new javax.swing.JButton();
         btSair = new javax.swing.JButton();
+        jPanel4 = new javax.swing.JPanel();
+        txtTotalCarre = new javax.swing.JLabel();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -155,7 +157,7 @@ public final class PrevisaoView extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jComboBoxProduto, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jComboBoxProduto, 0, 261, Short.MAX_VALUE)
                                 .addGap(47, 47, 47)
                                 .addComponent(jLabel8)
                                 .addGap(18, 18, 18)
@@ -184,15 +186,15 @@ public final class PrevisaoView extends javax.swing.JFrame {
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jComboBoxMes, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(jComboBoxAno, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                        .addContainerGap(230, Short.MAX_VALUE))))
+                        .addContainerGap())))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(43, 43, 43)
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
@@ -337,17 +339,37 @@ public final class PrevisaoView extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btNovo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btVisualizar)
                 .addGap(18, 18, 18)
+                .addComponent(btVisualizar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addComponent(btSalvar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(btEditar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(btExcluir)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(btSair)
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addGap(20, 20, 20))
+        );
+
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "TOTAL CARREGAMENTO", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 1, 14))); // NOI18N
+
+        txtTotalCarre.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(txtTotalCarre, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addComponent(txtTotalCarre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -361,8 +383,10 @@ public final class PrevisaoView extends javax.swing.JFrame {
                         .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(19, 19, 19)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
                         .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -371,11 +395,14 @@ public final class PrevisaoView extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         pack();
@@ -385,30 +412,37 @@ public final class PrevisaoView extends javax.swing.JFrame {
         limparCampos();
         desbloquearCampos();
     }//GEN-LAST:event_btNovoActionPerformed
-    
+
     private void btVisualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVisualizarActionPerformed
         controller.listarDemandas();
+        txtTotalCarre.setText(controller.TotalCarregamento().toString() + " horas");
         preencheJtable();
         bloquearCampos();
     }//GEN-LAST:event_btVisualizarActionPerformed
-    
+
     private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
-        controller.salvarDemandas();
-        preencheJtable();
-        bloquearCampos();
-        limparCampos();
+        if (controller.CalcularDispo() >= controller.TotalCarregamento()) {
+            controller.salvarDemandas();
+            txtTotalCarre.setText(controller.TotalCarregamento().toString() + " horas");
+            preencheJtable();
+            bloquearCampos();
+            limparCampos();
+        } else {
+            JOptionPane.showMessageDialog(null, "Carregamento maior que disponibilidade");
+        }
     }//GEN-LAST:event_btSalvarActionPerformed
-    
+
     private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
         desbloquearCampos();
     }//GEN-LAST:event_btEditarActionPerformed
-    
+
     private void btExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirActionPerformed
         controller.excluirServico();
+         txtTotalCarre.setText(controller.TotalCarregamento().toString() + " horas");
         preencheJtable();
         limparCampos();
     }//GEN-LAST:event_btExcluirActionPerformed
-    
+
     private void tabelaDemandasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaDemandasMouseClicked
         txtCodigo.setText(tabelaDemandas.getValueAt(tabelaDemandas.getSelectedRow(), 0).toString());
         jComboBoxMes.setSelectedItem(tabelaDemandas.getValueAt(tabelaDemandas.getSelectedRow(), 1).toString());
@@ -417,18 +451,18 @@ public final class PrevisaoView extends javax.swing.JFrame {
         txtQuantidade.setText(tabelaDemandas.getValueAt(tabelaDemandas.getSelectedRow(), 4).toString());
         txtPrioridade.setText(tabelaDemandas.getValueAt(tabelaDemandas.getSelectedRow(), 5).toString());
         bloquearCampos();
-        
-        
+
+
     }//GEN-LAST:event_tabelaDemandasMouseClicked
-    
+
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
         dispose();
     }//GEN-LAST:event_btSairActionPerformed
-    
+
     private void jComboBoxProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxProdutoActionPerformed
         listarTaxadeProdução();
     }//GEN-LAST:event_jComboBoxProdutoActionPerformed
-        /**
+    /**
      * @param args the command line arguments
      */
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -451,6 +485,7 @@ public final class PrevisaoView extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -461,6 +496,7 @@ public final class PrevisaoView extends javax.swing.JFrame {
     private javax.swing.JTextField txtPrioridade;
     private javax.swing.JTextField txtQuantidade;
     private javax.swing.JTextField txtTaxa;
+    private javax.swing.JLabel txtTotalCarre;
     // End of variables declaration//GEN-END:variables
 
     public List preencheComboProdutos() {
@@ -472,7 +508,7 @@ public final class PrevisaoView extends javax.swing.JFrame {
         }
         return lista;
     }
-    
+
     public void preencheComboMes() {
         jComboBoxMes.removeAllItems();
         jComboBoxMes.addItem("Selecione");
@@ -487,17 +523,17 @@ public final class PrevisaoView extends javax.swing.JFrame {
         jComboBoxMes.addItem("Setembro");
         jComboBoxMes.addItem("Outubro");
         jComboBoxMes.addItem("Novembro");
-        jComboBoxMes.addItem("Dezembro");        
+        jComboBoxMes.addItem("Dezembro");
     }
-    
+
     public void preencherComboboxAno() {
         jComboBoxAno.removeAllItems();
-        jComboBoxAno.addItem("Selecione"); 
-        for (int i = 2012; i <=2020; i++){
-        jComboBoxAno.addItem(i);
+        jComboBoxAno.addItem("Selecione");
+        for (int i = 2012; i <= 2020; i++) {
+            jComboBoxAno.addItem(i);
         }
     }
-    
+
     public void listarTaxadeProdução() {
         List<Produto> lista = controller.listaTiposDeProduto();
         for (Produto obj : lista) {
@@ -506,7 +542,7 @@ public final class PrevisaoView extends javax.swing.JFrame {
             }
         }
     }
-    
+
     public void bloquearCampos() {
         txtCodigo.setEnabled(false);
         jComboBoxMes.setEditable(false);
@@ -515,7 +551,7 @@ public final class PrevisaoView extends javax.swing.JFrame {
         txtQuantidade.setEditable(false);
         txtPrioridade.setEditable(false);
     }
-    
+
     public void desbloquearCampos() {
         txtCodigo.setEnabled(true);
         jComboBoxMes.setEditable(true);
@@ -524,43 +560,43 @@ public final class PrevisaoView extends javax.swing.JFrame {
         txtQuantidade.setEditable(true);
         txtPrioridade.setEditable(true);
     }
-    
+
     public boolean sincronizarModelComView(Previsao previsaoModel) {
-        
+
         if (!txtCodigo.getText().equals("")) {
             previsaoModel.setCodigo(Integer.parseInt(txtCodigo.getText()));
         } else {
             previsaoModel.setCodigo(null);
         }
-        
+
         if (!jComboBoxMes.getSelectedItem().equals("Selecione")) {
-            previsaoModel.setMes( jComboBoxMes.getSelectedItem().toString());
+            previsaoModel.setMes(jComboBoxMes.getSelectedItem().toString());
         } else {
             JOptionPane.showMessageDialog(null, "O mes é obrigatório");
             return false;
         }
-        
+
         if (!jComboBoxAno.getSelectedItem().equals("Selecione")) {
             previsaoModel.setAno(Integer.parseInt(jComboBoxAno.getSelectedItem().toString()));
         } else {
             JOptionPane.showMessageDialog(null, "O Ano é obrigatório");
             return false;
         }
-        
+
         if (!jComboBoxProduto.getSelectedItem().equals("Selecione")) {
             previsaoModel.setProduto((Produto) jComboBoxProduto.getSelectedItem());
         } else {
             JOptionPane.showMessageDialog(null, "O produto é obrigatório");
             return false;
         }
-        
+
         if (!txtQuantidade.getText().equals("")) {
             previsaoModel.setQuantidade(Double.parseDouble(txtQuantidade.getText()));
         } else {
             JOptionPane.showMessageDialog(null, "O campo quantidade é obrigatório");
             return false;
         }
-        
+
         if (!txtPrioridade.getText().equals("")) {
             previsaoModel.setOrdem(Integer.parseInt(txtPrioridade.getText()));
         } else {
@@ -574,47 +610,47 @@ public final class PrevisaoView extends javax.swing.JFrame {
      * Preenche as o jtable com os clientes cadastrados
      */
     public void preencheJtable() {
-        
+
         List<Previsao> lista = controller.listarDemandas();
-        
+
         DefaultTableModel modelo = (DefaultTableModel) tabelaDemandas.getModel();
-        
+
         for (int i = (modelo.getRowCount() - 1); i >= 0; --i) {
             modelo.removeRow(i);
         }
-        
+
         for (Previsao objeto : lista) {
             modelo.addRow(new Object[]{objeto.getCodigo(), objeto.getMes(), objeto.getAno(), objeto.getProduto(), objeto.getQuantidade(), objeto.getOrdem(), objeto.getCarregamento() + " horas"});
         }
     }
-    
+
     public void sincronizarViewComModel(Previsao model) {
-        
+
         if (model.getCodigo() != null) {
             txtCodigo.setText(model.getCodigo().toString());
         }
-        
-        if (model.getMes() != null){
+
+        if (model.getMes() != null) {
             jComboBoxMes.setSelectedItem(model.getMes());
         }
-        
-        if (model.getAno() != null){
+
+        if (model.getAno() != null) {
             jComboBoxAno.setSelectedItem(model.getAno());
         }
-        
+
         if (model.getProduto() != null) {
             jComboBoxProduto.setSelectedItem(model.getProduto());
         }
-        
+
         if (model.getQuantidade() != null) {
             txtQuantidade.setText(model.getQuantidade().toString());
         }
-        
+
         if (model.getOrdem() != null) {
             txtPrioridade.setText(model.getOrdem().toString());
         }
     }
-    
+
     public void limparCampos() {
         txtCodigo.setText("");
         jComboBoxProduto.setSelectedItem("Selecione");

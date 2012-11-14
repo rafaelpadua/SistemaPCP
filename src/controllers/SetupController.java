@@ -45,6 +45,16 @@ public class SetupController {
         }
     }
     
+     public void excluirSetup(){
+        
+        view.sincronizarModelComView(setup);
+        if(setup.getCodigo() != null){
+            new CadasroSetupDao().excluir(setup);
+        }
+    }
+    
+    
+    
     public List<Produto> listarProdutosCadastrados(){
         List<Produto> lista = new ProdutoDao().listar();
         return lista;

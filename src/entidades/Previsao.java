@@ -4,8 +4,6 @@
  */
 package entidades;
 
-import java.util.Date;
-
 /**
  *
  * @author Rafael

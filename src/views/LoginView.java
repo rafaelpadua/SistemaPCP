@@ -4,7 +4,11 @@
  */
 package views;
 
-import javax.swing.JComboBox;
+import controllers.TelaPrincipalController;
+import controllers.UsuariosController;
+import entidades.Usuarios;
+import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -12,11 +16,17 @@ import javax.swing.JComboBox;
  */
 public class LoginView extends javax.swing.JFrame {
 
+    private UsuariosController controller;
+    private List<Usuarios> listaUsuarios;
+
     /**
      * Creates new form Login
      */
-    public LoginView() {
+    public LoginView(UsuariosController controller) {
+
         initComponents();
+        setLocationRelativeTo(null);
+        this.controller = controller;
         preencherJcombo();
     }
 
@@ -29,15 +39,19 @@ public class LoginView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel4 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        txtUsuario = new javax.swing.JTextField();
+        btEntrar = new javax.swing.JButton();
+        btSair = new javax.swing.JButton();
+        txtSenha = new javax.swing.JPasswordField();
         jLabel3 = new javax.swing.JLabel();
         jComboBoxFuncoes = new javax.swing.JComboBox();
+        txtCodigo = new javax.swing.JLabel();
+
+        jLabel4.setText("jLabel4");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -51,34 +65,37 @@ public class LoginView extends javax.swing.JFrame {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/senha.png"))); // NOI18N
         jLabel2.setText("Senha");
 
-        jTextField1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        txtUsuario.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/entrar.png"))); // NOI18N
-        jButton1.setText("Entrar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btEntrar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btEntrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/entrar.png"))); // NOI18N
+        btEntrar.setText("Entrar");
+        btEntrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btEntrarActionPerformed(evt);
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/sair.png"))); // NOI18N
-        jButton2.setText("Sair");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btSair.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/sair.png"))); // NOI18N
+        btSair.setText("Sair");
+        btSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btSairActionPerformed(evt);
             }
         });
 
-        jPasswordField1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        jPasswordField1.setToolTipText("");
+        txtSenha.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        txtSenha.setToolTipText("");
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel3.setText("Função");
 
-        jComboBoxFuncoes.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jComboBoxFuncoes.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jComboBoxFuncoes.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxFuncoes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        txtCodigo.setForeground(new java.awt.Color(204, 204, 204));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -86,42 +103,46 @@ public class LoginView extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(63, 63, 63)
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btEntrar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
+                .addComponent(btSair, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(50, 50, 50))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(41, 41, 41)
+                .addGap(49, 49, 49)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(30, 30, 30)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
-                    .addComponent(jPasswordField1, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
-                    .addComponent(jComboBoxFuncoes, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(txtUsuario)
+                        .addComponent(txtSenha)
+                        .addComponent(jComboBoxFuncoes, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
+                .addContainerGap()
+                .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jComboBoxFuncoes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(btEntrar)
+                    .addComponent(btSair))
                 .addContainerGap())
         );
 
@@ -145,80 +166,73 @@ public class LoginView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /*
-         * Set the Nimbus look and feel
-         */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /*
-         * If Nimbus (introduced in Java SE 6) is not available, stay with the
-         * default look and feel. For details see
-         * http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
+    private void btEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEntrarActionPerformed
+        listaUsuarios = controller.listarUsuarios();
+        for (Usuarios obj : listaUsuarios) {
+            if (jComboBoxFuncoes.getSelectedItem().toString().equals(obj.getFuncao())) {
+                if (txtUsuario.getText().equals(obj.getUsuario())) {
+                    if (txtSenha.getText().equals(obj.getSenha())) {
+                        if (obj.getFuncao().equals("Administrador")){
+                        TelaPrincipalController.getInstancia().exibirInterfaceGraficaAdministrador();
+                        this.dispose();
+                        }
+                        if (obj.getFuncao().equals("Engenheiro de Produçao")){
+                        TelaPrincipalController.getInstancia().exibirInterfaceGraficaEngenheiroProducao();
+                        this.dispose();
+                        }
+                        if (obj.getFuncao().equals("Analista de PCP")){
+                        TelaPrincipalController.getInstancia().exibirGraficaAnalistaPCP();
+                        this.dispose();
+                        }
+                        if (obj.getFuncao().equals("Departamento de Compras")){
+                        TelaPrincipalController.getInstancia().exibirGraficaCompras();
+                        this.dispose();
+                       }
+                        if(obj.getFuncao().equals("Gerente PCP")){
+                        TelaPrincipalController.getInstancia().exibirGraficaGerentePCP();
+                        this.dispose();
+                        }
+                    
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Usuário e Senha Invalido");
+                        limparCampos();
+                    }
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(LoginView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(LoginView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(LoginView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(LoginView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
+    }//GEN-LAST:event_btEntrarActionPerformed
 
-        /*
-         * Create and display the form
-         */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-
-            public void run() {
-                new LoginView().setVisible(true);
-            }
-        });
-    }
-    
-    
-    
-    
-    
-    
+    private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
+        dispose();
+    }//GEN-LAST:event_btSairActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btEntrar;
+    private javax.swing.JButton btSair;
     private javax.swing.JComboBox jComboBoxFuncoes;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel txtCodigo;
+    private javax.swing.JPasswordField txtSenha;
+    private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 
-public void preencherJcombo(){
-    jComboBoxFuncoes.removeAllItems();
-    jComboBoxFuncoes.addItem("Selecione");
-    jComboBoxFuncoes.addItem("Engenheiro de Produçao");
-    jComboBoxFuncoes.addItem("Analista de PCP");
-    jComboBoxFuncoes.addItem("Departamento de Compras");
-    jComboBoxFuncoes.addItem("Gerente PCP");
-}
+    public void preencherJcombo() {
+        jComboBoxFuncoes.removeAllItems();
+        jComboBoxFuncoes.addItem("Selecione");
+        jComboBoxFuncoes.addItem("Administrador");
+        jComboBoxFuncoes.addItem("Engenheiro de Produçao");
+        jComboBoxFuncoes.addItem("Analista de PCP");
+        jComboBoxFuncoes.addItem("Departamento de Compras");
+        jComboBoxFuncoes.addItem("Gerente PCP");
+    }
 
+    public void limparCampos() {
+        txtCodigo.setText("");
+        jComboBoxFuncoes.setSelectedItem("Selecione");
+        txtUsuario.setText("");
+        txtSenha.setText("");
+    }
 }
